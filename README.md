@@ -413,3 +413,9 @@ docs/             план покращень
 - `soffice` (LibreOffice) — старі формати документів;
 - `mpv` або `gst-play-1.0` — відкриття аудіо і відео з секунди;
 - `evince`, `code`, `xdg-open` — відкриття PDF, коду і файлів.
+
+---
+
+## Ліцензія
+
+Код поширюється за ліцензією [Apache License 2.0](LICENSE). Copyright 2026 Cyberdid.

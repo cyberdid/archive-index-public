@@ -3,6 +3,7 @@ requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
 [project]
+license = "Apache-2.0"
 name = "archive-index"
 version = "0.1.0"
 description = "Local search over ~/Projects: wiki, docs, git history, Claude and Codex sessions (FTS5 + EmbeddingGemma 2)."
