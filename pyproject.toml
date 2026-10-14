@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "archive-index"
+version = "0.1.0"
+description = "Local search over ~/Projects: wiki, docs, git history, Claude and Codex sessions (FTS5 + EmbeddingGemma 2)."
+requires-python = ">=3.12"
+dependencies = [
+    "av>=12.0",
+    "mcp<2",
+    "numpy>=1.26",
+    "openpyxl>=3.1",
+    "pillow>=10.0",
+    "pymorphy3>=2.0",
+    "pymorphy3-dicts-ru>=2.4",
+    "pymorphy3-dicts-uk>=2.4",
+    "python-docx>=1.1",
+    "python-pptx>=1.0",
+    "pyyaml>=6.0",
+    "rapidfuzz>=3.0",
+    "scipy>=1.11",
+    "sentence-transformers>=5.0",
+    "soundfile>=0.12",
+    "textual>=0.80",
+    "torch>=2.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pyte>=0.8",
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[project.scripts]
+archive = "archive_index.cli:main"
+archive-tui = "archive_index.tui:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
