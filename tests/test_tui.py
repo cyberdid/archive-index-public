@@ -14,7 +14,7 @@ class FakeBackend:
     def search(self, query, mode, collection, project, min_similarity=0.0, limit=200, fmt="все"):
         self.calls.append((query, mode, collection, project, limit))
         hits = [
-            Hit(chunk_id=1, collection="sessions", project="projalpha", title="сесія реверсу",
+            Hit(chunk_id=1, collection="sessions", project="demo-radio", title="сесія реверсу",
                 path="/x/a.jsonl", locator="line 4", heading="", snippet="реверс bladeRF",
                 occurred_at="", score=0.9, via="both"),
             Hit(chunk_id=2, collection="wiki", project="llm", title="нотатки",
@@ -192,7 +192,7 @@ class AudioBackend:
         self.path = path
 
     def search(self, query, mode, collection, project, min_similarity=0.0, limit=200, fmt="все"):
-        hit = Hit(chunk_id=9, collection="audio", project="projbeta", title="запис дзвінка",
+        hit = Hit(chunk_id=9, collection="audio", project="demo-call", title="запис дзвінка",
                   path=str(self.path), locator="15-35s", heading="", snippet="ретранслятор",
                   occurred_at="", score=0.8, via="lexical")
         return [hit], 0.01, {9: "повний текст"}, 1

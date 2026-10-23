@@ -1,0 +1,32 @@
+% Generated from primary=gemini_reviewed; see ../manifest.json for source SHA-256.
+% Means with 95% bootstrap CI; n=170. R@100 is pool-relative under incomplete judgments. Significance: paired comparison against adaptive only, \(p_{\mathrm{Holm}}<0.05\).
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{3}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Система & nDCG@10 & R@100\textsuperscript{pool} & RR@10 \\
+\midrule
+adaptive & \shortstack{0.629 \\ {\footnotesize[0.596, 0.660]}} & \shortstack{0.908 \\ {\footnotesize[0.887, 0.928]}} & \shortstack{0.866 \\ {\footnotesize[0.826, 0.905]}} \\
+adaptive-phrase & \shortstack{0.629 \\ {\footnotesize[0.596, 0.660]}} & \shortstack{0.908 \\ {\footnotesize[0.887, 0.928]}} & \shortstack{0.866 \\ {\footnotesize[0.826, 0.905]}} \\
+adaptive-ident & \shortstack{0.629 \\ {\footnotesize[0.597, 0.661]}} & \shortstack{0.912 \\ {\footnotesize[0.892, 0.931]}} & \shortstack{0.866 \\ {\footnotesize[0.826, 0.905]}} \\
+adaptive-short & \shortstack{0.629 \\ {\footnotesize[0.597, 0.660]}} & \shortstack{0.908 \\ {\footnotesize[0.887, 0.928]}} & \shortstack{0.866 \\ {\footnotesize[0.826, 0.905]}} \\
+dense\_eg2\_256 & \shortstack{0.611 \\ {\footnotesize[0.577, 0.643]}} & \shortstack{0.888\textsuperscript{\textdagger} \\ {\footnotesize[0.863, 0.911]}} & \shortstack{0.873 \\ {\footnotesize[0.830, 0.913]}} \\
+\bottomrule
+\end{tabularx}\endgroup
+
+\par\medskip
+% Means with 95% bootstrap CI; n=170. R@100 is pool-relative under incomplete judgments. Significance: paired comparison against adaptive only, \(p_{\mathrm{Holm}}<0.05\).
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{2}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Система & Success@1 & Success@5 \\
+\midrule
+adaptive & \shortstack{0.782 \\ {\footnotesize[0.718, 0.841]}} & \shortstack{0.971 \\ {\footnotesize[0.941, 0.994]}} \\
+adaptive-phrase & \shortstack{0.782 \\ {\footnotesize[0.718, 0.841]}} & \shortstack{0.971 \\ {\footnotesize[0.941, 0.994]}} \\
+adaptive-ident & \shortstack{0.782 \\ {\footnotesize[0.718, 0.841]}} & \shortstack{0.971 \\ {\footnotesize[0.941, 0.994]}} \\
+adaptive-short & \shortstack{0.782 \\ {\footnotesize[0.718, 0.841]}} & \shortstack{0.971 \\ {\footnotesize[0.941, 0.994]}} \\
+dense\_eg2\_256 & \shortstack{0.818 \\ {\footnotesize[0.759, 0.871]}} & \shortstack{0.953 \\ {\footnotesize[0.918, 0.982]}} \\
+\bottomrule
+\end{tabularx}\endgroup
+
+\par\smallskip
+{\footnotesize \textdagger: p\textsubscript{Holm}<0.05, adaptive; R@100: відносно пулу.}

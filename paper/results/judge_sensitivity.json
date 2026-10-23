@@ -1,0 +1,6625 @@
+{
+  "caveats": {
+    "R@100": "R@100 is pool-relative recall under incomplete judgments, not corpus-wide recall.",
+    "ancillary_judges": "Gemma E4B is ancillary; GPT is comparison only because GPT authored the queries. Neither enters canonical qrels.",
+    "candidate_universe": "The E5 run uses a text-only index, while the full index also includes media. The runs do not share an equal candidate universe. Consult corpus_summary.json for this experiment for document and code-document counts.",
+    "judge_independence": "Gemini and Gemma12 provide independent initial grading but share the same provider (Google model family); the Gemini review is within-model, not a third independent judge.",
+    "no_answer": "No-answer queries remain in qrels and are reported separately; they are excluded from answerable-query retrieval averages.",
+    "pool": "Depth-10 union of all frozen systems. Unjudged documents outside this pool are treated as nonrelevant by the metric evaluator; judgments are incomplete beyond the pool.",
+    "target_coverage": "Target construction coverage is reported dynamically in target_diagnostics. The corpus may contain modalities without authored targets. Target-grade diagnostics use only targets actually present in the judged pool.",
+    "ties": "System scores within absolute tolerance 1e-12 share a rank; alphabetical order within a tie has no ranking meaning.",
+    "zero_relevant": "Answerable queries with no positive grade in the judged pool score zero and remain in the retrieval average."
+  },
+  "initial_agreement": {
+    "disagreements": 1091,
+    "linear_weighted_cohen_kappa": 0.6517874900330074,
+    "pairs": 5572
+  },
+  "means": {
+    "gemini_initial": {
+      "R@100": {
+        "adaptive": 0.8937347988723877,
+        "adaptive-ident": 0.8970027727285967,
+        "adaptive-phrase": 0.8937347988723877,
+        "adaptive-short": 0.8937347988723877,
+        "bm25_lemma": 0.7116685520311453,
+        "bm25_plain": 0.6334690531043654,
+        "dense_e5": 0.8694782781212392,
+        "dense_eg2": 0.8984745895254909,
+        "dense_eg2_256": 0.8738512050233503,
+        "rrf": 0.9529443730908401
+      },
+      "RR@10": {
+        "adaptive": 0.8912324929971989,
+        "adaptive-ident": 0.8912324929971989,
+        "adaptive-phrase": 0.8912324929971989,
+        "adaptive-short": 0.8912324929971989,
+        "bm25_lemma": 0.7740172735760971,
+        "bm25_plain": 0.7555532212885153,
+        "dense_e5": 0.9318860877684408,
+        "dense_eg2": 0.8971148459383753,
+        "dense_eg2_256": 0.8979084967320261,
+        "rrf": 0.886232492997199
+      },
+      "Success@1": {
+        "adaptive": 0.8176470588235294,
+        "adaptive-ident": 0.8176470588235294,
+        "adaptive-phrase": 0.8176470588235294,
+        "adaptive-short": 0.8176470588235294,
+        "bm25_lemma": 0.6647058823529411,
+        "bm25_plain": 0.6647058823529411,
+        "dense_e5": 0.8823529411764706,
+        "dense_eg2": 0.8294117647058824,
+        "dense_eg2_256": 0.8470588235294118,
+        "rrf": 0.8117647058823529
+      },
+      "Success@5": {
+        "adaptive": 0.9764705882352941,
+        "adaptive-ident": 0.9764705882352941,
+        "adaptive-phrase": 0.9764705882352941,
+        "adaptive-short": 0.9764705882352941,
+        "bm25_lemma": 0.9235294117647059,
+        "bm25_plain": 0.8823529411764706,
+        "dense_e5": 0.9882352941176471,
+        "dense_eg2": 0.9764705882352941,
+        "dense_eg2_256": 0.9588235294117647,
+        "rrf": 0.9705882352941176
+      },
+      "nDCG@10": {
+        "adaptive": 0.6389008384840535,
+        "adaptive-ident": 0.6388079197515625,
+        "adaptive-phrase": 0.6389008384840535,
+        "adaptive-short": 0.6389663379443711,
+        "bm25_lemma": 0.4892213866478104,
+        "bm25_plain": 0.4530637459236743,
+        "dense_e5": 0.6847638698165648,
+        "dense_eg2": 0.6439073926573178,
+        "dense_eg2_256": 0.6219238579657479,
+        "rrf": 0.6406954915187624
+      }
+    },
+    "gemini_reviewed": {
+      "R@100": {
+        "adaptive": 0.9084348584016716,
+        "adaptive-ident": 0.9121113289899069,
+        "adaptive-phrase": 0.9084348584016716,
+        "adaptive-short": 0.9084348584016716,
+        "bm25_lemma": 0.7244315432688304,
+        "bm25_plain": 0.6482409537308957,
+        "dense_e5": 0.8796855682902415,
+        "dense_eg2": 0.9106990974306166,
+        "dense_eg2_256": 0.8880718579184745,
+        "rrf": 0.9598736263268245
+      },
+      "RR@10": {
+        "adaptive": 0.8663305322128853,
+        "adaptive-ident": 0.8663305322128853,
+        "adaptive-phrase": 0.8663305322128853,
+        "adaptive-short": 0.8663305322128853,
+        "bm25_lemma": 0.7528898225957049,
+        "bm25_plain": 0.7380695611577965,
+        "dense_e5": 0.926690009337068,
+        "dense_eg2": 0.8722128851540617,
+        "dense_eg2_256": 0.8732586367880485,
+        "rrf": 0.8730065359477124
+      },
+      "Success@1": {
+        "adaptive": 0.7823529411764706,
+        "adaptive-ident": 0.7823529411764706,
+        "adaptive-phrase": 0.7823529411764706,
+        "adaptive-short": 0.7823529411764706,
+        "bm25_lemma": 0.6235294117647059,
+        "bm25_plain": 0.6352941176470588,
+        "dense_e5": 0.8764705882352941,
+        "dense_eg2": 0.7941176470588235,
+        "dense_eg2_256": 0.8176470588235294,
+        "rrf": 0.788235294117647
+      },
+      "Success@5": {
+        "adaptive": 0.9705882352941176,
+        "adaptive-ident": 0.9705882352941176,
+        "adaptive-phrase": 0.9705882352941176,
+        "adaptive-short": 0.9705882352941176,
+        "bm25_lemma": 0.9294117647058824,
+        "bm25_plain": 0.8764705882352941,
+        "dense_e5": 0.9882352941176471,
+        "dense_eg2": 0.9705882352941176,
+        "dense_eg2_256": 0.9529411764705882,
+        "rrf": 0.9764705882352941
+      },
+      "nDCG@10": {
+        "adaptive": 0.6285629452072389,
+        "adaptive-ident": 0.6292136232349508,
+        "adaptive-phrase": 0.6285629452072389,
+        "adaptive-short": 0.6286598408815136,
+        "bm25_lemma": 0.4817469719070124,
+        "bm25_plain": 0.4503726047376494,
+        "dense_e5": 0.6737870864475342,
+        "dense_eg2": 0.6329152293977139,
+        "dense_eg2_256": 0.6108906443863827,
+        "rrf": 0.630352110764273
+      }
+    },
+    "gemma12_initial": {
+      "R@100": {
+        "adaptive": 0.8957270399866712,
+        "adaptive-ident": 0.8994035105749065,
+        "adaptive-phrase": 0.8957270399866712,
+        "adaptive-short": 0.8957270399866712,
+        "bm25_lemma": 0.7115555972491558,
+        "bm25_plain": 0.6471945043250225,
+        "dense_e5": 0.8489264335390805,
+        "dense_eg2": 0.8968546446335455,
+        "dense_eg2_256": 0.8750210369442256,
+        "rrf": 0.9567503002892933
+      },
+      "RR@10": {
+        "adaptive": 0.906372549019608,
+        "adaptive-ident": 0.906372549019608,
+        "adaptive-phrase": 0.906372549019608,
+        "adaptive-short": 0.906372549019608,
+        "bm25_lemma": 0.7997105508870215,
+        "bm25_plain": 0.7960270774976657,
+        "dense_e5": 0.9454575163398692,
+        "dense_eg2": 0.9093137254901962,
+        "dense_eg2_256": 0.9028431372549018,
+        "rrf": 0.8891176470588233
+      },
+      "Success@1": {
+        "adaptive": 0.8411764705882353,
+        "adaptive-ident": 0.8411764705882353,
+        "adaptive-phrase": 0.8411764705882353,
+        "adaptive-short": 0.8411764705882353,
+        "bm25_lemma": 0.6764705882352942,
+        "bm25_plain": 0.7058823529411765,
+        "dense_e5": 0.9058823529411765,
+        "dense_eg2": 0.8470588235294118,
+        "dense_eg2_256": 0.8470588235294118,
+        "rrf": 0.8117647058823529
+      },
+      "Success@5": {
+        "adaptive": 0.9941176470588236,
+        "adaptive-ident": 0.9941176470588236,
+        "adaptive-phrase": 0.9941176470588236,
+        "adaptive-short": 0.9941176470588236,
+        "bm25_lemma": 0.9588235294117647,
+        "bm25_plain": 0.9,
+        "dense_e5": 0.9941176470588236,
+        "dense_eg2": 0.9941176470588236,
+        "dense_eg2_256": 0.9882352941176471,
+        "rrf": 0.9941176470588236
+      },
+      "nDCG@10": {
+        "adaptive": 0.6753409962611001,
+        "adaptive-ident": 0.675991674288812,
+        "adaptive-phrase": 0.6753409962611001,
+        "adaptive-short": 0.6749763468069375,
+        "bm25_lemma": 0.5187980639951022,
+        "bm25_plain": 0.5000137167664295,
+        "dense_e5": 0.6983003320953631,
+        "dense_eg2": 0.680728517476396,
+        "dense_eg2_256": 0.6649351535762525,
+        "rrf": 0.6647236462779686
+      }
+    },
+    "gemma_initial": {
+      "R@100": {
+        "adaptive": 0.8713733617413636,
+        "adaptive-ident": 0.8752949303688147,
+        "adaptive-phrase": 0.8713733617413636,
+        "adaptive-short": 0.8713733617413636,
+        "bm25_lemma": 0.7132578041601757,
+        "bm25_plain": 0.6483849974744934,
+        "dense_e5": 0.8489664094643968,
+        "dense_eg2": 0.8762339423372384,
+        "dense_eg2_256": 0.8523163462911421,
+        "rrf": 0.9494961410815488
+      },
+      "RR@10": {
+        "adaptive": 0.8523529411764706,
+        "adaptive-ident": 0.8523529411764706,
+        "adaptive-phrase": 0.8523529411764706,
+        "adaptive-short": 0.8523529411764706,
+        "bm25_lemma": 0.7683800186741363,
+        "bm25_plain": 0.7488048552754434,
+        "dense_e5": 0.9329084967320261,
+        "dense_eg2": 0.8582352941176471,
+        "dense_eg2_256": 0.8332679738562092,
+        "rrf": 0.846484593837535
+      },
+      "Success@1": {
+        "adaptive": 0.7588235294117647,
+        "adaptive-ident": 0.7588235294117647,
+        "adaptive-phrase": 0.7588235294117647,
+        "adaptive-short": 0.7588235294117647,
+        "bm25_lemma": 0.6294117647058823,
+        "bm25_plain": 0.6352941176470588,
+        "dense_e5": 0.888235294117647,
+        "dense_eg2": 0.7705882352941177,
+        "dense_eg2_256": 0.7294117647058823,
+        "rrf": 0.7588235294117647
+      },
+      "Success@5": {
+        "adaptive": 0.9823529411764705,
+        "adaptive-ident": 0.9823529411764705,
+        "adaptive-phrase": 0.9823529411764705,
+        "adaptive-short": 0.9823529411764705,
+        "bm25_lemma": 0.9529411764705882,
+        "bm25_plain": 0.8941176470588236,
+        "dense_e5": 0.9882352941176471,
+        "dense_eg2": 0.9823529411764705,
+        "dense_eg2_256": 0.9647058823529412,
+        "rrf": 0.9588235294117647
+      },
+      "nDCG@10": {
+        "adaptive": 0.6089525411745759,
+        "adaptive-ident": 0.610551990864491,
+        "adaptive-phrase": 0.6089525411745759,
+        "adaptive-short": 0.6083037413379107,
+        "bm25_lemma": 0.4866193771589879,
+        "bm25_plain": 0.45917366320556807,
+        "dense_e5": 0.6626126714449875,
+        "dense_eg2": 0.6151082761571957,
+        "dense_eg2_256": 0.5945355945866916,
+        "rrf": 0.6015632790947033
+      }
+    },
+    "gpt_initial": {
+      "R@100": {
+        "adaptive": 0.8574298486811891,
+        "adaptive-ident": 0.8616315293534579,
+        "adaptive-phrase": 0.8574298486811891,
+        "adaptive-short": 0.8574298486811891,
+        "bm25_lemma": 0.6888543659858972,
+        "bm25_plain": 0.6226831391368041,
+        "dense_e5": 0.8234390248739715,
+        "dense_eg2": 0.8559851726675477,
+        "dense_eg2_256": 0.829082926006717,
+        "rrf": 0.948022442093327
+      },
+      "RR@10": {
+        "adaptive": 0.9428921568627451,
+        "adaptive-ident": 0.9428921568627451,
+        "adaptive-phrase": 0.9428921568627451,
+        "adaptive-short": 0.9428921568627451,
+        "bm25_lemma": 0.8483146591970122,
+        "bm25_plain": 0.8439449112978524,
+        "dense_e5": 0.961624649859944,
+        "dense_eg2": 0.9428921568627451,
+        "dense_eg2_256": 0.9387815126050421,
+        "rrf": 0.9259803921568629
+      },
+      "Success@1": {
+        "adaptive": 0.8941176470588236,
+        "adaptive-ident": 0.8941176470588236,
+        "adaptive-phrase": 0.8941176470588236,
+        "adaptive-short": 0.8941176470588236,
+        "bm25_lemma": 0.7411764705882353,
+        "bm25_plain": 0.7647058823529411,
+        "dense_e5": 0.9294117647058824,
+        "dense_eg2": 0.8941176470588236,
+        "dense_eg2_256": 0.8941176470588236,
+        "rrf": 0.8647058823529412
+      },
+      "Success@5": {
+        "adaptive": 0.9941176470588236,
+        "adaptive-ident": 0.9941176470588236,
+        "adaptive-phrase": 0.9941176470588236,
+        "adaptive-short": 0.9941176470588236,
+        "bm25_lemma": 0.9823529411764705,
+        "bm25_plain": 0.9588235294117647,
+        "dense_e5": 0.9941176470588236,
+        "dense_eg2": 0.9941176470588236,
+        "dense_eg2_256": 0.9941176470588236,
+        "rrf": 0.9941176470588236
+      },
+      "nDCG@10": {
+        "adaptive": 0.6993432242271079,
+        "adaptive-ident": 0.7014463039459937,
+        "adaptive-phrase": 0.6993432242271079,
+        "adaptive-short": 0.6992094174591472,
+        "bm25_lemma": 0.551638202731187,
+        "bm25_plain": 0.5238122230398384,
+        "dense_e5": 0.7264176497878554,
+        "dense_eg2": 0.7013705033310526,
+        "dense_eg2_256": 0.6764288575052502,
+        "rrf": 0.6939815768307152
+      }
+    }
+  },
+  "non_answer_diagnostics": {
+    "gemini_initial": {
+      "interpretation": "Retrieval and positive-grade diagnostics for the designated no-answer queries; these are separate from answerable retrieval quality.",
+      "queries": 30,
+      "systems": {
+        "adaptive": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.26666666666666666,
+          "judged_positive_rate_at_10": 0.5666666666666667,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 8,
+          "queries_with_judged_positive_at_10": 17
+        },
+        "adaptive-ident": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.26666666666666666,
+          "judged_positive_rate_at_10": 0.5666666666666667,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 8,
+          "queries_with_judged_positive_at_10": 17
+        },
+        "adaptive-phrase": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.26666666666666666,
+          "judged_positive_rate_at_10": 0.5666666666666667,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 8,
+          "queries_with_judged_positive_at_10": 17
+        },
+        "adaptive-short": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.26666666666666666,
+          "judged_positive_rate_at_10": 0.5666666666666667,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 8,
+          "queries_with_judged_positive_at_10": 17
+        },
+        "bm25_lemma": {
+          "empty_retrieval_count": 30,
+          "judged_positive_rate_at_1": 0.0,
+          "judged_positive_rate_at_10": 0.0,
+          "nonempty_retrieval_count": 0,
+          "queries_with_judged_positive_at_1": 0,
+          "queries_with_judged_positive_at_10": 0
+        },
+        "bm25_plain": {
+          "empty_retrieval_count": 30,
+          "judged_positive_rate_at_1": 0.0,
+          "judged_positive_rate_at_10": 0.0,
+          "nonempty_retrieval_count": 0,
+          "queries_with_judged_positive_at_1": 0,
+          "queries_with_judged_positive_at_10": 0
+        },
+        "dense_e5": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.13333333333333333,
+          "judged_positive_rate_at_10": 0.3333333333333333,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 4,
+          "queries_with_judged_positive_at_10": 10
+        },
+        "dense_eg2": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.26666666666666666,
+          "judged_positive_rate_at_10": 0.5666666666666667,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 8,
+          "queries_with_judged_positive_at_10": 17
+        },
+        "dense_eg2_256": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5666666666666667,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 17
+        },
+        "rrf": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.26666666666666666,
+          "judged_positive_rate_at_10": 0.5666666666666667,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 8,
+          "queries_with_judged_positive_at_10": 17
+        }
+      }
+    },
+    "gemini_reviewed": {
+      "interpretation": "Retrieval and positive-grade diagnostics for the designated no-answer queries; these are separate from answerable retrieval quality.",
+      "queries": 30,
+      "systems": {
+        "adaptive": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.2,
+          "judged_positive_rate_at_10": 0.36666666666666664,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 6,
+          "queries_with_judged_positive_at_10": 11
+        },
+        "adaptive-ident": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.2,
+          "judged_positive_rate_at_10": 0.36666666666666664,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 6,
+          "queries_with_judged_positive_at_10": 11
+        },
+        "adaptive-phrase": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.2,
+          "judged_positive_rate_at_10": 0.36666666666666664,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 6,
+          "queries_with_judged_positive_at_10": 11
+        },
+        "adaptive-short": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.2,
+          "judged_positive_rate_at_10": 0.36666666666666664,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 6,
+          "queries_with_judged_positive_at_10": 11
+        },
+        "bm25_lemma": {
+          "empty_retrieval_count": 30,
+          "judged_positive_rate_at_1": 0.0,
+          "judged_positive_rate_at_10": 0.0,
+          "nonempty_retrieval_count": 0,
+          "queries_with_judged_positive_at_1": 0,
+          "queries_with_judged_positive_at_10": 0
+        },
+        "bm25_plain": {
+          "empty_retrieval_count": 30,
+          "judged_positive_rate_at_1": 0.0,
+          "judged_positive_rate_at_10": 0.0,
+          "nonempty_retrieval_count": 0,
+          "queries_with_judged_positive_at_1": 0,
+          "queries_with_judged_positive_at_10": 0
+        },
+        "dense_e5": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.13333333333333333,
+          "judged_positive_rate_at_10": 0.2,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 4,
+          "queries_with_judged_positive_at_10": 6
+        },
+        "dense_eg2": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.2,
+          "judged_positive_rate_at_10": 0.36666666666666664,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 6,
+          "queries_with_judged_positive_at_10": 11
+        },
+        "dense_eg2_256": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.13333333333333333,
+          "judged_positive_rate_at_10": 0.4,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 4,
+          "queries_with_judged_positive_at_10": 12
+        },
+        "rrf": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.2,
+          "judged_positive_rate_at_10": 0.36666666666666664,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 6,
+          "queries_with_judged_positive_at_10": 11
+        }
+      }
+    },
+    "gemma12_initial": {
+      "interpretation": "Retrieval and positive-grade diagnostics for the designated no-answer queries; these are separate from answerable retrieval quality.",
+      "queries": 30,
+      "systems": {
+        "adaptive": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5333333333333333,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 16
+        },
+        "adaptive-ident": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5333333333333333,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 16
+        },
+        "adaptive-phrase": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5333333333333333,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 16
+        },
+        "adaptive-short": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5333333333333333,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 16
+        },
+        "bm25_lemma": {
+          "empty_retrieval_count": 30,
+          "judged_positive_rate_at_1": 0.0,
+          "judged_positive_rate_at_10": 0.0,
+          "nonempty_retrieval_count": 0,
+          "queries_with_judged_positive_at_1": 0,
+          "queries_with_judged_positive_at_10": 0
+        },
+        "bm25_plain": {
+          "empty_retrieval_count": 30,
+          "judged_positive_rate_at_1": 0.0,
+          "judged_positive_rate_at_10": 0.0,
+          "nonempty_retrieval_count": 0,
+          "queries_with_judged_positive_at_1": 0,
+          "queries_with_judged_positive_at_10": 0
+        },
+        "dense_e5": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.06666666666666667,
+          "judged_positive_rate_at_10": 0.26666666666666666,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 2,
+          "queries_with_judged_positive_at_10": 8
+        },
+        "dense_eg2": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5333333333333333,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 16
+        },
+        "dense_eg2_256": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.16666666666666666,
+          "judged_positive_rate_at_10": 0.4666666666666667,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 5,
+          "queries_with_judged_positive_at_10": 14
+        },
+        "rrf": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5333333333333333,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 16
+        }
+      }
+    },
+    "gemma_initial": {
+      "interpretation": "Retrieval and positive-grade diagnostics for the designated no-answer queries; these are separate from answerable retrieval quality.",
+      "queries": 30,
+      "systems": {
+        "adaptive": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 15
+        },
+        "adaptive-ident": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 15
+        },
+        "adaptive-phrase": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 15
+        },
+        "adaptive-short": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 15
+        },
+        "bm25_lemma": {
+          "empty_retrieval_count": 30,
+          "judged_positive_rate_at_1": 0.0,
+          "judged_positive_rate_at_10": 0.0,
+          "nonempty_retrieval_count": 0,
+          "queries_with_judged_positive_at_1": 0,
+          "queries_with_judged_positive_at_10": 0
+        },
+        "bm25_plain": {
+          "empty_retrieval_count": 30,
+          "judged_positive_rate_at_1": 0.0,
+          "judged_positive_rate_at_10": 0.0,
+          "nonempty_retrieval_count": 0,
+          "queries_with_judged_positive_at_1": 0,
+          "queries_with_judged_positive_at_10": 0
+        },
+        "dense_e5": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.06666666666666667,
+          "judged_positive_rate_at_10": 0.23333333333333334,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 2,
+          "queries_with_judged_positive_at_10": 7
+        },
+        "dense_eg2": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 15
+        },
+        "dense_eg2_256": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.13333333333333333,
+          "judged_positive_rate_at_10": 0.4,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 4,
+          "queries_with_judged_positive_at_10": 12
+        },
+        "rrf": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.23333333333333334,
+          "judged_positive_rate_at_10": 0.5,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 7,
+          "queries_with_judged_positive_at_10": 15
+        }
+      }
+    },
+    "gpt_initial": {
+      "interpretation": "Retrieval and positive-grade diagnostics for the designated no-answer queries; these are separate from answerable retrieval quality.",
+      "queries": 30,
+      "systems": {
+        "adaptive": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.4666666666666667,
+          "judged_positive_rate_at_10": 0.9,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 14,
+          "queries_with_judged_positive_at_10": 27
+        },
+        "adaptive-ident": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.4666666666666667,
+          "judged_positive_rate_at_10": 0.9,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 14,
+          "queries_with_judged_positive_at_10": 27
+        },
+        "adaptive-phrase": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.4666666666666667,
+          "judged_positive_rate_at_10": 0.9,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 14,
+          "queries_with_judged_positive_at_10": 27
+        },
+        "adaptive-short": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.4666666666666667,
+          "judged_positive_rate_at_10": 0.9,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 14,
+          "queries_with_judged_positive_at_10": 27
+        },
+        "bm25_lemma": {
+          "empty_retrieval_count": 30,
+          "judged_positive_rate_at_1": 0.0,
+          "judged_positive_rate_at_10": 0.0,
+          "nonempty_retrieval_count": 0,
+          "queries_with_judged_positive_at_1": 0,
+          "queries_with_judged_positive_at_10": 0
+        },
+        "bm25_plain": {
+          "empty_retrieval_count": 30,
+          "judged_positive_rate_at_1": 0.0,
+          "judged_positive_rate_at_10": 0.0,
+          "nonempty_retrieval_count": 0,
+          "queries_with_judged_positive_at_1": 0,
+          "queries_with_judged_positive_at_10": 0
+        },
+        "dense_e5": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.26666666666666666,
+          "judged_positive_rate_at_10": 0.7,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 8,
+          "queries_with_judged_positive_at_10": 21
+        },
+        "dense_eg2": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.4666666666666667,
+          "judged_positive_rate_at_10": 0.9,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 14,
+          "queries_with_judged_positive_at_10": 27
+        },
+        "dense_eg2_256": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.3333333333333333,
+          "judged_positive_rate_at_10": 0.7666666666666667,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 10,
+          "queries_with_judged_positive_at_10": 23
+        },
+        "rrf": {
+          "empty_retrieval_count": 0,
+          "judged_positive_rate_at_1": 0.4666666666666667,
+          "judged_positive_rate_at_10": 0.9,
+          "nonempty_retrieval_count": 30,
+          "queries_with_judged_positive_at_1": 14,
+          "queries_with_judged_positive_at_10": 27
+        }
+      }
+    }
+  },
+  "ordering_changes": {
+    "gemini_reviewed": {
+      "R@100": [
+        {
+          "initial": "dense_eg2 > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-ident > dense_eg2"
+        }
+      ],
+      "RR@10": [
+        {
+          "initial": "adaptive > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive"
+        },
+        {
+          "initial": "adaptive-ident > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive-ident"
+        },
+        {
+          "initial": "adaptive-phrase > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive-phrase"
+        },
+        {
+          "initial": "adaptive-short > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-short",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive-short"
+        },
+        {
+          "initial": "dense_eg2 > rrf",
+          "kind": "reversal",
+          "systems": [
+            "dense_eg2",
+            "rrf"
+          ],
+          "variant": "rrf > dense_eg2"
+        }
+      ],
+      "Success@1": [
+        {
+          "initial": "adaptive > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive"
+        },
+        {
+          "initial": "adaptive-ident > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive-ident"
+        },
+        {
+          "initial": "adaptive-phrase > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive-phrase"
+        },
+        {
+          "initial": "adaptive-short > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-short",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive-short"
+        },
+        {
+          "initial": "bm25_lemma = bm25_plain",
+          "kind": "tie broken",
+          "systems": [
+            "bm25_lemma",
+            "bm25_plain"
+          ],
+          "variant": "bm25_plain > bm25_lemma"
+        }
+      ],
+      "Success@5": [
+        {
+          "initial": "adaptive > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive"
+        },
+        {
+          "initial": "adaptive-ident > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive-ident"
+        },
+        {
+          "initial": "adaptive-phrase > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive-phrase"
+        },
+        {
+          "initial": "adaptive-short > rrf",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-short",
+            "rrf"
+          ],
+          "variant": "rrf > adaptive-short"
+        },
+        {
+          "initial": "dense_eg2 > rrf",
+          "kind": "reversal",
+          "systems": [
+            "dense_eg2",
+            "rrf"
+          ],
+          "variant": "rrf > dense_eg2"
+        }
+      ],
+      "nDCG@10": [
+        {
+          "initial": "adaptive > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "adaptive-ident"
+          ],
+          "variant": "adaptive-ident > adaptive"
+        },
+        {
+          "initial": "adaptive-phrase > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "adaptive-phrase"
+          ],
+          "variant": "adaptive-ident > adaptive-phrase"
+        },
+        {
+          "initial": "adaptive-short > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "adaptive-short"
+          ],
+          "variant": "adaptive-ident > adaptive-short"
+        }
+      ]
+    },
+    "gemma12_initial": {
+      "R@100": [
+        {
+          "initial": "dense_eg2 > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-ident > dense_eg2"
+        }
+      ],
+      "RR@10": [
+        {
+          "initial": "dense_eg2_256 > adaptive",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-ident > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-phrase",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-phrase > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-short",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-short",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-short > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2_256 > dense_eg2",
+          "kind": "reversal",
+          "systems": [
+            "dense_eg2",
+            "dense_eg2_256"
+          ],
+          "variant": "dense_eg2 > dense_eg2_256"
+        }
+      ],
+      "Success@1": [
+        {
+          "initial": "bm25_lemma = bm25_plain",
+          "kind": "tie broken",
+          "systems": [
+            "bm25_lemma",
+            "bm25_plain"
+          ],
+          "variant": "bm25_plain > bm25_lemma"
+        },
+        {
+          "initial": "dense_eg2_256 > dense_eg2",
+          "kind": "tie introduced",
+          "systems": [
+            "dense_eg2",
+            "dense_eg2_256"
+          ],
+          "variant": "dense_eg2 = dense_eg2_256"
+        }
+      ],
+      "Success@5": [
+        {
+          "initial": "dense_e5 > adaptive",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive",
+            "dense_e5"
+          ],
+          "variant": "adaptive = dense_e5"
+        },
+        {
+          "initial": "adaptive > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive",
+            "rrf"
+          ],
+          "variant": "adaptive = rrf"
+        },
+        {
+          "initial": "dense_e5 > adaptive-ident",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-ident",
+            "dense_e5"
+          ],
+          "variant": "adaptive-ident = dense_e5"
+        },
+        {
+          "initial": "adaptive-ident > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-ident",
+            "rrf"
+          ],
+          "variant": "adaptive-ident = rrf"
+        },
+        {
+          "initial": "dense_e5 > adaptive-phrase",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-phrase",
+            "dense_e5"
+          ],
+          "variant": "adaptive-phrase = dense_e5"
+        },
+        {
+          "initial": "adaptive-phrase > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-phrase",
+            "rrf"
+          ],
+          "variant": "adaptive-phrase = rrf"
+        },
+        {
+          "initial": "dense_e5 > adaptive-short",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-short",
+            "dense_e5"
+          ],
+          "variant": "adaptive-short = dense_e5"
+        },
+        {
+          "initial": "adaptive-short > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-short",
+            "rrf"
+          ],
+          "variant": "adaptive-short = rrf"
+        },
+        {
+          "initial": "dense_e5 > dense_eg2",
+          "kind": "tie introduced",
+          "systems": [
+            "dense_e5",
+            "dense_eg2"
+          ],
+          "variant": "dense_e5 = dense_eg2"
+        },
+        {
+          "initial": "dense_e5 > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "dense_e5",
+            "rrf"
+          ],
+          "variant": "dense_e5 = rrf"
+        },
+        {
+          "initial": "dense_eg2 > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "dense_eg2",
+            "rrf"
+          ],
+          "variant": "dense_eg2 = rrf"
+        }
+      ],
+      "nDCG@10": [
+        {
+          "initial": "adaptive > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "adaptive-ident"
+          ],
+          "variant": "adaptive-ident > adaptive"
+        },
+        {
+          "initial": "adaptive-short > adaptive",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "adaptive-short"
+          ],
+          "variant": "adaptive > adaptive-short"
+        },
+        {
+          "initial": "rrf > adaptive",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "rrf"
+          ],
+          "variant": "adaptive > rrf"
+        },
+        {
+          "initial": "adaptive-phrase > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "adaptive-phrase"
+          ],
+          "variant": "adaptive-ident > adaptive-phrase"
+        },
+        {
+          "initial": "adaptive-short > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "adaptive-short"
+          ],
+          "variant": "adaptive-ident > adaptive-short"
+        },
+        {
+          "initial": "rrf > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "rrf"
+          ],
+          "variant": "adaptive-ident > rrf"
+        },
+        {
+          "initial": "adaptive-short > adaptive-phrase",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "adaptive-short"
+          ],
+          "variant": "adaptive-phrase > adaptive-short"
+        },
+        {
+          "initial": "rrf > adaptive-phrase",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "rrf"
+          ],
+          "variant": "adaptive-phrase > rrf"
+        },
+        {
+          "initial": "rrf > adaptive-short",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-short",
+            "rrf"
+          ],
+          "variant": "adaptive-short > rrf"
+        },
+        {
+          "initial": "rrf > dense_eg2_256",
+          "kind": "reversal",
+          "systems": [
+            "dense_eg2_256",
+            "rrf"
+          ],
+          "variant": "dense_eg2_256 > rrf"
+        }
+      ]
+    },
+    "gemma_initial": {
+      "R@100": [],
+      "RR@10": [
+        {
+          "initial": "dense_eg2_256 > adaptive",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-ident > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-phrase",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-phrase > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-short",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-short",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-short > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2_256 > dense_eg2",
+          "kind": "reversal",
+          "systems": [
+            "dense_eg2",
+            "dense_eg2_256"
+          ],
+          "variant": "dense_eg2 > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2_256 > rrf",
+          "kind": "reversal",
+          "systems": [
+            "dense_eg2_256",
+            "rrf"
+          ],
+          "variant": "rrf > dense_eg2_256"
+        }
+      ],
+      "Success@1": [
+        {
+          "initial": "dense_eg2_256 > adaptive",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive > dense_eg2_256"
+        },
+        {
+          "initial": "adaptive > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive",
+            "rrf"
+          ],
+          "variant": "adaptive = rrf"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-ident > dense_eg2_256"
+        },
+        {
+          "initial": "adaptive-ident > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-ident",
+            "rrf"
+          ],
+          "variant": "adaptive-ident = rrf"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-phrase",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-phrase > dense_eg2_256"
+        },
+        {
+          "initial": "adaptive-phrase > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-phrase",
+            "rrf"
+          ],
+          "variant": "adaptive-phrase = rrf"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-short",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-short",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-short > dense_eg2_256"
+        },
+        {
+          "initial": "adaptive-short > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-short",
+            "rrf"
+          ],
+          "variant": "adaptive-short = rrf"
+        },
+        {
+          "initial": "bm25_lemma = bm25_plain",
+          "kind": "tie broken",
+          "systems": [
+            "bm25_lemma",
+            "bm25_plain"
+          ],
+          "variant": "bm25_plain > bm25_lemma"
+        },
+        {
+          "initial": "dense_eg2_256 > dense_eg2",
+          "kind": "reversal",
+          "systems": [
+            "dense_eg2",
+            "dense_eg2_256"
+          ],
+          "variant": "dense_eg2 > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2_256 > rrf",
+          "kind": "reversal",
+          "systems": [
+            "dense_eg2_256",
+            "rrf"
+          ],
+          "variant": "rrf > dense_eg2_256"
+        }
+      ],
+      "Success@5": [
+        {
+          "initial": "rrf > dense_eg2_256",
+          "kind": "reversal",
+          "systems": [
+            "dense_eg2_256",
+            "rrf"
+          ],
+          "variant": "dense_eg2_256 > rrf"
+        }
+      ],
+      "nDCG@10": [
+        {
+          "initial": "adaptive > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "adaptive-ident"
+          ],
+          "variant": "adaptive-ident > adaptive"
+        },
+        {
+          "initial": "adaptive-short > adaptive",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "adaptive-short"
+          ],
+          "variant": "adaptive > adaptive-short"
+        },
+        {
+          "initial": "rrf > adaptive",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "rrf"
+          ],
+          "variant": "adaptive > rrf"
+        },
+        {
+          "initial": "adaptive-phrase > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "adaptive-phrase"
+          ],
+          "variant": "adaptive-ident > adaptive-phrase"
+        },
+        {
+          "initial": "adaptive-short > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "adaptive-short"
+          ],
+          "variant": "adaptive-ident > adaptive-short"
+        },
+        {
+          "initial": "rrf > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "rrf"
+          ],
+          "variant": "adaptive-ident > rrf"
+        },
+        {
+          "initial": "adaptive-short > adaptive-phrase",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "adaptive-short"
+          ],
+          "variant": "adaptive-phrase > adaptive-short"
+        },
+        {
+          "initial": "rrf > adaptive-phrase",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "rrf"
+          ],
+          "variant": "adaptive-phrase > rrf"
+        },
+        {
+          "initial": "rrf > adaptive-short",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-short",
+            "rrf"
+          ],
+          "variant": "adaptive-short > rrf"
+        }
+      ]
+    },
+    "gpt_initial": {
+      "R@100": [
+        {
+          "initial": "dense_eg2 > adaptive",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "dense_eg2"
+          ],
+          "variant": "adaptive > dense_eg2"
+        },
+        {
+          "initial": "dense_eg2 > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-ident > dense_eg2"
+        },
+        {
+          "initial": "dense_eg2 > adaptive-phrase",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-phrase > dense_eg2"
+        },
+        {
+          "initial": "dense_eg2 > adaptive-short",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-short",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-short > dense_eg2"
+        }
+      ],
+      "RR@10": [
+        {
+          "initial": "dense_eg2 > adaptive",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive",
+            "dense_eg2"
+          ],
+          "variant": "adaptive = dense_eg2"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2 > adaptive-ident",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-ident = dense_eg2"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-ident > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2 > adaptive-phrase",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-phrase",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-phrase = dense_eg2"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-phrase",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-phrase > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2 > adaptive-short",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-short",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-short = dense_eg2"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-short",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-short",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-short > dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2_256 > dense_eg2",
+          "kind": "reversal",
+          "systems": [
+            "dense_eg2",
+            "dense_eg2_256"
+          ],
+          "variant": "dense_eg2 > dense_eg2_256"
+        }
+      ],
+      "Success@1": [
+        {
+          "initial": "dense_eg2 > adaptive",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive",
+            "dense_eg2"
+          ],
+          "variant": "adaptive = dense_eg2"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive = dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2 > adaptive-ident",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-ident = dense_eg2"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-ident",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-ident = dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2 > adaptive-phrase",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-phrase",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-phrase = dense_eg2"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-phrase",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-phrase",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-phrase = dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2 > adaptive-short",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-short",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-short = dense_eg2"
+        },
+        {
+          "initial": "dense_eg2_256 > adaptive-short",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-short",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-short = dense_eg2_256"
+        },
+        {
+          "initial": "bm25_lemma = bm25_plain",
+          "kind": "tie broken",
+          "systems": [
+            "bm25_lemma",
+            "bm25_plain"
+          ],
+          "variant": "bm25_plain > bm25_lemma"
+        },
+        {
+          "initial": "dense_eg2_256 > dense_eg2",
+          "kind": "tie introduced",
+          "systems": [
+            "dense_eg2",
+            "dense_eg2_256"
+          ],
+          "variant": "dense_eg2 = dense_eg2_256"
+        }
+      ],
+      "Success@5": [
+        {
+          "initial": "dense_e5 > adaptive",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive",
+            "dense_e5"
+          ],
+          "variant": "adaptive = dense_e5"
+        },
+        {
+          "initial": "adaptive > dense_eg2_256",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive = dense_eg2_256"
+        },
+        {
+          "initial": "adaptive > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive",
+            "rrf"
+          ],
+          "variant": "adaptive = rrf"
+        },
+        {
+          "initial": "dense_e5 > adaptive-ident",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-ident",
+            "dense_e5"
+          ],
+          "variant": "adaptive-ident = dense_e5"
+        },
+        {
+          "initial": "adaptive-ident > dense_eg2_256",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-ident = dense_eg2_256"
+        },
+        {
+          "initial": "adaptive-ident > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-ident",
+            "rrf"
+          ],
+          "variant": "adaptive-ident = rrf"
+        },
+        {
+          "initial": "dense_e5 > adaptive-phrase",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-phrase",
+            "dense_e5"
+          ],
+          "variant": "adaptive-phrase = dense_e5"
+        },
+        {
+          "initial": "adaptive-phrase > dense_eg2_256",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-phrase",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-phrase = dense_eg2_256"
+        },
+        {
+          "initial": "adaptive-phrase > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-phrase",
+            "rrf"
+          ],
+          "variant": "adaptive-phrase = rrf"
+        },
+        {
+          "initial": "dense_e5 > adaptive-short",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-short",
+            "dense_e5"
+          ],
+          "variant": "adaptive-short = dense_e5"
+        },
+        {
+          "initial": "adaptive-short > dense_eg2_256",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-short",
+            "dense_eg2_256"
+          ],
+          "variant": "adaptive-short = dense_eg2_256"
+        },
+        {
+          "initial": "adaptive-short > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "adaptive-short",
+            "rrf"
+          ],
+          "variant": "adaptive-short = rrf"
+        },
+        {
+          "initial": "dense_e5 > dense_eg2",
+          "kind": "tie introduced",
+          "systems": [
+            "dense_e5",
+            "dense_eg2"
+          ],
+          "variant": "dense_e5 = dense_eg2"
+        },
+        {
+          "initial": "dense_e5 > dense_eg2_256",
+          "kind": "tie introduced",
+          "systems": [
+            "dense_e5",
+            "dense_eg2_256"
+          ],
+          "variant": "dense_e5 = dense_eg2_256"
+        },
+        {
+          "initial": "dense_e5 > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "dense_e5",
+            "rrf"
+          ],
+          "variant": "dense_e5 = rrf"
+        },
+        {
+          "initial": "dense_eg2 > dense_eg2_256",
+          "kind": "tie introduced",
+          "systems": [
+            "dense_eg2",
+            "dense_eg2_256"
+          ],
+          "variant": "dense_eg2 = dense_eg2_256"
+        },
+        {
+          "initial": "dense_eg2 > rrf",
+          "kind": "tie introduced",
+          "systems": [
+            "dense_eg2",
+            "rrf"
+          ],
+          "variant": "dense_eg2 = rrf"
+        },
+        {
+          "initial": "rrf > dense_eg2_256",
+          "kind": "tie introduced",
+          "systems": [
+            "dense_eg2_256",
+            "rrf"
+          ],
+          "variant": "dense_eg2_256 = rrf"
+        }
+      ],
+      "nDCG@10": [
+        {
+          "initial": "adaptive > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "adaptive-ident"
+          ],
+          "variant": "adaptive-ident > adaptive"
+        },
+        {
+          "initial": "adaptive-short > adaptive",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "adaptive-short"
+          ],
+          "variant": "adaptive > adaptive-short"
+        },
+        {
+          "initial": "rrf > adaptive",
+          "kind": "reversal",
+          "systems": [
+            "adaptive",
+            "rrf"
+          ],
+          "variant": "adaptive > rrf"
+        },
+        {
+          "initial": "adaptive-phrase > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "adaptive-phrase"
+          ],
+          "variant": "adaptive-ident > adaptive-phrase"
+        },
+        {
+          "initial": "adaptive-short > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "adaptive-short"
+          ],
+          "variant": "adaptive-ident > adaptive-short"
+        },
+        {
+          "initial": "dense_eg2 > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "dense_eg2"
+          ],
+          "variant": "adaptive-ident > dense_eg2"
+        },
+        {
+          "initial": "rrf > adaptive-ident",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-ident",
+            "rrf"
+          ],
+          "variant": "adaptive-ident > rrf"
+        },
+        {
+          "initial": "adaptive-short > adaptive-phrase",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "adaptive-short"
+          ],
+          "variant": "adaptive-phrase > adaptive-short"
+        },
+        {
+          "initial": "rrf > adaptive-phrase",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-phrase",
+            "rrf"
+          ],
+          "variant": "adaptive-phrase > rrf"
+        },
+        {
+          "initial": "rrf > adaptive-short",
+          "kind": "reversal",
+          "systems": [
+            "adaptive-short",
+            "rrf"
+          ],
+          "variant": "adaptive-short > rrf"
+        }
+      ]
+    }
+  },
+  "planned_contrasts": {
+    "gemini_initial": {
+      "rq1_lemma_vs_plain": {
+        "ci_high": 0.0550627269903193,
+        "ci_low": 0.017848182480434727,
+        "label": "planned RQ1 contrast: BM25 lemma versus BM25 plain",
+        "mean_difference": 0.036157640724136124,
+        "measure": "nDCG@10",
+        "multiplicity": "Single planned nDCG@10 contrast; reported separately from the adaptive/Holm family.",
+        "n": 170,
+        "p": 0.00029997000299970003,
+        "reference": "bm25_plain",
+        "reference_mean": 0.4530637459236743,
+        "system": "bm25_lemma",
+        "system_mean": 0.4892213866478104
+      }
+    },
+    "gemini_reviewed": {
+      "rq1_lemma_vs_plain": {
+        "ci_high": 0.05059119276264473,
+        "ci_low": 0.012821099442163957,
+        "label": "planned RQ1 contrast: BM25 lemma versus BM25 plain",
+        "mean_difference": 0.03137436716936289,
+        "measure": "nDCG@10",
+        "multiplicity": "Single planned nDCG@10 contrast; reported separately from the adaptive/Holm family.",
+        "n": 170,
+        "p": 0.0013998600139986002,
+        "reference": "bm25_plain",
+        "reference_mean": 0.45037260473764945,
+        "system": "bm25_lemma",
+        "system_mean": 0.4817469719070124
+      }
+    },
+    "gemma12_initial": {
+      "rq1_lemma_vs_plain": {
+        "ci_high": 0.038220731969876194,
+        "ci_low": -0.0006388070330119599,
+        "label": "planned RQ1 contrast: BM25 lemma versus BM25 plain",
+        "mean_difference": 0.018784347228672706,
+        "measure": "nDCG@10",
+        "multiplicity": "Single planned nDCG@10 contrast; reported separately from the adaptive/Holm family.",
+        "n": 170,
+        "p": 0.055694430556944306,
+        "reference": "bm25_plain",
+        "reference_mean": 0.5000137167664296,
+        "system": "bm25_lemma",
+        "system_mean": 0.5187980639951022
+      }
+    },
+    "gemma_initial": {
+      "rq1_lemma_vs_plain": {
+        "ci_high": 0.04675997398233662,
+        "ci_low": 0.008531333601882143,
+        "label": "planned RQ1 contrast: BM25 lemma versus BM25 plain",
+        "mean_difference": 0.027445713953419708,
+        "measure": "nDCG@10",
+        "multiplicity": "Single planned nDCG@10 contrast; reported separately from the adaptive/Holm family.",
+        "n": 170,
+        "p": 0.006899310068993101,
+        "reference": "bm25_plain",
+        "reference_mean": 0.45917366320556807,
+        "system": "bm25_lemma",
+        "system_mean": 0.48661937715898784
+      }
+    },
+    "gpt_initial": {
+      "rq1_lemma_vs_plain": {
+        "ci_high": 0.04615544975144417,
+        "ci_low": 0.01007452911977319,
+        "label": "planned RQ1 contrast: BM25 lemma versus BM25 plain",
+        "mean_difference": 0.02782597969134855,
+        "measure": "nDCG@10",
+        "multiplicity": "Single planned nDCG@10 contrast; reported separately from the adaptive/Holm family.",
+        "n": 170,
+        "p": 0.0022997700229977,
+        "reference": "bm25_plain",
+        "reference_mean": 0.5238122230398384,
+        "system": "bm25_lemma",
+        "system_mean": 0.551638202731187
+      }
+    }
+  },
+  "pool_coverage": {
+    "adaptive": {
+      "at_10": {
+        "judged_fraction": 1.0,
+        "judged_pairs": 1994,
+        "retrieved_pairs": 1994,
+        "unjudged_pairs": 0
+      },
+      "at_100": {
+        "judged_fraction": 0.2107237767703611,
+        "judged_pairs": 4044,
+        "retrieved_pairs": 19191,
+        "unjudged_pairs": 15147
+      }
+    },
+    "adaptive-ident": {
+      "at_10": {
+        "judged_fraction": 1.0,
+        "judged_pairs": 2000,
+        "retrieved_pairs": 2000,
+        "unjudged_pairs": 0
+      },
+      "at_100": {
+        "judged_fraction": 0.21024524290973196,
+        "judged_pairs": 4055,
+        "retrieved_pairs": 19287,
+        "unjudged_pairs": 15232
+      }
+    },
+    "adaptive-phrase": {
+      "at_10": {
+        "judged_fraction": 1.0,
+        "judged_pairs": 1994,
+        "retrieved_pairs": 1994,
+        "unjudged_pairs": 0
+      },
+      "at_100": {
+        "judged_fraction": 0.2107237767703611,
+        "judged_pairs": 4044,
+        "retrieved_pairs": 19191,
+        "unjudged_pairs": 15147
+      }
+    },
+    "adaptive-short": {
+      "at_10": {
+        "judged_fraction": 1.0,
+        "judged_pairs": 1994,
+        "retrieved_pairs": 1994,
+        "unjudged_pairs": 0
+      },
+      "at_100": {
+        "judged_fraction": 0.2111058921768175,
+        "judged_pairs": 4045,
+        "retrieved_pairs": 19161,
+        "unjudged_pairs": 15116
+      }
+    },
+    "bm25_lemma": {
+      "at_10": {
+        "judged_fraction": 1.0,
+        "judged_pairs": 1643,
+        "retrieved_pairs": 1643,
+        "unjudged_pairs": 0
+      },
+      "at_100": {
+        "judged_fraction": 0.20519367293560842,
+        "judged_pairs": 3295,
+        "retrieved_pairs": 16058,
+        "unjudged_pairs": 12763
+      }
+    },
+    "bm25_plain": {
+      "at_10": {
+        "judged_fraction": 1.0,
+        "judged_pairs": 1633,
+        "retrieved_pairs": 1633,
+        "unjudged_pairs": 0
+      },
+      "at_100": {
+        "judged_fraction": 0.19005538614724002,
+        "judged_pairs": 3054,
+        "retrieved_pairs": 16069,
+        "unjudged_pairs": 13015
+      }
+    },
+    "dense_e5": {
+      "at_10": {
+        "judged_fraction": 1.0,
+        "judged_pairs": 1993,
+        "retrieved_pairs": 1993,
+        "unjudged_pairs": 0
+      },
+      "at_100": {
+        "judged_fraction": 0.19481122343717763,
+        "judged_pairs": 3777,
+        "retrieved_pairs": 19388,
+        "unjudged_pairs": 15611
+      }
+    },
+    "dense_eg2": {
+      "at_10": {
+        "judged_fraction": 1.0,
+        "judged_pairs": 2000,
+        "retrieved_pairs": 2000,
+        "unjudged_pairs": 0
+      },
+      "at_100": {
+        "judged_fraction": 0.2099860009332711,
+        "judged_pairs": 4050,
+        "retrieved_pairs": 19287,
+        "unjudged_pairs": 15237
+      }
+    },
+    "dense_eg2_256": {
+      "at_10": {
+        "judged_fraction": 1.0,
+        "judged_pairs": 2000,
+        "retrieved_pairs": 2000,
+        "unjudged_pairs": 0
+      },
+      "at_100": {
+        "judged_fraction": 0.20346365239033495,
+        "judged_pairs": 3924,
+        "retrieved_pairs": 19286,
+        "unjudged_pairs": 15362
+      }
+    },
+    "rrf": {
+      "at_10": {
+        "judged_fraction": 1.0,
+        "judged_pairs": 2000,
+        "retrieved_pairs": 2000,
+        "unjudged_pairs": 0
+      },
+      "at_100": {
+        "judged_fraction": 0.25115289109613337,
+        "judged_pairs": 4956,
+        "retrieved_pairs": 19733,
+        "unjudged_pairs": 14777
+      }
+    }
+  },
+  "populations": {
+    "gemini_initial": {
+      "answerable": 170,
+      "answerable_zero_relevant_count": 0,
+      "answerable_zero_relevant_query_ids": [],
+      "metric_query_ids": [
+        "q001",
+        "q002",
+        "q003",
+        "q004",
+        "q005",
+        "q006",
+        "q007",
+        "q008",
+        "q009",
+        "q010",
+        "q011",
+        "q012",
+        "q013",
+        "q014",
+        "q015",
+        "q016",
+        "q017",
+        "q018",
+        "q019",
+        "q020",
+        "q021",
+        "q022",
+        "q023",
+        "q024",
+        "q025",
+        "q026",
+        "q027",
+        "q028",
+        "q029",
+        "q030",
+        "q031",
+        "q032",
+        "q033",
+        "q034",
+        "q035",
+        "q036",
+        "q037",
+        "q038",
+        "q039",
+        "q040",
+        "q041",
+        "q042",
+        "q043",
+        "q044",
+        "q045",
+        "q046",
+        "q047",
+        "q048",
+        "q049",
+        "q050",
+        "q051",
+        "q052",
+        "q053",
+        "q054",
+        "q055",
+        "q056",
+        "q057",
+        "q058",
+        "q059",
+        "q060",
+        "q061",
+        "q062",
+        "q063",
+        "q064",
+        "q065",
+        "q066",
+        "q067",
+        "q068",
+        "q069",
+        "q070",
+        "q071",
+        "q072",
+        "q073",
+        "q074",
+        "q075",
+        "q076",
+        "q077",
+        "q078",
+        "q079",
+        "q080",
+        "q081",
+        "q082",
+        "q083",
+        "q084",
+        "q085",
+        "q086",
+        "q087",
+        "q088",
+        "q089",
+        "q090",
+        "q091",
+        "q092",
+        "q093",
+        "q094",
+        "q095",
+        "q096",
+        "q097",
+        "q098",
+        "q099",
+        "q100",
+        "q101",
+        "q102",
+        "q103",
+        "q104",
+        "q105",
+        "q106",
+        "q107",
+        "q108",
+        "q109",
+        "q110",
+        "q111",
+        "q112",
+        "q113",
+        "q114",
+        "q115",
+        "q116",
+        "q117",
+        "q118",
+        "q119",
+        "q120",
+        "q121",
+        "q122",
+        "q123",
+        "q124",
+        "q125",
+        "q126",
+        "q127",
+        "q128",
+        "q129",
+        "q130",
+        "q131",
+        "q132",
+        "q133",
+        "q134",
+        "q135",
+        "q136",
+        "q137",
+        "q138",
+        "q139",
+        "q140",
+        "q141",
+        "q142",
+        "q143",
+        "q144",
+        "q145",
+        "q146",
+        "q147",
+        "q148",
+        "q149",
+        "q150",
+        "q151",
+        "q152",
+        "q153",
+        "q154",
+        "q155",
+        "q156",
+        "q157",
+        "q158",
+        "q159",
+        "q160",
+        "q161",
+        "q162",
+        "q163",
+        "q164",
+        "q165",
+        "q166",
+        "q167",
+        "q168",
+        "q169",
+        "q170"
+      ],
+      "no_answer": 30,
+      "no_answer_query_ids": [
+        "q171",
+        "q172",
+        "q173",
+        "q174",
+        "q175",
+        "q176",
+        "q177",
+        "q178",
+        "q179",
+        "q180",
+        "q181",
+        "q182",
+        "q183",
+        "q184",
+        "q185",
+        "q186",
+        "q187",
+        "q188",
+        "q189",
+        "q190",
+        "q191",
+        "q192",
+        "q193",
+        "q194",
+        "q195",
+        "q196",
+        "q197",
+        "q198",
+        "q199",
+        "q200"
+      ],
+      "positive_relevance_threshold": 1,
+      "total": 200
+    },
+    "gemini_reviewed": {
+      "answerable": 170,
+      "answerable_zero_relevant_count": 0,
+      "answerable_zero_relevant_query_ids": [],
+      "metric_query_ids": [
+        "q001",
+        "q002",
+        "q003",
+        "q004",
+        "q005",
+        "q006",
+        "q007",
+        "q008",
+        "q009",
+        "q010",
+        "q011",
+        "q012",
+        "q013",
+        "q014",
+        "q015",
+        "q016",
+        "q017",
+        "q018",
+        "q019",
+        "q020",
+        "q021",
+        "q022",
+        "q023",
+        "q024",
+        "q025",
+        "q026",
+        "q027",
+        "q028",
+        "q029",
+        "q030",
+        "q031",
+        "q032",
+        "q033",
+        "q034",
+        "q035",
+        "q036",
+        "q037",
+        "q038",
+        "q039",
+        "q040",
+        "q041",
+        "q042",
+        "q043",
+        "q044",
+        "q045",
+        "q046",
+        "q047",
+        "q048",
+        "q049",
+        "q050",
+        "q051",
+        "q052",
+        "q053",
+        "q054",
+        "q055",
+        "q056",
+        "q057",
+        "q058",
+        "q059",
+        "q060",
+        "q061",
+        "q062",
+        "q063",
+        "q064",
+        "q065",
+        "q066",
+        "q067",
+        "q068",
+        "q069",
+        "q070",
+        "q071",
+        "q072",
+        "q073",
+        "q074",
+        "q075",
+        "q076",
+        "q077",
+        "q078",
+        "q079",
+        "q080",
+        "q081",
+        "q082",
+        "q083",
+        "q084",
+        "q085",
+        "q086",
+        "q087",
+        "q088",
+        "q089",
+        "q090",
+        "q091",
+        "q092",
+        "q093",
+        "q094",
+        "q095",
+        "q096",
+        "q097",
+        "q098",
+        "q099",
+        "q100",
+        "q101",
+        "q102",
+        "q103",
+        "q104",
+        "q105",
+        "q106",
+        "q107",
+        "q108",
+        "q109",
+        "q110",
+        "q111",
+        "q112",
+        "q113",
+        "q114",
+        "q115",
+        "q116",
+        "q117",
+        "q118",
+        "q119",
+        "q120",
+        "q121",
+        "q122",
+        "q123",
+        "q124",
+        "q125",
+        "q126",
+        "q127",
+        "q128",
+        "q129",
+        "q130",
+        "q131",
+        "q132",
+        "q133",
+        "q134",
+        "q135",
+        "q136",
+        "q137",
+        "q138",
+        "q139",
+        "q140",
+        "q141",
+        "q142",
+        "q143",
+        "q144",
+        "q145",
+        "q146",
+        "q147",
+        "q148",
+        "q149",
+        "q150",
+        "q151",
+        "q152",
+        "q153",
+        "q154",
+        "q155",
+        "q156",
+        "q157",
+        "q158",
+        "q159",
+        "q160",
+        "q161",
+        "q162",
+        "q163",
+        "q164",
+        "q165",
+        "q166",
+        "q167",
+        "q168",
+        "q169",
+        "q170"
+      ],
+      "no_answer": 30,
+      "no_answer_query_ids": [
+        "q171",
+        "q172",
+        "q173",
+        "q174",
+        "q175",
+        "q176",
+        "q177",
+        "q178",
+        "q179",
+        "q180",
+        "q181",
+        "q182",
+        "q183",
+        "q184",
+        "q185",
+        "q186",
+        "q187",
+        "q188",
+        "q189",
+        "q190",
+        "q191",
+        "q192",
+        "q193",
+        "q194",
+        "q195",
+        "q196",
+        "q197",
+        "q198",
+        "q199",
+        "q200"
+      ],
+      "positive_relevance_threshold": 1,
+      "total": 200
+    },
+    "gemma12_initial": {
+      "answerable": 170,
+      "answerable_zero_relevant_count": 0,
+      "answerable_zero_relevant_query_ids": [],
+      "metric_query_ids": [
+        "q001",
+        "q002",
+        "q003",
+        "q004",
+        "q005",
+        "q006",
+        "q007",
+        "q008",
+        "q009",
+        "q010",
+        "q011",
+        "q012",
+        "q013",
+        "q014",
+        "q015",
+        "q016",
+        "q017",
+        "q018",
+        "q019",
+        "q020",
+        "q021",
+        "q022",
+        "q023",
+        "q024",
+        "q025",
+        "q026",
+        "q027",
+        "q028",
+        "q029",
+        "q030",
+        "q031",
+        "q032",
+        "q033",
+        "q034",
+        "q035",
+        "q036",
+        "q037",
+        "q038",
+        "q039",
+        "q040",
+        "q041",
+        "q042",
+        "q043",
+        "q044",
+        "q045",
+        "q046",
+        "q047",
+        "q048",
+        "q049",
+        "q050",
+        "q051",
+        "q052",
+        "q053",
+        "q054",
+        "q055",
+        "q056",
+        "q057",
+        "q058",
+        "q059",
+        "q060",
+        "q061",
+        "q062",
+        "q063",
+        "q064",
+        "q065",
+        "q066",
+        "q067",
+        "q068",
+        "q069",
+        "q070",
+        "q071",
+        "q072",
+        "q073",
+        "q074",
+        "q075",
+        "q076",
+        "q077",
+        "q078",
+        "q079",
+        "q080",
+        "q081",
+        "q082",
+        "q083",
+        "q084",
+        "q085",
+        "q086",
+        "q087",
+        "q088",
+        "q089",
+        "q090",
+        "q091",
+        "q092",
+        "q093",
+        "q094",
+        "q095",
+        "q096",
+        "q097",
+        "q098",
+        "q099",
+        "q100",
+        "q101",
+        "q102",
+        "q103",
+        "q104",
+        "q105",
+        "q106",
+        "q107",
+        "q108",
+        "q109",
+        "q110",
+        "q111",
+        "q112",
+        "q113",
+        "q114",
+        "q115",
+        "q116",
+        "q117",
+        "q118",
+        "q119",
+        "q120",
+        "q121",
+        "q122",
+        "q123",
+        "q124",
+        "q125",
+        "q126",
+        "q127",
+        "q128",
+        "q129",
+        "q130",
+        "q131",
+        "q132",
+        "q133",
+        "q134",
+        "q135",
+        "q136",
+        "q137",
+        "q138",
+        "q139",
+        "q140",
+        "q141",
+        "q142",
+        "q143",
+        "q144",
+        "q145",
+        "q146",
+        "q147",
+        "q148",
+        "q149",
+        "q150",
+        "q151",
+        "q152",
+        "q153",
+        "q154",
+        "q155",
+        "q156",
+        "q157",
+        "q158",
+        "q159",
+        "q160",
+        "q161",
+        "q162",
+        "q163",
+        "q164",
+        "q165",
+        "q166",
+        "q167",
+        "q168",
+        "q169",
+        "q170"
+      ],
+      "no_answer": 30,
+      "no_answer_query_ids": [
+        "q171",
+        "q172",
+        "q173",
+        "q174",
+        "q175",
+        "q176",
+        "q177",
+        "q178",
+        "q179",
+        "q180",
+        "q181",
+        "q182",
+        "q183",
+        "q184",
+        "q185",
+        "q186",
+        "q187",
+        "q188",
+        "q189",
+        "q190",
+        "q191",
+        "q192",
+        "q193",
+        "q194",
+        "q195",
+        "q196",
+        "q197",
+        "q198",
+        "q199",
+        "q200"
+      ],
+      "positive_relevance_threshold": 1,
+      "total": 200
+    },
+    "gemma_initial": {
+      "answerable": 170,
+      "answerable_zero_relevant_count": 0,
+      "answerable_zero_relevant_query_ids": [],
+      "metric_query_ids": [
+        "q001",
+        "q002",
+        "q003",
+        "q004",
+        "q005",
+        "q006",
+        "q007",
+        "q008",
+        "q009",
+        "q010",
+        "q011",
+        "q012",
+        "q013",
+        "q014",
+        "q015",
+        "q016",
+        "q017",
+        "q018",
+        "q019",
+        "q020",
+        "q021",
+        "q022",
+        "q023",
+        "q024",
+        "q025",
+        "q026",
+        "q027",
+        "q028",
+        "q029",
+        "q030",
+        "q031",
+        "q032",
+        "q033",
+        "q034",
+        "q035",
+        "q036",
+        "q037",
+        "q038",
+        "q039",
+        "q040",
+        "q041",
+        "q042",
+        "q043",
+        "q044",
+        "q045",
+        "q046",
+        "q047",
+        "q048",
+        "q049",
+        "q050",
+        "q051",
+        "q052",
+        "q053",
+        "q054",
+        "q055",
+        "q056",
+        "q057",
+        "q058",
+        "q059",
+        "q060",
+        "q061",
+        "q062",
+        "q063",
+        "q064",
+        "q065",
+        "q066",
+        "q067",
+        "q068",
+        "q069",
+        "q070",
+        "q071",
+        "q072",
+        "q073",
+        "q074",
+        "q075",
+        "q076",
+        "q077",
+        "q078",
+        "q079",
+        "q080",
+        "q081",
+        "q082",
+        "q083",
+        "q084",
+        "q085",
+        "q086",
+        "q087",
+        "q088",
+        "q089",
+        "q090",
+        "q091",
+        "q092",
+        "q093",
+        "q094",
+        "q095",
+        "q096",
+        "q097",
+        "q098",
+        "q099",
+        "q100",
+        "q101",
+        "q102",
+        "q103",
+        "q104",
+        "q105",
+        "q106",
+        "q107",
+        "q108",
+        "q109",
+        "q110",
+        "q111",
+        "q112",
+        "q113",
+        "q114",
+        "q115",
+        "q116",
+        "q117",
+        "q118",
+        "q119",
+        "q120",
+        "q121",
+        "q122",
+        "q123",
+        "q124",
+        "q125",
+        "q126",
+        "q127",
+        "q128",
+        "q129",
+        "q130",
+        "q131",
+        "q132",
+        "q133",
+        "q134",
+        "q135",
+        "q136",
+        "q137",
+        "q138",
+        "q139",
+        "q140",
+        "q141",
+        "q142",
+        "q143",
+        "q144",
+        "q145",
+        "q146",
+        "q147",
+        "q148",
+        "q149",
+        "q150",
+        "q151",
+        "q152",
+        "q153",
+        "q154",
+        "q155",
+        "q156",
+        "q157",
+        "q158",
+        "q159",
+        "q160",
+        "q161",
+        "q162",
+        "q163",
+        "q164",
+        "q165",
+        "q166",
+        "q167",
+        "q168",
+        "q169",
+        "q170"
+      ],
+      "no_answer": 30,
+      "no_answer_query_ids": [
+        "q171",
+        "q172",
+        "q173",
+        "q174",
+        "q175",
+        "q176",
+        "q177",
+        "q178",
+        "q179",
+        "q180",
+        "q181",
+        "q182",
+        "q183",
+        "q184",
+        "q185",
+        "q186",
+        "q187",
+        "q188",
+        "q189",
+        "q190",
+        "q191",
+        "q192",
+        "q193",
+        "q194",
+        "q195",
+        "q196",
+        "q197",
+        "q198",
+        "q199",
+        "q200"
+      ],
+      "positive_relevance_threshold": 1,
+      "total": 200
+    },
+    "gpt_initial": {
+      "answerable": 170,
+      "answerable_zero_relevant_count": 0,
+      "answerable_zero_relevant_query_ids": [],
+      "metric_query_ids": [
+        "q001",
+        "q002",
+        "q003",
+        "q004",
+        "q005",
+        "q006",
+        "q007",
+        "q008",
+        "q009",
+        "q010",
+        "q011",
+        "q012",
+        "q013",
+        "q014",
+        "q015",
+        "q016",
+        "q017",
+        "q018",
+        "q019",
+        "q020",
+        "q021",
+        "q022",
+        "q023",
+        "q024",
+        "q025",
+        "q026",
+        "q027",
+        "q028",
+        "q029",
+        "q030",
+        "q031",
+        "q032",
+        "q033",
+        "q034",
+        "q035",
+        "q036",
+        "q037",
+        "q038",
+        "q039",
+        "q040",
+        "q041",
+        "q042",
+        "q043",
+        "q044",
+        "q045",
+        "q046",
+        "q047",
+        "q048",
+        "q049",
+        "q050",
+        "q051",
+        "q052",
+        "q053",
+        "q054",
+        "q055",
+        "q056",
+        "q057",
+        "q058",
+        "q059",
+        "q060",
+        "q061",
+        "q062",
+        "q063",
+        "q064",
+        "q065",
+        "q066",
+        "q067",
+        "q068",
+        "q069",
+        "q070",
+        "q071",
+        "q072",
+        "q073",
+        "q074",
+        "q075",
+        "q076",
+        "q077",
+        "q078",
+        "q079",
+        "q080",
+        "q081",
+        "q082",
+        "q083",
+        "q084",
+        "q085",
+        "q086",
+        "q087",
+        "q088",
+        "q089",
+        "q090",
+        "q091",
+        "q092",
+        "q093",
+        "q094",
+        "q095",
+        "q096",
+        "q097",
+        "q098",
+        "q099",
+        "q100",
+        "q101",
+        "q102",
+        "q103",
+        "q104",
+        "q105",
+        "q106",
+        "q107",
+        "q108",
+        "q109",
+        "q110",
+        "q111",
+        "q112",
+        "q113",
+        "q114",
+        "q115",
+        "q116",
+        "q117",
+        "q118",
+        "q119",
+        "q120",
+        "q121",
+        "q122",
+        "q123",
+        "q124",
+        "q125",
+        "q126",
+        "q127",
+        "q128",
+        "q129",
+        "q130",
+        "q131",
+        "q132",
+        "q133",
+        "q134",
+        "q135",
+        "q136",
+        "q137",
+        "q138",
+        "q139",
+        "q140",
+        "q141",
+        "q142",
+        "q143",
+        "q144",
+        "q145",
+        "q146",
+        "q147",
+        "q148",
+        "q149",
+        "q150",
+        "q151",
+        "q152",
+        "q153",
+        "q154",
+        "q155",
+        "q156",
+        "q157",
+        "q158",
+        "q159",
+        "q160",
+        "q161",
+        "q162",
+        "q163",
+        "q164",
+        "q165",
+        "q166",
+        "q167",
+        "q168",
+        "q169",
+        "q170"
+      ],
+      "no_answer": 30,
+      "no_answer_query_ids": [
+        "q171",
+        "q172",
+        "q173",
+        "q174",
+        "q175",
+        "q176",
+        "q177",
+        "q178",
+        "q179",
+        "q180",
+        "q181",
+        "q182",
+        "q183",
+        "q184",
+        "q185",
+        "q186",
+        "q187",
+        "q188",
+        "q189",
+        "q190",
+        "q191",
+        "q192",
+        "q193",
+        "q194",
+        "q195",
+        "q196",
+        "q197",
+        "q198",
+        "q199",
+        "q200"
+      ],
+      "positive_relevance_threshold": 1,
+      "total": 200
+    }
+  },
+  "provenance": {
+    "bootstrap_resamples": 10000,
+    "declared_empty_answerable_queries": [],
+    "empty_run_queries": {
+      "adaptive": [],
+      "adaptive-ident": [],
+      "adaptive-phrase": [],
+      "adaptive-short": [],
+      "bm25_lemma": [
+        "q171",
+        "q172",
+        "q173",
+        "q174",
+        "q175",
+        "q176",
+        "q177",
+        "q178",
+        "q179",
+        "q180",
+        "q181",
+        "q182",
+        "q183",
+        "q184",
+        "q185",
+        "q186",
+        "q187",
+        "q188",
+        "q189",
+        "q190",
+        "q191",
+        "q192",
+        "q193",
+        "q194",
+        "q195",
+        "q196",
+        "q197",
+        "q198",
+        "q199",
+        "q200"
+      ],
+      "bm25_plain": [
+        "q171",
+        "q172",
+        "q173",
+        "q174",
+        "q175",
+        "q176",
+        "q177",
+        "q178",
+        "q179",
+        "q180",
+        "q181",
+        "q182",
+        "q183",
+        "q184",
+        "q185",
+        "q186",
+        "q187",
+        "q188",
+        "q189",
+        "q190",
+        "q191",
+        "q192",
+        "q193",
+        "q194",
+        "q195",
+        "q196",
+        "q197",
+        "q198",
+        "q199",
+        "q200"
+      ],
+      "dense_e5": [],
+      "dense_eg2": [],
+      "dense_eg2_256": [],
+      "rrf": []
+    },
+    "expected_systems": [
+      "adaptive",
+      "adaptive-ident",
+      "adaptive-phrase",
+      "adaptive-short",
+      "bm25_lemma",
+      "bm25_plain",
+      "dense_e5",
+      "dense_eg2",
+      "dense_eg2_256",
+      "rrf"
+    ],
+    "input_sha256": {
+      "gemini.tsv": "6f46eb11846215090900ab13a6dcde5f1e76a1bcca0225a7683e12d25923cbad",
+      "gemma.tsv": "17f08c11289a909773e417974ebb501f549e4c223a2be0327a401d2c4afe6b53",
+      "gemma12.tsv": "dda2c623fefd0f0c8f8774aeb1fcbc4a193c877ab582301028ce92ed3244223b",
+      "gpt.tsv": "4caa9604f4759dade8c69ec16f5a681f1ec845fcbb277717b0b0c4ab6b1bb48c",
+      "manifest.jsonl": "5e4a68ddd755e668ba1e97522795983fdacfd5ec2ba9625121280a83f2a62073",
+      "queries.tsv": "59174aa13e1c1c7c694908979cfcfa59e59a32f9ec42ce2226c6f5cc125eda40",
+      "runs/adaptive-ident.trec": "904fc20257772606336ccaadcfcb1499f6bc7542bf29cb30b8a17fa1472a572b",
+      "runs/adaptive-phrase.trec": "5ef268b9713db1126ec2aba8647e10f8eb3c440f4fbc1037b32dad1bde01883c",
+      "runs/adaptive-short.trec": "8d17583c20e33d383a8318b96b7df8e688efaff2953d21e0539d1d58395999a6",
+      "runs/adaptive.trec": "e14de4f20759e1e1edc349a7ad18c813ba8c8f07974ad7ef3ce5399777ebe79b",
+      "runs/bm25_lemma.trec": "4e7517907ad9ce4fd11a07d3ebd2e26201b095f5d51f07fd1205b6b2b82f427b",
+      "runs/bm25_plain.trec": "3beb1a7c1bf9a0fb63a1ed3a54212b0d018a3a64abd916eefd715bdb911f487d",
+      "runs/dense_e5.trec": "fe33ad5169b50f3e24e54d9c0a3eac6438d734ae62af76f2e41208a85a404c74",
+      "runs/dense_eg2.trec": "3c3f01a4d63891d29589c9dd58d521b206e3f5e1c57cc61fc0236b795510d703",
+      "runs/dense_eg2_256.trec": "28c8089f1b227a6c7d6b11ea531f12d1330d23033919a6f9355d6ceb489394a1",
+      "runs/rrf.trec": "12b08bf9a7ff8fdabc6239099f14a61d6cf565caec3c439c6271d27a92092358"
+    },
+    "models": {
+      "gemini_initial": "gemini-3.8-flash-medium",
+      "gemma12_initial": "gemma4:12b",
+      "gemma_initial": "gemma4 E4B (ancillary)",
+      "gpt_initial": "gpt-6-luna/xhigh (comparison only)"
+    },
+    "pool_depth": 10,
+    "pool_pairs": 5572,
+    "query_population": {
+      "answerable": 170,
+      "metric_query_ids": [
+        "q001",
+        "q002",
+        "q003",
+        "q004",
+        "q005",
+        "q006",
+        "q007",
+        "q008",
+        "q009",
+        "q010",
+        "q011",
+        "q012",
+        "q013",
+        "q014",
+        "q015",
+        "q016",
+        "q017",
+        "q018",
+        "q019",
+        "q020",
+        "q021",
+        "q022",
+        "q023",
+        "q024",
+        "q025",
+        "q026",
+        "q027",
+        "q028",
+        "q029",
+        "q030",
+        "q031",
+        "q032",
+        "q033",
+        "q034",
+        "q035",
+        "q036",
+        "q037",
+        "q038",
+        "q039",
+        "q040",
+        "q041",
+        "q042",
+        "q043",
+        "q044",
+        "q045",
+        "q046",
+        "q047",
+        "q048",
+        "q049",
+        "q050",
+        "q051",
+        "q052",
+        "q053",
+        "q054",
+        "q055",
+        "q056",
+        "q057",
+        "q058",
+        "q059",
+        "q060",
+        "q061",
+        "q062",
+        "q063",
+        "q064",
+        "q065",
+        "q066",
+        "q067",
+        "q068",
+        "q069",
+        "q070",
+        "q071",
+        "q072",
+        "q073",
+        "q074",
+        "q075",
+        "q076",
+        "q077",
+        "q078",
+        "q079",
+        "q080",
+        "q081",
+        "q082",
+        "q083",
+        "q084",
+        "q085",
+        "q086",
+        "q087",
+        "q088",
+        "q089",
+        "q090",
+        "q091",
+        "q092",
+        "q093",
+        "q094",
+        "q095",
+        "q096",
+        "q097",
+        "q098",
+        "q099",
+        "q100",
+        "q101",
+        "q102",
+        "q103",
+        "q104",
+        "q105",
+        "q106",
+        "q107",
+        "q108",
+        "q109",
+        "q110",
+        "q111",
+        "q112",
+        "q113",
+        "q114",
+        "q115",
+        "q116",
+        "q117",
+        "q118",
+        "q119",
+        "q120",
+        "q121",
+        "q122",
+        "q123",
+        "q124",
+        "q125",
+        "q126",
+        "q127",
+        "q128",
+        "q129",
+        "q130",
+        "q131",
+        "q132",
+        "q133",
+        "q134",
+        "q135",
+        "q136",
+        "q137",
+        "q138",
+        "q139",
+        "q140",
+        "q141",
+        "q142",
+        "q143",
+        "q144",
+        "q145",
+        "q146",
+        "q147",
+        "q148",
+        "q149",
+        "q150",
+        "q151",
+        "q152",
+        "q153",
+        "q154",
+        "q155",
+        "q156",
+        "q157",
+        "q158",
+        "q159",
+        "q160",
+        "q161",
+        "q162",
+        "q163",
+        "q164",
+        "q165",
+        "q166",
+        "q167",
+        "q168",
+        "q169",
+        "q170"
+      ],
+      "no_answer": 30,
+      "no_answer_query_ids": [
+        "q171",
+        "q172",
+        "q173",
+        "q174",
+        "q175",
+        "q176",
+        "q177",
+        "q178",
+        "q179",
+        "q180",
+        "q181",
+        "q182",
+        "q183",
+        "q184",
+        "q185",
+        "q186",
+        "q187",
+        "q188",
+        "q189",
+        "q190",
+        "q191",
+        "q192",
+        "q193",
+        "q194",
+        "q195",
+        "q196",
+        "q197",
+        "q198",
+        "q199",
+        "q200"
+      ],
+      "total": 200
+    },
+    "randomization_resamples": 10000,
+    "reference_system": "adaptive",
+    "review_kind": "within-model Gemini review",
+    "review_model": "gemini-3.8-flash-medium",
+    "review_sha256": "1ce888acc9db041a0cc706555b6c4424b3d1c7989c8d50c1e870ded8199b911b",
+    "seed": 2026,
+    "tie_absolute_tolerance": 1e-12,
+    "variant_models": {
+      "gemini_initial": "gemini-3.8-flash-medium",
+      "gemini_reviewed": "gemini-3.8-flash-medium (within-model review)",
+      "gemma12_initial": "gemma4:12b",
+      "gemma_initial": "gemma4 E4B (ancillary)",
+      "gpt_initial": "gpt-6-luna/xhigh (comparison only)"
+    }
+  },
+  "rankings": {
+    "gemini_initial": {
+      "R@100": [
+        [
+          "rrf"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive-ident"
+        ],
+        [
+          "adaptive",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "dense_e5"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "RR@10": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "Success@1": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "bm25_lemma",
+          "bm25_plain"
+        ]
+      ],
+      "Success@5": [
+        [
+          "dense_e5"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short",
+          "dense_eg2"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "nDCG@10": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "adaptive-short"
+        ],
+        [
+          "adaptive",
+          "adaptive-phrase"
+        ],
+        [
+          "adaptive-ident"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ]
+    },
+    "gemini_reviewed": {
+      "R@100": [
+        [
+          "rrf"
+        ],
+        [
+          "adaptive-ident"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "dense_e5"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "RR@10": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "Success@1": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "bm25_plain"
+        ],
+        [
+          "bm25_lemma"
+        ]
+      ],
+      "Success@5": [
+        [
+          "dense_e5"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short",
+          "dense_eg2"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "nDCG@10": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "adaptive-ident"
+        ],
+        [
+          "adaptive-short"
+        ],
+        [
+          "adaptive",
+          "adaptive-phrase"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ]
+    },
+    "gemma12_initial": {
+      "R@100": [
+        [
+          "rrf"
+        ],
+        [
+          "adaptive-ident"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "dense_e5"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "RR@10": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "Success@1": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2",
+          "dense_eg2_256"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "bm25_plain"
+        ],
+        [
+          "bm25_lemma"
+        ]
+      ],
+      "Success@5": [
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short",
+          "dense_e5",
+          "dense_eg2",
+          "rrf"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "nDCG@10": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive-ident"
+        ],
+        [
+          "adaptive",
+          "adaptive-phrase"
+        ],
+        [
+          "adaptive-short"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ]
+    },
+    "gemma_initial": {
+      "R@100": [
+        [
+          "rrf"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive-ident"
+        ],
+        [
+          "adaptive",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "dense_e5"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "RR@10": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "Success@1": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short",
+          "rrf"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "bm25_plain"
+        ],
+        [
+          "bm25_lemma"
+        ]
+      ],
+      "Success@5": [
+        [
+          "dense_e5"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short",
+          "dense_eg2"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "nDCG@10": [
+        [
+          "dense_e5"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive-ident"
+        ],
+        [
+          "adaptive",
+          "adaptive-phrase"
+        ],
+        [
+          "adaptive-short"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ]
+    },
+    "gpt_initial": {
+      "R@100": [
+        [
+          "rrf"
+        ],
+        [
+          "adaptive-ident"
+        ],
+        [
+          "adaptive",
+          "adaptive-phrase",
+          "adaptive-short"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "dense_e5"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "RR@10": [
+        [
+          "dense_e5"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short",
+          "dense_eg2"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "Success@1": [
+        [
+          "dense_e5"
+        ],
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short",
+          "dense_eg2",
+          "dense_eg2_256"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "bm25_plain"
+        ],
+        [
+          "bm25_lemma"
+        ]
+      ],
+      "Success@5": [
+        [
+          "adaptive",
+          "adaptive-ident",
+          "adaptive-phrase",
+          "adaptive-short",
+          "dense_e5",
+          "dense_eg2",
+          "dense_eg2_256",
+          "rrf"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ],
+      "nDCG@10": [
+        [
+          "dense_e5"
+        ],
+        [
+          "adaptive-ident"
+        ],
+        [
+          "dense_eg2"
+        ],
+        [
+          "adaptive",
+          "adaptive-phrase"
+        ],
+        [
+          "adaptive-short"
+        ],
+        [
+          "rrf"
+        ],
+        [
+          "dense_eg2_256"
+        ],
+        [
+          "bm25_lemma"
+        ],
+        [
+          "bm25_plain"
+        ]
+      ]
+    }
+  },
+  "review_status": "complete within-model Gemini review",
+  "target_diagnostics": {
+    "gemini_initial": {
+      "answerable_query_count": 170,
+      "pooled_target_grade_2_share": 0.8582089552238806,
+      "pooled_target_grade_counts": {
+        "0": 0,
+        "1": 19,
+        "2": 115
+      },
+      "target_grade_denominator": 134,
+      "target_in_pool": 134,
+      "target_outside_pool": 36,
+      "target_parts": {
+        "notes": 170
+      },
+      "target_total": 170
+    },
+    "gemini_reviewed": {
+      "answerable_query_count": 170,
+      "pooled_target_grade_2_share": 0.8283582089552238,
+      "pooled_target_grade_counts": {
+        "0": 0,
+        "1": 23,
+        "2": 111
+      },
+      "target_grade_denominator": 134,
+      "target_in_pool": 134,
+      "target_outside_pool": 36,
+      "target_parts": {
+        "notes": 170
+      },
+      "target_total": 170
+    },
+    "gemma12_initial": {
+      "answerable_query_count": 170,
+      "pooled_target_grade_2_share": 0.6716417910447762,
+      "pooled_target_grade_counts": {
+        "0": 0,
+        "1": 44,
+        "2": 90
+      },
+      "target_grade_denominator": 134,
+      "target_in_pool": 134,
+      "target_outside_pool": 36,
+      "target_parts": {
+        "notes": 170
+      },
+      "target_total": 170
+    },
+    "gemma_initial": {
+      "answerable_query_count": 170,
+      "pooled_target_grade_2_share": 0.746268656716418,
+      "pooled_target_grade_counts": {
+        "0": 2,
+        "1": 32,
+        "2": 100
+      },
+      "target_grade_denominator": 134,
+      "target_in_pool": 134,
+      "target_outside_pool": 36,
+      "target_parts": {
+        "notes": 170
+      },
+      "target_total": 170
+    },
+    "gpt_initial": {
+      "answerable_query_count": 170,
+      "pooled_target_grade_2_share": 0.917910447761194,
+      "pooled_target_grade_counts": {
+        "0": 0,
+        "1": 11,
+        "2": 123
+      },
+      "target_grade_denominator": 134,
+      "target_in_pool": 134,
+      "target_outside_pool": 36,
+      "target_parts": {
+        "notes": 170
+      },
+      "target_total": 170
+    }
+  },
+  "within_judge_comparisons": {
+    "gemini_initial": {
+      "R@100": [
+        {
+          "ci_high": 0.00980392156862745,
+          "ci_low": 0.0,
+          "diff": 0.0032679738562091504,
+          "mean": 0.8970027727285967,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8937347988723877,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8937347988723877,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8937347988723877,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8937347988723877,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8937347988723877,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.14182632259722616,
+          "ci_low": -0.22134717956053437,
+          "diff": -0.18206624684124229,
+          "mean": 0.7116685520311453,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8937347988723877,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.21463398951346616,
+          "ci_low": -0.30530741205212153,
+          "diff": -0.26026574576802225,
+          "mean": 0.6334690531043654,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8937347988723877,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.0032824482574175203,
+          "ci_low": -0.052957521083678655,
+          "diff": -0.024256520751148328,
+          "mean": 0.8694782781212392,
+          "p": 0.09099090090990901,
+          "p_holm": 0.45495450454954506,
+          "reference_mean": 0.8937347988723877,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.011042311661506708,
+          "ci_low": 0.0,
+          "diff": 0.004739790653103346,
+          "mean": 0.8984745895254909,
+          "p": 0.12838716128387162,
+          "p_holm": 0.5135486451354865,
+          "reference_mean": 0.8937347988723877,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": -0.0058351447338300805,
+          "ci_low": -0.03641176006087338,
+          "diff": -0.019883593849037304,
+          "mean": 0.8738512050233503,
+          "p": 0.0038996100389961006,
+          "p_holm": 0.023397660233976603,
+          "reference_mean": 0.8937347988723877,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.08319313604920849,
+          "ci_low": 0.035024508372705425,
+          "diff": 0.059209574218452375,
+          "mean": 0.9529443730908401,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8937347988723877,
+          "system": "rrf"
+        }
+      ],
+      "RR@10": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8912324929971989,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8912324929971989,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8912324929971989,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8912324929971989,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8912324929971989,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8912324929971989,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.06525361811391227,
+          "ci_low": -0.17079446778711485,
+          "diff": -0.11721521942110177,
+          "mean": 0.7740172735760971,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8912324929971989,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.08200840336134455,
+          "ci_low": -0.19088235294117648,
+          "diff": -0.13567927170868346,
+          "mean": 0.7555532212885153,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8912324929971989,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.08128874883286648,
+          "ci_low": -0.0009838935574229398,
+          "diff": 0.04065359477124183,
+          "mean": 0.9318860877684408,
+          "p": 0.055194480551944806,
+          "p_holm": 0.38636136386361364,
+          "reference_mean": 0.8912324929971989,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.014705882352941176,
+          "ci_low": 0.0,
+          "diff": 0.0058823529411764705,
+          "mean": 0.8971148459383753,
+          "p": 0.5004499550044995,
+          "p_holm": 1.0,
+          "reference_mean": 0.8912324929971989,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.03820308123249298,
+          "ci_low": -0.025144957983193272,
+          "diff": 0.006676003734827264,
+          "mean": 0.8979084967320261,
+          "p": 0.6945305469453055,
+          "p_holm": 1.0,
+          "reference_mean": 0.8912324929971989,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.031135154061624638,
+          "ci_low": -0.04043452380952381,
+          "diff": -0.005000000000000002,
+          "mean": 0.886232492997199,
+          "p": 0.789021097890211,
+          "p_holm": 1.0,
+          "reference_mean": 0.8912324929971989,
+          "system": "rrf"
+        }
+      ],
+      "Success@1": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8176470588235294,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8176470588235294,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8176470588235294,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8176470588235294,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8176470588235294,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8176470588235294,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.07647058823529412,
+          "ci_low": -0.23529411764705882,
+          "diff": -0.15294117647058825,
+          "mean": 0.6647058823529411,
+          "p": 0.0005999400059994001,
+          "p_holm": 0.0047995200479952005,
+          "reference_mean": 0.8176470588235294,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.07647058823529412,
+          "ci_low": -0.22941176470588234,
+          "diff": -0.15294117647058825,
+          "mean": 0.6647058823529411,
+          "p": 0.0004999500049995,
+          "p_holm": 0.0044995500449955,
+          "reference_mean": 0.8176470588235294,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.12941176470588237,
+          "ci_low": -0.0058823529411764705,
+          "diff": 0.06470588235294118,
+          "mean": 0.8823529411764706,
+          "p": 0.08699130086991301,
+          "p_holm": 0.6089391060893911,
+          "reference_mean": 0.8176470588235294,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.029411764705882353,
+          "ci_low": 0.0,
+          "diff": 0.011764705882352941,
+          "mean": 0.8294117647058824,
+          "p": 0.5004499550044995,
+          "p_holm": 1.0,
+          "reference_mean": 0.8176470588235294,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.08235294117647059,
+          "ci_low": -0.023529411764705882,
+          "diff": 0.029411764705882353,
+          "mean": 0.8470588235294118,
+          "p": 0.41045895410458955,
+          "p_holm": 1.0,
+          "reference_mean": 0.8176470588235294,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.052941176470588235,
+          "ci_low": -0.06470588235294118,
+          "diff": -0.0058823529411764705,
+          "mean": 0.8117647058823529,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8176470588235294,
+          "system": "rrf"
+        }
+      ],
+      "Success@5": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9764705882352941,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9764705882352941,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9764705882352941,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9764705882352941,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9764705882352941,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9764705882352941,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.011764705882352941,
+          "ci_low": -0.1,
+          "diff": -0.052941176470588235,
+          "mean": 0.9235294117647059,
+          "p": 0.0334966503349665,
+          "p_holm": 0.267973202679732,
+          "reference_mean": 0.9764705882352941,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.047058823529411764,
+          "ci_low": -0.14705882352941177,
+          "diff": -0.09411764705882353,
+          "mean": 0.8823529411764706,
+          "p": 0.00029997000299970003,
+          "p_holm": 0.0026997300269973002,
+          "reference_mean": 0.9764705882352941,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.041176470588235294,
+          "ci_low": -0.01764705882352941,
+          "diff": 0.011764705882352941,
+          "mean": 0.9882352941176471,
+          "p": 0.685031496850315,
+          "p_holm": 1.0,
+          "reference_mean": 0.9764705882352941,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9764705882352941,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9764705882352941,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.0058823529411764705,
+          "ci_low": -0.047058823529411764,
+          "diff": -0.01764705882352941,
+          "mean": 0.9588235294117647,
+          "p": 0.37296270372962703,
+          "p_holm": 1.0,
+          "reference_mean": 0.9764705882352941,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.011764705882352941,
+          "ci_low": -0.023529411764705882,
+          "diff": -0.0058823529411764705,
+          "mean": 0.9705882352941176,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9764705882352941,
+          "system": "rrf"
+        }
+      ],
+      "nDCG@10": [
+        {
+          "ci_high": 0.0,
+          "ci_low": -0.0002787561974734052,
+          "diff": -9.291873249113507e-05,
+          "mean": 0.6388079197515625,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.6389008384840535,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.6389008384840535,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.6389008384840535,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0010688907111059158,
+          "ci_low": -0.0009594224718713156,
+          "diff": 6.549946031757285e-05,
+          "mean": 0.6389663379443711,
+          "p": 0.8835116488351165,
+          "p_holm": 1.0,
+          "reference_mean": 0.6389008384840535,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.1101511872973173,
+          "ci_low": -0.18838277158591882,
+          "diff": -0.14967945183624312,
+          "mean": 0.4892213866478104,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.6389008384840535,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.14751028506424171,
+          "ci_low": -0.22399223492365647,
+          "diff": -0.18583709256037925,
+          "mean": 0.4530637459236743,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.6389008384840535,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.08027775996906943,
+          "ci_low": 0.010721444006342415,
+          "diff": 0.045863031332511274,
+          "mean": 0.6847638698165648,
+          "p": 0.0081991800819918,
+          "p_holm": 0.057394260573942604,
+          "reference_mean": 0.6389008384840535,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.015018354261705886,
+          "ci_low": -0.0028784553256363775,
+          "diff": 0.005006554173264261,
+          "mean": 0.6439073926573178,
+          "p": 0.3437656234376562,
+          "p_holm": 1.0,
+          "reference_mean": 0.6389008384840535,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.002403880129243965,
+          "ci_low": -0.036433339885844934,
+          "diff": -0.016976980518305578,
+          "mean": 0.6219238579657479,
+          "p": 0.0847915208479152,
+          "p_holm": 0.5087491250874913,
+          "reference_mean": 0.6389008384840535,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.027516725717378294,
+          "ci_low": -0.023714148759883067,
+          "diff": 0.0017946530347088133,
+          "mean": 0.6406954915187624,
+          "p": 0.8857114288571143,
+          "p_holm": 1.0,
+          "reference_mean": 0.6389008384840535,
+          "system": "rrf"
+        }
+      ]
+    },
+    "gemini_reviewed": {
+      "R@100": [
+        {
+          "ci_high": 0.011029411764705883,
+          "ci_low": 0.0,
+          "diff": 0.003676470588235294,
+          "mean": 0.9121113289899069,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9084348584016716,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9084348584016716,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9084348584016716,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9084348584016716,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9084348584016716,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.14539542021941532,
+          "ci_low": -0.22144867555506997,
+          "diff": -0.18400331513284132,
+          "mean": 0.7244315432688304,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.9084348584016716,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.21687904376552847,
+          "ci_low": -0.30244660269135554,
+          "diff": -0.2601939046707759,
+          "mean": 0.6482409537308957,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.9084348584016716,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": -0.00010517294476125468,
+          "ci_low": -0.05875233087123615,
+          "diff": -0.02874929011143014,
+          "mean": 0.8796855682902415,
+          "p": 0.05649435056494351,
+          "p_holm": 0.28247175282471754,
+          "reference_mean": 0.9084348584016716,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.006279178338001866,
+          "ci_low": -0.00042016806722689056,
+          "diff": 0.002264239028944911,
+          "mean": 0.9106990974306166,
+          "p": 0.25377462253774624,
+          "p_holm": 1.0,
+          "reference_mean": 0.9084348584016716,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": -0.0071982705003671215,
+          "ci_low": -0.03640243102182526,
+          "diff": -0.020363000483197172,
+          "mean": 0.8880718579184745,
+          "p": 0.0016998300169983002,
+          "p_holm": 0.010198980101989802,
+          "reference_mean": 0.9084348584016716,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.07160463719391619,
+          "ci_low": 0.03133303025344003,
+          "diff": 0.051438767925152756,
+          "mean": 0.9598736263268245,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.9084348584016716,
+          "system": "rrf"
+        }
+      ],
+      "RR@10": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8663305322128853,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8663305322128853,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8663305322128853,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8663305322128853,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8663305322128853,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8663305322128853,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.060858134920634924,
+          "ci_low": -0.1671686507936508,
+          "diff": -0.11344070961718021,
+          "mean": 0.7528898225957049,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8663305322128853,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.07403518907563027,
+          "ci_low": -0.18533070728291315,
+          "diff": -0.1282609710550887,
+          "mean": 0.7380695611577965,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8663305322128853,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.10448249299719888,
+          "ci_low": 0.014927871148459402,
+          "diff": 0.060359477124183,
+          "mean": 0.926690009337068,
+          "p": 0.009299070092990702,
+          "p_holm": 0.06509349065093491,
+          "reference_mean": 0.8663305322128853,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.014705882352941176,
+          "ci_low": 0.0,
+          "diff": 0.0058823529411764705,
+          "mean": 0.8722128851540617,
+          "p": 0.5004499550044995,
+          "p_holm": 1.0,
+          "reference_mean": 0.8663305322128853,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.03920203081232493,
+          "ci_low": -0.025425070028011205,
+          "diff": 0.0069281045751634004,
+          "mean": 0.8732586367880485,
+          "p": 0.6781321867813219,
+          "p_holm": 1.0,
+          "reference_mean": 0.8663305322128853,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.04399684873949579,
+          "ci_low": -0.03071953781512605,
+          "diff": 0.006676003734827264,
+          "mean": 0.8730065359477124,
+          "p": 0.7246275372462754,
+          "p_holm": 1.0,
+          "reference_mean": 0.8663305322128853,
+          "system": "rrf"
+        }
+      ],
+      "Success@1": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.7823529411764706,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.7823529411764706,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.7823529411764706,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.7823529411764706,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.7823529411764706,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.7823529411764706,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.07647058823529412,
+          "ci_low": -0.2411764705882353,
+          "diff": -0.1588235294117647,
+          "mean": 0.6235294117647059,
+          "p": 0.0005999400059994001,
+          "p_holm": 0.0053994600539946005,
+          "reference_mean": 0.7823529411764706,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.07058823529411765,
+          "ci_low": -0.22941176470588234,
+          "diff": -0.14705882352941177,
+          "mean": 0.6352941176470588,
+          "p": 0.0010998900109989002,
+          "p_holm": 0.008799120087991202,
+          "reference_mean": 0.7823529411764706,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.16470588235294117,
+          "ci_low": 0.023529411764705882,
+          "diff": 0.09411764705882353,
+          "mean": 0.8764705882352941,
+          "p": 0.0184981501849815,
+          "p_holm": 0.1294870512948705,
+          "reference_mean": 0.7823529411764706,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.029411764705882353,
+          "ci_low": 0.0,
+          "diff": 0.011764705882352941,
+          "mean": 0.7941176470588235,
+          "p": 0.5004499550044995,
+          "p_holm": 1.0,
+          "reference_mean": 0.7823529411764706,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.08823529411764706,
+          "ci_low": -0.01764705882352941,
+          "diff": 0.03529411764705882,
+          "mean": 0.8176470588235294,
+          "p": 0.2870712928707129,
+          "p_holm": 1.0,
+          "reference_mean": 0.7823529411764706,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.07058823529411765,
+          "ci_low": -0.058823529411764705,
+          "diff": 0.0058823529411764705,
+          "mean": 0.788235294117647,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.7823529411764706,
+          "system": "rrf"
+        }
+      ],
+      "Success@5": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9705882352941176,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9705882352941176,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9705882352941176,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9705882352941176,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9705882352941176,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9705882352941176,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": -0.08823529411764706,
+          "diff": -0.041176470588235294,
+          "mean": 0.9294117647058824,
+          "p": 0.11818818118188182,
+          "p_holm": 0.9455054494550545,
+          "reference_mean": 0.9705882352941176,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.041176470588235294,
+          "ci_low": -0.14705882352941177,
+          "diff": -0.09411764705882353,
+          "mean": 0.8764705882352941,
+          "p": 0.0010998900109989002,
+          "p_holm": 0.009899010098990102,
+          "reference_mean": 0.9705882352941176,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.047058823529411764,
+          "ci_low": -0.011764705882352941,
+          "diff": 0.01764705882352941,
+          "mean": 0.9882352941176471,
+          "p": 0.45255474452554745,
+          "p_holm": 1.0,
+          "reference_mean": 0.9705882352941176,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9705882352941176,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9705882352941176,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.0058823529411764705,
+          "ci_low": -0.047058823529411764,
+          "diff": -0.01764705882352941,
+          "mean": 0.9529411764705882,
+          "p": 0.37296270372962703,
+          "p_holm": 1.0,
+          "reference_mean": 0.9705882352941176,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.029411764705882353,
+          "ci_low": -0.01764705882352941,
+          "diff": 0.0058823529411764705,
+          "mean": 0.9764705882352941,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9705882352941176,
+          "system": "rrf"
+        }
+      ],
+      "nDCG@10": [
+        {
+          "ci_high": 0.0019520340831359606,
+          "ci_low": 0.0,
+          "diff": 0.0006506780277119869,
+          "mean": 0.6292136232349508,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.6285629452072389,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.6285629452072389,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.6285629452072389,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0010964547013279499,
+          "ci_low": -0.0008662015614809181,
+          "diff": 9.689567427488735e-05,
+          "mean": 0.6286598408815136,
+          "p": 0.8835116488351165,
+          "p_holm": 1.0,
+          "reference_mean": 0.6285629452072389,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.10883766526874608,
+          "ci_low": -0.18407431243619662,
+          "diff": -0.14681597330022644,
+          "mean": 0.4817469719070124,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.6285629452072389,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.14141248567253858,
+          "ci_low": -0.21558209830388814,
+          "diff": -0.17819034046958934,
+          "mean": 0.4503726047376494,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.6285629452072389,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.08102622357178824,
+          "ci_low": 0.00882056756073169,
+          "diff": 0.04522414124029536,
+          "mean": 0.6737870864475342,
+          "p": 0.013998600139986002,
+          "p_holm": 0.09799020097990202,
+          "reference_mean": 0.6285629452072389,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.01447680860448026,
+          "ci_low": -0.004037788593759542,
+          "diff": 0.004352284190475137,
+          "mean": 0.6329152293977139,
+          "p": 0.4333566643335666,
+          "p_holm": 1.0,
+          "reference_mean": 0.6285629452072389,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.0016105260051545512,
+          "ci_low": -0.036985686932956695,
+          "diff": -0.01767230082085601,
+          "mean": 0.6108906443863827,
+          "p": 0.07649235076492351,
+          "p_holm": 0.4589541045895411,
+          "reference_mean": 0.6285629452072389,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.028056553129816798,
+          "ci_low": -0.0237851359975481,
+          "diff": 0.001789165557034129,
+          "mean": 0.630352110764273,
+          "p": 0.8946105389461054,
+          "p_holm": 1.0,
+          "reference_mean": 0.6285629452072389,
+          "system": "rrf"
+        }
+      ]
+    },
+    "gemma12_initial": {
+      "R@100": [
+        {
+          "ci_high": 0.011029411764705883,
+          "ci_low": 0.0,
+          "diff": 0.003676470588235294,
+          "mean": 0.8994035105749065,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8957270399866712,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8957270399866712,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8957270399866712,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8957270399866712,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8957270399866712,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.14857305889437547,
+          "ci_low": -0.2182938039638646,
+          "diff": -0.18417144273751532,
+          "mean": 0.7115555972491558,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8957270399866712,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.20939554351903342,
+          "ci_low": -0.2867083070104386,
+          "diff": -0.24853253566164868,
+          "mean": 0.6471945043250225,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8957270399866712,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": -0.019112229928065504,
+          "ci_low": -0.07585095549605379,
+          "diff": -0.0468006064475908,
+          "mean": 0.8489264335390805,
+          "p": 0.000999900009999,
+          "p_holm": 0.0059994000599940004,
+          "reference_mean": 0.8957270399866712,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.005517241379310344,
+          "ci_low": -0.0029319564816522223,
+          "diff": 0.0011276046468744238,
+          "mean": 0.8968546446335455,
+          "p": 0.6308369163083691,
+          "p_holm": 1.0,
+          "reference_mean": 0.8957270399866712,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": -0.007539730067388545,
+          "ci_low": -0.037116882873040664,
+          "diff": -0.020706003042445433,
+          "mean": 0.8750210369442256,
+          "p": 0.0010998900109989002,
+          "p_holm": 0.0059994000599940004,
+          "reference_mean": 0.8957270399866712,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.07858910103247065,
+          "ci_low": 0.04353170069737145,
+          "diff": 0.061023260302622104,
+          "mean": 0.9567503002892933,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8957270399866712,
+          "system": "rrf"
+        }
+      ],
+      "RR@10": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.906372549019608,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.906372549019608,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.906372549019608,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.906372549019608,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.906372549019608,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.906372549019608,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.0599156162464986,
+          "ci_low": -0.15330555555555558,
+          "diff": -0.10666199813258637,
+          "mean": 0.7997105508870215,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.906372549019608,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.05849638188608781,
+          "ci_low": -0.16471113445378152,
+          "diff": -0.11034547152194212,
+          "mean": 0.7960270774976657,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.906372549019608,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.07598039215686275,
+          "ci_low": 0.002777777777777778,
+          "diff": 0.03908496732026144,
+          "mean": 0.9454575163398692,
+          "p": 0.0402959704029597,
+          "p_holm": 0.2820717928207179,
+          "reference_mean": 0.906372549019608,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.008823529411764706,
+          "ci_low": 0.0,
+          "diff": 0.0029411764705882353,
+          "mean": 0.9093137254901962,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.906372549019608,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.023240196078431304,
+          "ci_low": -0.03019607843137255,
+          "diff": -0.0035294117647058855,
+          "mean": 0.9028431372549018,
+          "p": 0.8101189881011899,
+          "p_holm": 1.0,
+          "reference_mean": 0.906372549019608,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.018823529411764708,
+          "ci_low": -0.05352941176470588,
+          "diff": -0.017254901960784316,
+          "mean": 0.8891176470588233,
+          "p": 0.3568643135686431,
+          "p_holm": 1.0,
+          "reference_mean": 0.906372549019608,
+          "system": "rrf"
+        }
+      ],
+      "Success@1": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8411764705882353,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8411764705882353,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8411764705882353,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8411764705882353,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8411764705882353,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8411764705882353,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.08823529411764706,
+          "ci_low": -0.2411764705882353,
+          "diff": -0.16470588235294117,
+          "mean": 0.6764705882352942,
+          "p": 0.00029997000299970003,
+          "p_holm": 0.0026997300269973002,
+          "reference_mean": 0.8411764705882353,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.058823529411764705,
+          "ci_low": -0.21176470588235294,
+          "diff": -0.13529411764705881,
+          "mean": 0.7058823529411765,
+          "p": 0.0012998700129987,
+          "p_holm": 0.0103989601039896,
+          "reference_mean": 0.8411764705882353,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.12352941176470589,
+          "ci_low": 0.0058823529411764705,
+          "diff": 0.06470588235294118,
+          "mean": 0.9058823529411765,
+          "p": 0.06479352064793521,
+          "p_holm": 0.4535546445355465,
+          "reference_mean": 0.8411764705882353,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.01764705882352941,
+          "ci_low": 0.0,
+          "diff": 0.0058823529411764705,
+          "mean": 0.8470588235294118,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8411764705882353,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.052941176470588235,
+          "ci_low": -0.041176470588235294,
+          "diff": 0.0058823529411764705,
+          "mean": 0.8470588235294118,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8411764705882353,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.03529411764705882,
+          "ci_low": -0.09411764705882353,
+          "diff": -0.029411764705882353,
+          "mean": 0.8117647058823529,
+          "p": 0.45825417458254175,
+          "p_holm": 1.0,
+          "reference_mean": 0.8411764705882353,
+          "system": "rrf"
+        }
+      ],
+      "Success@5": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.0058823529411764705,
+          "ci_low": -0.07058823529411765,
+          "diff": -0.03529411764705882,
+          "mean": 0.9588235294117647,
+          "p": 0.07329267073292671,
+          "p_holm": 0.5863413658634137,
+          "reference_mean": 0.9941176470588236,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.047058823529411764,
+          "ci_low": -0.1411764705882353,
+          "diff": -0.09411764705882353,
+          "mean": 0.9,
+          "p": 0.00039996000399960006,
+          "p_holm": 0.0035996400359964006,
+          "reference_mean": 0.9941176470588236,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.01764705882352941,
+          "ci_low": -0.01764705882352941,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": -0.01764705882352941,
+          "diff": -0.0058823529411764705,
+          "mean": 0.9882352941176471,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.01764705882352941,
+          "ci_low": -0.01764705882352941,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "rrf"
+        }
+      ],
+      "nDCG@10": [
+        {
+          "ci_high": 0.0019520340831359606,
+          "ci_low": 0.0,
+          "diff": 0.0006506780277119869,
+          "mean": 0.675991674288812,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.6753409962611001,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.6753409962611001,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.6753409962611001,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.00015878475055816044,
+          "ci_low": -0.0012802093683842108,
+          "diff": -0.0003646494541626208,
+          "mean": 0.6749763468069375,
+          "p": 0.7565243475652434,
+          "p_holm": 1.0,
+          "reference_mean": 0.6753409962611001,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.12376619694357231,
+          "ci_low": -0.18955983275627353,
+          "diff": -0.1565429322659979,
+          "mean": 0.5187980639951022,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.6753409962611001,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.13982463793466568,
+          "ci_low": -0.21166058413659294,
+          "diff": -0.17532727949467058,
+          "mean": 0.5000137167664295,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.6753409962611001,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.05518197377495062,
+          "ci_low": -0.009822768217738885,
+          "diff": 0.022959335834262986,
+          "mean": 0.6983003320953631,
+          "p": 0.16398360163983602,
+          "p_holm": 1.0,
+          "reference_mean": 0.6753409962611001,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.01352725668163355,
+          "ci_low": -0.0008103810420495794,
+          "diff": 0.005387521215295929,
+          "mean": 0.680728517476396,
+          "p": 0.2505749425057494,
+          "p_holm": 1.0,
+          "reference_mean": 0.6753409962611001,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.007076083979262284,
+          "ci_low": -0.028384588815311147,
+          "diff": -0.01040584268484759,
+          "mean": 0.6649351535762525,
+          "p": 0.2636736326367363,
+          "p_holm": 1.0,
+          "reference_mean": 0.6753409962611001,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.011507704846712284,
+          "ci_low": -0.03300992123272261,
+          "diff": -0.01061734998313155,
+          "mean": 0.6647236462779686,
+          "p": 0.34366563343665635,
+          "p_holm": 1.0,
+          "reference_mean": 0.6753409962611001,
+          "system": "rrf"
+        }
+      ]
+    },
+    "gemma_initial": {
+      "R@100": [
+        {
+          "ci_high": 0.011764705882352941,
+          "ci_low": 0.0,
+          "diff": 0.003921568627450981,
+          "mean": 0.8752949303688147,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8713733617413636,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8713733617413636,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8713733617413636,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8713733617413636,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8713733617413636,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.12026250297499981,
+          "ci_low": -0.1959268988220197,
+          "diff": -0.15811555758118787,
+          "mean": 0.7132578041601757,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8713733617413636,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.1809743680006478,
+          "ci_low": -0.26477190884968954,
+          "diff": -0.2229883642668702,
+          "mean": 0.6483849974744934,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8713733617413636,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.006313155042032973,
+          "ci_low": -0.05208496339338741,
+          "diff": -0.022406952276966853,
+          "mean": 0.8489664094643968,
+          "p": 0.1367863213678632,
+          "p_holm": 0.683931606839316,
+          "reference_mean": 0.8713733617413636,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.01357302011713776,
+          "ci_low": -0.0019385026737967917,
+          "diff": 0.004860580595874713,
+          "mean": 0.8762339423372384,
+          "p": 0.3154684531546845,
+          "p_holm": 1.0,
+          "reference_mean": 0.8713733617413636,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": -0.0024447969597532542,
+          "ci_low": -0.03711935725209942,
+          "diff": -0.01905701545022158,
+          "mean": 0.8523163462911421,
+          "p": 0.022897710228977103,
+          "p_holm": 0.13738626137386262,
+          "reference_mean": 0.8713733617413636,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.10073288474134534,
+          "ci_low": 0.05467771805439474,
+          "diff": 0.07812277934018526,
+          "mean": 0.9494961410815488,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8713733617413636,
+          "system": "rrf"
+        }
+      ],
+      "RR@10": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8523529411764706,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8523529411764706,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8523529411764706,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8523529411764706,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8523529411764706,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8523529411764706,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.02771615312791785,
+          "ci_low": -0.13935259103641456,
+          "diff": -0.08397292250233426,
+          "mean": 0.7683800186741363,
+          "p": 0.0033996600339966003,
+          "p_holm": 0.023797620237976203,
+          "reference_mean": 0.8523529411764706,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.049950221755368895,
+          "ci_low": -0.15987657563025212,
+          "diff": -0.10354808590102707,
+          "mean": 0.7488048552754434,
+          "p": 0.00029997000299970003,
+          "p_holm": 0.0026997300269973002,
+          "reference_mean": 0.8523529411764706,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.12284313725490195,
+          "ci_low": 0.0379076797385621,
+          "diff": 0.08055555555555556,
+          "mean": 0.9329084967320261,
+          "p": 0.00039996000399960006,
+          "p_holm": 0.0031996800319968005,
+          "reference_mean": 0.8523529411764706,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.014705882352941176,
+          "ci_low": 0.0,
+          "diff": 0.0058823529411764705,
+          "mean": 0.8582352941176471,
+          "p": 0.5004499550044995,
+          "p_holm": 1.0,
+          "reference_mean": 0.8523529411764706,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.013496732026143793,
+          "ci_low": -0.05120996732026144,
+          "diff": -0.019084967320261437,
+          "mean": 0.8332679738562092,
+          "p": 0.25647435256474355,
+          "p_holm": 1.0,
+          "reference_mean": 0.8523529411764706,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.03577065826330532,
+          "ci_low": -0.04724299719887954,
+          "diff": -0.005868347338935574,
+          "mean": 0.846484593837535,
+          "p": 0.786021397860214,
+          "p_holm": 1.0,
+          "reference_mean": 0.8523529411764706,
+          "system": "rrf"
+        }
+      ],
+      "Success@1": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.7588235294117647,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.7588235294117647,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.7588235294117647,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.7588235294117647,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.7588235294117647,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.7588235294117647,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.041176470588235294,
+          "ci_low": -0.21764705882352942,
+          "diff": -0.12941176470588237,
+          "mean": 0.6294117647058823,
+          "p": 0.0059994000599940004,
+          "p_holm": 0.047995200479952004,
+          "reference_mean": 0.7588235294117647,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.041176470588235294,
+          "ci_low": -0.20588235294117646,
+          "diff": -0.12352941176470589,
+          "mean": 0.6352941176470588,
+          "p": 0.006299370062993701,
+          "p_holm": 0.047995200479952004,
+          "reference_mean": 0.7588235294117647,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.2,
+          "ci_low": 0.058823529411764705,
+          "diff": 0.12941176470588237,
+          "mean": 0.888235294117647,
+          "p": 0.00039996000399960006,
+          "p_holm": 0.0035996400359964006,
+          "reference_mean": 0.7588235294117647,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.029411764705882353,
+          "ci_low": 0.0,
+          "diff": 0.011764705882352941,
+          "mean": 0.7705882352941177,
+          "p": 0.5004499550044995,
+          "p_holm": 1.0,
+          "reference_mean": 0.7588235294117647,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.023529411764705882,
+          "ci_low": -0.08235294117647059,
+          "diff": -0.029411764705882353,
+          "mean": 0.7294117647058823,
+          "p": 0.40105989401059894,
+          "p_holm": 1.0,
+          "reference_mean": 0.7588235294117647,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.07058823529411765,
+          "ci_low": -0.06470588235294118,
+          "diff": 0.0,
+          "mean": 0.7588235294117647,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.7588235294117647,
+          "system": "rrf"
+        }
+      ],
+      "Success@5": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9823529411764705,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9823529411764705,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9823529411764705,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9823529411764705,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9823529411764705,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9823529411764705,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": 0.0058823529411764705,
+          "ci_low": -0.06470588235294118,
+          "diff": -0.029411764705882353,
+          "mean": 0.9529411764705882,
+          "p": 0.18568143185681432,
+          "p_holm": 1.0,
+          "reference_mean": 0.9823529411764705,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.041176470588235294,
+          "ci_low": -0.1411764705882353,
+          "diff": -0.08823529411764706,
+          "mean": 0.8941176470588236,
+          "p": 0.00039996000399960006,
+          "p_holm": 0.0035996400359964006,
+          "reference_mean": 0.9823529411764705,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.03529411764705882,
+          "ci_low": -0.01764705882352941,
+          "diff": 0.0058823529411764705,
+          "mean": 0.9882352941176471,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9823529411764705,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9823529411764705,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9823529411764705,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": -0.041176470588235294,
+          "diff": -0.01764705882352941,
+          "mean": 0.9647058823529412,
+          "p": 0.25947405259474055,
+          "p_holm": 1.0,
+          "reference_mean": 0.9823529411764705,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": -0.052941176470588235,
+          "diff": -0.023529411764705882,
+          "mean": 0.9588235294117647,
+          "p": 0.2288771122887711,
+          "p_holm": 1.0,
+          "reference_mean": 0.9823529411764705,
+          "system": "rrf"
+        }
+      ],
+      "nDCG@10": [
+        {
+          "ci_high": 0.0047983490697454155,
+          "ci_low": 0.0,
+          "diff": 0.0015994496899151387,
+          "mean": 0.610551990864491,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.6089525411745759,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.6089525411745759,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.6089525411745759,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.00023943377228693245,
+          "ci_low": -0.0019067756613409322,
+          "diff": -0.0006487998366652109,
+          "mean": 0.6083037413379107,
+          "p": 0.30826917308269175,
+          "p_holm": 1.0,
+          "reference_mean": 0.6089525411745759,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.08714073509477827,
+          "ci_low": -0.15723841070152267,
+          "diff": -0.12233316401558805,
+          "mean": 0.4866193771589879,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.6089525411745759,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.1140792205413517,
+          "ci_low": -0.18556816012826216,
+          "diff": -0.14977887796900777,
+          "mean": 0.45917366320556807,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.6089525411745759,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.08589715420940593,
+          "ci_low": 0.02071407028136137,
+          "diff": 0.0536601302704116,
+          "mean": 0.6626126714449875,
+          "p": 0.0008999100089991,
+          "p_holm": 0.0062993700629937,
+          "reference_mean": 0.6089525411745759,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.01412834422114467,
+          "ci_low": 0.0002980468156003613,
+          "diff": 0.006155734982619741,
+          "mean": 0.6151082761571957,
+          "p": 0.09309069093090691,
+          "p_holm": 0.5585441455854414,
+          "reference_mean": 0.6089525411745759,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.003947227911914576,
+          "ci_low": -0.03349175115630512,
+          "diff": -0.014416946587884236,
+          "mean": 0.5945355945866916,
+          "p": 0.1374862513748625,
+          "p_holm": 0.6874312568743125,
+          "reference_mean": 0.6089525411745759,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.016235625104079936,
+          "ci_low": -0.030963151087394,
+          "diff": -0.007389262079872607,
+          "mean": 0.6015632790947033,
+          "p": 0.5425457454254574,
+          "p_holm": 1.0,
+          "reference_mean": 0.6089525411745759,
+          "system": "rrf"
+        }
+      ]
+    },
+    "gpt_initial": {
+      "R@100": [
+        {
+          "ci_high": 0.012605042016806723,
+          "ci_low": 0.0,
+          "diff": 0.004201680672268907,
+          "mean": 0.8616315293534579,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8574298486811891,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8574298486811891,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8574298486811891,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8574298486811891,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8574298486811891,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.13160001302754024,
+          "ci_low": -0.20472370655191138,
+          "diff": -0.16857548269529193,
+          "mean": 0.6888543659858972,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8574298486811891,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.1970975552481975,
+          "ci_low": -0.27129821557726624,
+          "diff": -0.23474670954438515,
+          "mean": 0.6226831391368041,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8574298486811891,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": -0.00864715946119864,
+          "ci_low": -0.06021933006055171,
+          "diff": -0.03399082380721779,
+          "mean": 0.8234390248739715,
+          "p": 0.0098990100989901,
+          "p_holm": 0.0494950504949505,
+          "reference_mean": 0.8574298486811891,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.002876535229476406,
+          "ci_low": -0.006036103433415806,
+          "diff": -0.001444676013641532,
+          "mean": 0.8559851726675477,
+          "p": 0.6197380261973803,
+          "p_holm": 1.0,
+          "reference_mean": 0.8574298486811891,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": -0.018592768750703238,
+          "ci_low": -0.03871226986536271,
+          "diff": -0.02834692267447216,
+          "mean": 0.829082926006717,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8574298486811891,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.10839558460201909,
+          "ci_low": 0.0740328603649464,
+          "diff": 0.09059259341213778,
+          "mean": 0.948022442093327,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.8574298486811891,
+          "system": "rrf"
+        }
+      ],
+      "RR@10": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9428921568627451,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9428921568627451,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9428921568627451,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9428921568627451,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9428921568627451,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9428921568627451,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.054145424836601314,
+          "ci_low": -0.13695424836601305,
+          "diff": -0.09457749766573295,
+          "mean": 0.8483146591970122,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.9428921568627451,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.05357825630252101,
+          "ci_low": -0.14496358543417365,
+          "diff": -0.09894724556489265,
+          "mean": 0.8439449112978524,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.9428921568627451,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.04779674369747895,
+          "ci_low": -0.01008403361344538,
+          "diff": 0.01873249299719888,
+          "mean": 0.961624649859944,
+          "p": 0.22657734226577342,
+          "p_holm": 1.0,
+          "reference_mean": 0.9428921568627451,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9428921568627451,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9428921568627451,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.023340336134453785,
+          "ci_low": -0.03145693277310924,
+          "diff": -0.004110644257703084,
+          "mean": 0.9387815126050421,
+          "p": 0.7704229577042295,
+          "p_holm": 1.0,
+          "reference_mean": 0.9428921568627451,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.012990196078431372,
+          "ci_low": -0.04730392156862745,
+          "diff": -0.016911764705882352,
+          "mean": 0.9259803921568629,
+          "p": 0.28347165283471654,
+          "p_holm": 1.0,
+          "reference_mean": 0.9428921568627451,
+          "system": "rrf"
+        }
+      ],
+      "Success@1": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8941176470588236,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8941176470588236,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8941176470588236,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.07647058823529412,
+          "ci_low": -0.22941176470588234,
+          "diff": -0.15294117647058825,
+          "mean": 0.7411764705882353,
+          "p": 0.00029997000299970003,
+          "p_holm": 0.0026997300269973002,
+          "reference_mean": 0.8941176470588236,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.058823529411764705,
+          "ci_low": -0.2,
+          "diff": -0.12941176470588237,
+          "mean": 0.7647058823529411,
+          "p": 0.0011998800119988001,
+          "p_holm": 0.009599040095990401,
+          "reference_mean": 0.8941176470588236,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.08823529411764706,
+          "ci_low": -0.01764705882352941,
+          "diff": 0.03529411764705882,
+          "mean": 0.9294117647058824,
+          "p": 0.26887311268873115,
+          "p_holm": 1.0,
+          "reference_mean": 0.8941176470588236,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.8941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8941176470588236,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.047058823529411764,
+          "ci_low": -0.047058823529411764,
+          "diff": 0.0,
+          "mean": 0.8941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.8941176470588236,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.029411764705882353,
+          "ci_low": -0.08235294117647059,
+          "diff": -0.029411764705882353,
+          "mean": 0.8647058823529412,
+          "p": 0.39846015398460155,
+          "p_holm": 1.0,
+          "reference_mean": 0.8941176470588236,
+          "system": "rrf"
+        }
+      ],
+      "Success@5": [
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": 0.011764705882352941,
+          "ci_low": -0.03529411764705882,
+          "diff": -0.011764705882352941,
+          "mean": 0.9823529411764705,
+          "p": 0.6252374762523748,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.0058823529411764705,
+          "ci_low": -0.07058823529411765,
+          "diff": -0.03529411764705882,
+          "mean": 0.9588235294117647,
+          "p": 0.0670932906709329,
+          "p_holm": 0.6038396160383962,
+          "reference_mean": 0.9941176470588236,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.01764705882352941,
+          "ci_low": -0.01764705882352941,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": 0.01764705882352941,
+          "ci_low": -0.01764705882352941,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.01764705882352941,
+          "ci_low": -0.01764705882352941,
+          "diff": 0.0,
+          "mean": 0.9941176470588236,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.9941176470588236,
+          "system": "rrf"
+        }
+      ],
+      "nDCG@10": [
+        {
+          "ci_high": 0.006309239156657351,
+          "ci_low": 0.0,
+          "diff": 0.0021030797188857833,
+          "mean": 0.7014463039459937,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.6993432242271079,
+          "system": "adaptive-ident"
+        },
+        {
+          "ci_high": 0.0,
+          "ci_low": 0.0,
+          "diff": 0.0,
+          "mean": 0.6993432242271079,
+          "p": 1.0,
+          "p_holm": 1.0,
+          "reference_mean": 0.6993432242271079,
+          "system": "adaptive-phrase"
+        },
+        {
+          "ci_high": 0.0003754245164729066,
+          "ci_low": -0.0007628952086506538,
+          "diff": -0.00013380676796066241,
+          "mean": 0.6992094174591472,
+          "p": 0.5640435956404359,
+          "p_holm": 1.0,
+          "reference_mean": 0.6993432242271079,
+          "system": "adaptive-short"
+        },
+        {
+          "ci_high": -0.11250866891382362,
+          "ci_low": -0.18276055524598417,
+          "diff": -0.14770502149592088,
+          "mean": 0.551638202731187,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.6993432242271079,
+          "system": "bm25_lemma"
+        },
+        {
+          "ci_high": -0.1416764324580123,
+          "ci_low": -0.20954827080253455,
+          "diff": -0.17553100118726944,
+          "mean": 0.5238122230398384,
+          "p": 9.999000099990002e-05,
+          "p_holm": 0.0008999100089991002,
+          "reference_mean": 0.6993432242271079,
+          "system": "bm25_plain"
+        },
+        {
+          "ci_high": 0.05605670523892959,
+          "ci_low": -0.0032444313622607456,
+          "diff": 0.027074425560747403,
+          "mean": 0.7264176497878554,
+          "p": 0.07269273072692731,
+          "p_holm": 0.43615638436156384,
+          "reference_mean": 0.6993432242271079,
+          "system": "dense_e5"
+        },
+        {
+          "ci_high": 0.007446879278402597,
+          "ci_low": -0.0020188716291794652,
+          "diff": 0.0020272791039447824,
+          "mean": 0.7013705033310526,
+          "p": 0.532046795320468,
+          "p_holm": 1.0,
+          "reference_mean": 0.6993432242271079,
+          "system": "dense_eg2"
+        },
+        {
+          "ci_high": -0.007167268557143208,
+          "ci_low": -0.039259564769072004,
+          "diff": -0.02291436672185777,
+          "mean": 0.6764288575052502,
+          "p": 0.005699430056994301,
+          "p_holm": 0.039896010398960104,
+          "reference_mean": 0.6993432242271079,
+          "system": "dense_eg2_256"
+        },
+        {
+          "ci_high": 0.016052048888766032,
+          "ci_low": -0.026755812325180168,
+          "diff": -0.00536164739639267,
+          "mean": 0.6939815768307152,
+          "p": 0.6225377462253775,
+          "p_holm": 1.0,
+          "reference_mean": 0.6993432242271079,
+          "system": "rrf"
+        }
+      ]
+    }
+  }
+}

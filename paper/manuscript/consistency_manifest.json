@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "status": "machine consistency checked; author approval pending",
+  "claims": 26,
+  "source_sha256": {
+    "ann_reference_audit.json": "a4f1218b10bfdb97bc76925d95871d1c8193b2a6f34df4ee298d562807b921f0",
+    "ann_scaling.json": "2cfb0080053e77696348754819ad55adec6341b8dc83a9a8e8482916eaaa932b",
+    "corpus_summary.json": "99c02e6e40158e323796a2b51e372e7c32414d360feba3f93747e7dfd461a394",
+    "covers_fix.json": "1ee524f125b2e5a28559ba3d0f9046466f4190af343a124da26d7050eaa891d3",
+    "efficiency.json": "ed1469543e816ad97aaa4e63a6b0d29dbaebd40604d3ca771b14308c11fc1d90",
+    "encoder_control.json": "a3e0b61aaa5d37b3729c55f56607e4770249199879faaa076963ad033c1de0c1",
+    "extension.json": "6ad8131d3a16814224192e766deff1ae0ea7bc154effebd2a002e9ff88b38443",
+    "field_aggregate.json": "80ade29869d4b50b6569ba433cc48d7480c80b86c267084c045d596f9e28521d",
+    "judge_sensitivity.json": "16aac000ba27f64a0d161b5fce8cd1747fa4b712beef4c72dd34ce2bd50dc36c",
+    "judges.json": "a48e45da664a127550ba930410491c3f47e0f68ff72b39ea3565e47765b4521e",
+    "multimodal.json": "00c22d75844baeea737fb695b9ef7a7543e896ab911b74deb6ba9c95fde84d16",
+    "quantization_reference.json": "4ce04ec8f191c58fda103f43393b81371ca149f57267f6ad9ed7a4840e793b7a",
+    "ua_par_gemini_initial.json": "d5e2b8ce1d5197cfeb99ea434e415f025c83360cf86c2dd5347c4be56a01b285",
+    "ua_par_gemini_reviewed.json": "605434fb2f5edcdca1f630cd8b5a91b783eea5990f2a642b375df85dbd87dde3",
+    "ua_par_gemma12_initial.json": "e9b71aa193d838d8d1d5be16351d365d0b22af08ab31e7d96d2f5501a1da17bc"
+  },
+  "artifact_sha256": {
+    "tex/refs.bib": "bdf0a292f24e625a834269e638ba5dc247b2be2f257bf18d765caa8ef4b94bfa",
+    "source_manifest.json": "6e861a1091159e1c4e92a4c4fce0273568bb464cd340cd496f3c30890e3b3a4d",
+    "claims.csv": "8ef889ce9edb3196373b6a2eb4b1a14b48a181ad86f02f74e395496cbc603661",
+    "generated/manifest.json": "365e1f0c8ad21a1a0663afc61836fcaa2e7036bf77aa3a73d36c1d1edc41a005",
+    "article-en.pdf": "1cbad8c1013b437494034e4501f0d8277af90e2f0d3ced6b4432adaa796a5748",
+    "article-uk.pdf": "7ea03d19c3b3851f2d9e7e7b025da11515025e59f7eecbba633e4b43faddd3ac"
+  },
+  "pdf_compliance": {
+    "en": [],
+    "uk": []
+  },
+  "human_verified": false,
+  "submission_ready": false,
+  "limits": "Abstract numbers and generated content are checked against source values. This does not prove every prose interpretation or human validity."
+}

@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "complete": true,
+  "source_ann_sha256": "2cfb0080053e77696348754819ad55adec6341b8dc83a9a8e8482916eaaa932b",
+  "source_sha256": {
+    "base.npy": "74553151c112444238fadec854e7a61a6fbf55af44abc8ed6dd0b79806eb6d7c",
+    "queries.npy": "8e0a19ff1ac5a06784699b1e24472705c87be041ab77dbe9415db43c0734c76a"
+  },
+  "search_source_sha256": "1cbe406945ce64a6cdbb13630e0861d3843eaf2c4dc70bf7e27ed7df7b5b770c",
+  "faiss": "1.15.1",
+  "numpy": "2.5.4",
+  "queries": 200,
+  "faiss_threads": 32,
+  "candidate_pool": 400,
+  "score_tolerance": 1e-06,
+  "planned_sizes": [
+    100000,
+    300000,
+    1000000,
+    2000000
+  ],
+  "scope": "Measure the actual archive vector-ranking path and audit exact-reference agreement.\n\nThe first scaling pass uses an optimized argpartition top-10. archive-index\ninstead gathers candidate rows, sorts all scores, and constructs 400 tuples.\nThis follow-up calls that actual source method on the same synthetic matrices.\nIt excludes embedding, SQLite cache-version checks, lexical search and collapse.\nStrict-ID agreement can differ between exact methods because of tied scores or\nfloating-point arithmetic; a score-threshold diagnostic is reported separately.",
+  "sizes": {
+    "100000": {
+      "archive_numpy_exact_ms": {
+        "p50": 60.83557999954792,
+        "p95": 82.07924054950126,
+        "mean": 65.5710100601209
+      },
+      "archive_strict_id_recall_vs_numpy": 0.9995,
+      "load_average_before_flat": [
+        6.5205078125,
+        18.40771484375,
+        20.65380859375
+      ],
+      "flat_strict_id_recall_vs_numpy": 1.0,
+      "flat_results_above_reference_kth_score_with_tolerance": 1.0,
+      "measured_at_utc": "2026-10-22T13:59:47Z"
+    },
+    "300000": {
+      "archive_numpy_exact_ms": {
+        "p50": 166.8049419986346,
+        "p95": 180.12450779860956,
+        "mean": 168.05277396000747
+      },
+      "archive_strict_id_recall_vs_numpy": 0.9995,
+      "load_average_before_flat": [
+        16.24658203125,
+        19.5595703125,
+        20.95556640625
+      ],
+      "flat_strict_id_recall_vs_numpy": 0.9995,
+      "flat_results_above_reference_kth_score_with_tolerance": 1.0,
+      "measured_at_utc": "2026-10-22T14:00:31Z"
+    },
+    "1000000": {
+      "archive_numpy_exact_ms": {
+        "p50": 497.6367709987244,
+        "p95": 517.0288858016646,
+        "mean": 500.08652947988594
+      },
+      "archive_strict_id_recall_vs_numpy": 0.9995,
+      "load_average_before_flat": [
+        5.953125,
+        15.26025390625,
+        19.2646484375
+      ],
+      "flat_strict_id_recall_vs_numpy": 0.9995,
+      "flat_results_above_reference_kth_score_with_tolerance": 1.0,
+      "measured_at_utc": "2026-10-22T14:02:42Z"
+    },
+    "2000000": {
+      "archive_numpy_exact_ms": {
+        "p50": 2441.8296735002514,
+        "p95": 4348.88008994767,
+        "mean": 2831.1610363450377
+      },
+      "archive_strict_id_recall_vs_numpy": 1.0,
+      "load_average_before_flat": [
+        12.970703125,
+        8.443359375,
+        13.10693359375
+      ],
+      "flat_strict_id_recall_vs_numpy": 1.0,
+      "flat_results_above_reference_kth_score_with_tolerance": 1.0,
+      "measured_at_utc": "2026-10-22T14:13:19Z"
+    }
+  }
+}

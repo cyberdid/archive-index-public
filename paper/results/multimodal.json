@@ -1,0 +1,168 @@
+{
+  "images": {
+    "uk": {
+      "recall@1": 0.857,
+      "recall@5": 0.977,
+      "recall@10": 0.986,
+      "mrr": 0.9086413680479576,
+      "queries": 1000,
+      "items": 1000,
+      "chance@1": 0.001,
+      "chance@5": 0.005,
+      "chance@10": 0.01
+    },
+    "ru": {
+      "recall@1": 0.889,
+      "recall@5": 0.983,
+      "recall@10": 0.994,
+      "mrr": 0.9317769331975214,
+      "queries": 1000,
+      "items": 1000,
+      "chance@1": 0.001,
+      "chance@5": 0.005,
+      "chance@10": 0.01
+    }
+  },
+  "speech": {
+    "uk->uk": {
+      "audio": {
+        "recall@1": 0.9961832061068703,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.9974554707379134,
+        "queries": 262,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      },
+      "text": {
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0,
+        "queries": 262,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      },
+      "both": {
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0,
+        "queries": 262,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      }
+    },
+    "ru->uk": {
+      "audio": {
+        "recall@1": 0.9845360824742269,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.9905498281786941,
+        "queries": 194,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      },
+      "text": {
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0,
+        "queries": 194,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      },
+      "both": {
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0,
+        "queries": 194,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      }
+    },
+    "uk->ru": {
+      "audio": {
+        "recall@1": 0.9845360824742269,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.9896907216494846,
+        "queries": 194,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      },
+      "text": {
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0,
+        "queries": 194,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      },
+      "both": {
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0,
+        "queries": 194,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      }
+    },
+    "ru->ru": {
+      "audio": {
+        "recall@1": 0.9962264150943396,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 0.9971698113207547,
+        "queries": 265,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      },
+      "text": {
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0,
+        "queries": 265,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      },
+      "both": {
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr": 1.0,
+        "queries": 265,
+        "items": 400,
+        "chance@1": 0.0025,
+        "chance@5": 0.0125,
+        "chance@10": 0.025
+      }
+    }
+  }
+}

@@ -23,6 +23,11 @@ class FakeEmbedder:
         return np.ones(4, dtype=np.float32)
 
 
+class TextOnlyEmbedder(FakeEmbedder):
+    def image(self, path):
+        raise NotImplementedError("text-only embedder")
+
+
 @pytest.mark.skipif(shutil.which("pdftoppm") is None or shutil.which("pdftotext") is None,
                     reason="poppler utilities not installed")
 def test_picture_only_pdf_page_is_embedded_as_image(tmp_path):
@@ -40,3 +45,23 @@ def test_picture_only_pdf_page_is_embedded_as_image(tmp_path):
         " WHERE d.path LIKE '%scan.pdf'").fetchall()
     assert rows == [("page 1 (image)", 4)]
     store.close()
+
+
+@pytest.mark.skipif(shutil.which("pdftoppm") is None or shutil.which("pdftotext") is None,
+                    reason="poppler utilities not installed")
+def test_text_only_embedder_keeps_scanned_pdf_page_without_semantic_vector(tmp_path):
+    projects = tmp_path / "Projects" / "p"
+    projects.mkdir(parents=True)
+    Image.new("RGB", (300, 200), (30, 90, 200)).save(projects / "scan.pdf")
+    store = Store(tmp_path / "text-only-scan.sqlite3")
+    try:
+        report = run_index(store, TextOnlyEmbedder(), projects_root=tmp_path / "Projects",
+                           home=tmp_path / "h", collections=("docs",))
+        assert report.errors == []
+        assert report.unsupported_image_chunks == 1
+        rows = store.conn.execute(
+            "SELECT c.locator, c.dimension FROM chunks c JOIN documents d ON d.id = c.doc_id"
+            " WHERE d.path LIKE '%scan.pdf'").fetchall()
+        assert rows == [("page 1 (image)", 0)]
+    finally:
+        store.close()

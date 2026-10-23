@@ -1,0 +1,41 @@
+% Generated from primary=gemini_reviewed; see ../manifest.json for source SHA-256.
+% dense EG2 on the 4137 text documents; labels gemini_reviewed; source efficiency.json quantization
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{3}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Build & File MiB & Chunks/s & Query p50 \\
+\midrule
+bf16 (SentenceTransformers) & -- & -- & -- \\
+f16 & 532 & 46 & 76.7 \\
+Q8\_0 & 296 & 48 & 86.0 \\
+Q4\_K\_M & 173 & 46 & 83.6 \\
+\bottomrule
+\end{tabularx}\endgroup
+
+\par\medskip
+% dense EG2 on the 4137 text documents; labels gemini_reviewed; source efficiency.json quantization
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{4}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Build & nDCG@10 & $\Delta$ [95\% CI] & p & Unjudged@10 \\
+\midrule
+bf16 (SentenceTransformers) & 0.631 & -- & -- & 0.003 \\
+f16 & 0.631 & \shortstack{-0.001 \\ {\footnotesize[-0.005, +0.003]}} & 0.734 & 0.016 \\
+Q8\_0 & 0.630 & \shortstack{-0.002 \\ {\footnotesize[-0.006, +0.003]}} & 0.504 & 0.018 \\
+Q4\_K\_M & 0.613 & \shortstack{-0.018 \\ {\footnotesize[-0.030, -0.006]}} & 0.002 & 0.099 \\
+\bottomrule
+\end{tabularx}\endgroup
+
+\par\medskip
+% dense EG2 on the 4137 text documents; labels gemini_reviewed; source efficiency.json quantization; unjudged documents removed before ranking evaluation
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{3}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Build & Condensed nDCG@10 & $\Delta$ [95\% CI] & p \\
+\midrule
+bf16 (SentenceTransformers) & 0.632 & -- & -- \\
+f16 & 0.634 & \shortstack{+0.002 \\ {\footnotesize[-0.002, +0.006]}} & 0.297 \\
+Q8\_0 & 0.633 & \shortstack{+0.000 \\ {\footnotesize[-0.004, +0.005]}} & 0.869 \\
+Q4\_K\_M & 0.636 & \shortstack{+0.004 \\ {\footnotesize[-0.007, +0.015]}} & 0.454 \\
+\bottomrule
+\end{tabularx}\endgroup

@@ -1,0 +1,101 @@
+{
+  "human_verified": false,
+  "release_approved": false,
+  "reviewed_markers": {
+    "1ecd971c816da4de083c08d9aa816cdbb9511e383df9c94681f61ddfa7f4612a": {
+      "basis": "Public antivirus vendor name and a substring of an uppercase reset command in upstream sources.",
+      "sample_public_source_evidence": [
+        {
+          "doc_id_sha256": "9d926a519be15ac088e3faca727a39dfde80e5b7f6e6eb9864de7f37b8d23575",
+          "file_sha256": "404310229859836c18c84fa26a530d32ac1a95bcc9cd9517d8be829608e708cf",
+          "manifest_row": 383,
+          "source_url_sha256": "23e0f26546988d1fdc7de2aa59081b6b102161b8a8beb89390133673fca63751"
+        },
+        {
+          "doc_id_sha256": "e5c3fbd5229a5e923431c9167337778b01bfa96689fb0f84da77cbc3579da497",
+          "file_sha256": "934f208c00d8afd58156ba097af1132e8a070b3e763ecca38b6853fa44d94767",
+          "manifest_row": 724,
+          "source_url_sha256": "11554202baa053f86eb052cb45dd4c2565fb097171bce772b1253ffdebf15ae6"
+        },
+        {
+          "doc_id_sha256": "f5299a5ad552f4003205f479345813cfcaf92a59323d07c176355f4813e493fa",
+          "file_sha256": "aa9e73ebc1fcbf8556817713d8f9f28f91cacbb24885f552af54ca8753e6c043",
+          "manifest_row": 1462,
+          "source_url_sha256": "1518743a7383c5be9f254cad3a0f55ba8f7798363063bd0bbd54295e6445b429"
+        }
+      ]
+    },
+    "6ca5cab77e702c787b4c14b3d3bf26bad43da606be6eed04ab0b9720120ae081": {
+      "basis": "Common English word in public recreation captions/document IDs and contributor names.",
+      "sample_public_source_evidence": [
+        {
+          "doc_id_sha256": "a99309efd81a32a17d6cca9e9c91e65fc682d637df9bcc0bd0826387edd5899a",
+          "file_sha256": "226303b0ec7f967fbd217f052db438dfb2f36c6bd4cf53e2c907430ef7e83f0d",
+          "manifest_row": 232,
+          "source_url_sha256": "bfb3b0f49694629ea1dfff91e901625c531bee8812722a8afc56b2a59fdf6a1d"
+        },
+        {
+          "doc_id_sha256": "97cc83b272d652340b7fd3cac821d48e666e9ffa00da7dbba4b0eb4cf0f30398",
+          "file_sha256": "008a77fd84b1924b551f8564677cf329cfef6341ba73c49c1a984ba17e3a9cac",
+          "manifest_row": 332,
+          "source_url_sha256": "a9011acd92d2e3c4260724e56d6625f45fdb7fafdf8ab06856135c81b3ebe2a0"
+        },
+        {
+          "doc_id_sha256": "2f18e05c7f5e0dd5acddbb90a20283a93c542098f74c903843f68e8bbc2aef4c",
+          "file_sha256": "6e48456565201582da319d50b61a8856cc9a80c52b796e52b6c4481ca934950c",
+          "manifest_row": 508,
+          "source_url_sha256": "23e3f91dc43b2a2f2f1f83f5e70bc1c41951d68ef0d562c2eea410f7c0f0ecc1"
+        }
+      ]
+    },
+    "85fb49e051915a77ef6d27b52ce52eb5c4f81d46e18e1526eb59ddb150289ea7": {
+      "basis": "Four-letter prefix in public Scandinavian names and caption titles.",
+      "sample_public_source_evidence": [
+        {
+          "doc_id_sha256": "7d72ede2fd93b90059e4e2969471d076fbeba38bbf1b36a0dbe19511107c0319",
+          "file_sha256": "c1d4a8270799d75081925b098b3055fd221fc3ee63f764b3a19b29f0938eca18",
+          "manifest_row": 73,
+          "source_url_sha256": "f9f14bfb66b0b41c0fd6e6ab8c24e994e7046548919dc4ba6bdca847b5313fa6"
+        },
+        {
+          "doc_id_sha256": "a99309efd81a32a17d6cca9e9c91e65fc682d637df9bcc0bd0826387edd5899a",
+          "file_sha256": "226303b0ec7f967fbd217f052db438dfb2f36c6bd4cf53e2c907430ef7e83f0d",
+          "manifest_row": 232,
+          "source_url_sha256": "bfb3b0f49694629ea1dfff91e901625c531bee8812722a8afc56b2a59fdf6a1d"
+        },
+        {
+          "doc_id_sha256": "451f4e9dcc75c2e9063173b4f934c17968d8bbe8ce4bf767ccdf198d53d0c548",
+          "file_sha256": "721c58e72a34c4eb5a7157fbd04db8a27f4c7bfeab2f91fc581787bb3670ad7e",
+          "manifest_row": 431,
+          "source_url_sha256": "be4ee35a31cd0a9ddc379fddaadd87ba70f24ff9c4dd49a81800a1ef4caf451e"
+        }
+      ]
+    },
+    "f223faa96f22916294922b171a2696d868fd1f9129302eb41a45b2a2ea2ebbfd": {
+      "basis": "Public company/fruit name in Wikipedia, captions and upstream templates.",
+      "sample_public_source_evidence": [
+        {
+          "doc_id_sha256": "8f7b765d9cb7c892308dc1683fb58d4cf73cda77479e621617c95d0eb0370875",
+          "file_sha256": "143917ffe89ffdacca34c030714858f7308ddcebfff052705976a46226ce5a77",
+          "manifest_row": 18,
+          "source_url_sha256": "1d3ef88dc7102e657c6a43f7e2728a70d526f48a67a909699716a37b4ccb08f0"
+        },
+        {
+          "doc_id_sha256": "330b7538742956049b52bad35ce3cdcf8c379a1ba919847a76d8c032d715cbcc",
+          "file_sha256": "e8f1fce2f5cc70e74c62e8761437961b133805562e04a2908040d4d1e8ddadf9",
+          "manifest_row": 45,
+          "source_url_sha256": "1ada4766b1bea5a841ed6b2355994acf4a7aa23bb322c7d6ffd6fba1468785f8"
+        },
+        {
+          "doc_id_sha256": "7952f5ddbf4045096683a1faee5e1d10ce9627708e01415630c282aa12126ef9",
+          "file_sha256": "c918004a6c78c3dd456549ca3fad5b4a8573b0aa5d69653fb9c91f151cd6f19d",
+          "manifest_row": 66,
+          "source_url_sha256": "45df666be1106b70ad9421e9c653ecb392a84ad5092664c3b6fec1d12a908f32"
+        }
+      ]
+    }
+  },
+  "schema": 1,
+  "scope": "Machine-assisted inspection of exact public corpus bytes and contexts; four explicit ambiguous names/words only. Not approval to exempt other private names, queries or home paths.",
+  "source_manifest": "paper/data/ua-par/manifest.jsonl; row order and corpus bytes preserved in export"
+}

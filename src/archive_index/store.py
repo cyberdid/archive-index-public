@@ -315,19 +315,24 @@ class Store:
         return int(self.conn.execute(sql, params).fetchone()[0])
 
     def rebuild_terms(self, make_terms, batch: int = 2000) -> int:
-        """Recompute the FTS5 terms column from stored text. Vectors are not touched."""
+        """Recompute the FTS5 terms column from stored text, from the same source indexing used.
+        Vectors are not touched."""
+        from .indexer import chunk_term_source
+
         total = 0
         last = 0
         while True:
             rows = self.conn.execute(
-                "SELECT c.id, d.title, c.heading, c.body FROM chunks c JOIN documents d ON d.id = c.doc_id"
+                "SELECT c.id, d.collection, d.path, d.title, c.heading, c.body"
+                " FROM chunks c JOIN documents d ON d.id = c.doc_id"
                 " WHERE c.id > ? ORDER BY c.id LIMIT ?", (last, batch),
             ).fetchall()
             if not rows:
                 break
             self.conn.executemany(
                 "UPDATE chunks_fts SET terms = ? WHERE rowid = ?",
-                [(make_terms(f"{title} {heading} {body}"), cid) for cid, title, heading, body in rows],
+                [(make_terms(chunk_term_source(collection, path, title, heading, body)), cid)
+                 for cid, collection, path, title, heading, body in rows],
             )
             self.conn.commit()
             total += len(rows)

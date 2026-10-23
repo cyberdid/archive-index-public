@@ -1,0 +1,21 @@
+\clearpage
+\section{Detailed measured results}
+The following fragments are generated from the same result files as the main tables. Their source hashes and current primary relevance variant are recorded in \path{generated/manifest.json}.
+\subsection{Assessment status and scope}
+\input{../../generated/en/evidence_notes.tex}
+\subsection{Collected and indexed populations}
+\input{../../generated/en/corpus.tex}
+\clearpage
+\subsection{Ablations}
+\input{../../generated/en/ablation.tex}
+\clearpage
+\subsection{Query categories}
+\input{../../generated/en/category.tex}
+\clearpage
+\subsection{Query languages}
+\input{../../generated/en/language.tex}
+\subsection{Quantization reference}
+The reference measures cosine agreement of embeddings on 20 texts and CPU seconds per text. It does not measure retrieval-quality loss or establish production latency.
+\par\medskip
+\input{../../generated/en/quantization_reference.tex}
+\par

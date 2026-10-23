@@ -1,0 +1,120 @@
+{
+  "created_at": "2026-10-22T07:22:50.058199+00:00",
+  "files": [
+    {
+      "source": "paper/data/queries.tsv",
+      "snapshot": "queries.tsv",
+      "sha256": "59174aa13e1c1c7c694908979cfcfa59e59a32f9ec42ce2226c6f5cc125eda40",
+      "bytes": 27124
+    },
+    {
+      "source": "paper/data/ua-par/manifest.jsonl",
+      "snapshot": "manifest.jsonl",
+      "sha256": "5e4a68ddd755e668ba1e97522795983fdacfd5ec2ba9625121280a83f2a62073",
+      "bytes": 3349610
+    },
+    {
+      "source": "paper/data/judgments/gemini.tsv",
+      "snapshot": "gemini.tsv",
+      "sha256": "6f46eb11846215090900ab13a6dcde5f1e76a1bcca0225a7683e12d25923cbad",
+      "bytes": 11995030
+    },
+    {
+      "source": "paper/data/judgments/gemma.tsv",
+      "snapshot": "gemma.tsv",
+      "sha256": "17f08c11289a909773e417974ebb501f549e4c223a2be0327a401d2c4afe6b53",
+      "bytes": 11995030
+    },
+    {
+      "source": "paper/data/judgments/gemma12.tsv",
+      "snapshot": "gemma12.tsv",
+      "sha256": "dda2c623fefd0f0c8f8774aeb1fcbc4a193c877ab582301028ce92ed3244223b",
+      "bytes": 11995030
+    },
+    {
+      "source": "paper/data/judgments/gpt.tsv",
+      "snapshot": "gpt.tsv",
+      "sha256": "4caa9604f4759dade8c69ec16f5a681f1ec845fcbb277717b0b0c4ab6b1bb48c",
+      "bytes": 11995030
+    },
+    {
+      "source": "paper/data/judgments/primary.tsv",
+      "snapshot": "primary.tsv",
+      "sha256": "1345e33a4cef7ab37ee606040f48507df13acfc27c0334e2d48b3bceacd2c679",
+      "bytes": 11989458
+    },
+    {
+      "source": "paper/data/judgments/gemini.calls.jsonl",
+      "snapshot": "gemini.calls.jsonl",
+      "sha256": "71e4ef623c67c89178c598786a22d87451479da0494a1c29cc71819091fd4be3",
+      "bytes": 651963
+    },
+    {
+      "source": "paper/data/judgments/gpt.calls.jsonl",
+      "snapshot": "gpt.calls.jsonl",
+      "sha256": "64bf15e1a76545cec4fc217a07afc6227fba2e813b8043ad53c5ad1497002885",
+      "bytes": 447608
+    },
+    {
+      "source": "paper/data/runs/adaptive-ident.trec",
+      "snapshot": "runs/adaptive-ident.trec",
+      "sha256": "904fc20257772606336ccaadcfcb1499f6bc7542bf29cb30b8a17fa1472a572b",
+      "bytes": 1315361
+    },
+    {
+      "source": "paper/data/runs/adaptive-phrase.trec",
+      "snapshot": "runs/adaptive-phrase.trec",
+      "sha256": "5ef268b9713db1126ec2aba8647e10f8eb3c440f4fbc1037b32dad1bde01883c",
+      "bytes": 1328462
+    },
+    {
+      "source": "paper/data/runs/adaptive-short.trec",
+      "snapshot": "runs/adaptive-short.trec",
+      "sha256": "8d17583c20e33d383a8318b96b7df8e688efaff2953d21e0539d1d58395999a6",
+      "bytes": 1306569
+    },
+    {
+      "source": "paper/data/runs/adaptive.trec",
+      "snapshot": "runs/adaptive.trec",
+      "sha256": "e14de4f20759e1e1edc349a7ad18c813ba8c8f07974ad7ef3ce5399777ebe79b",
+      "bytes": 1194125
+    },
+    {
+      "source": "paper/data/runs/bm25_lemma.trec",
+      "snapshot": "runs/bm25_lemma.trec",
+      "sha256": "4e7517907ad9ce4fd11a07d3ebd2e26201b095f5d51f07fd1205b6b2b82f427b",
+      "bytes": 975529
+    },
+    {
+      "source": "paper/data/runs/bm25_plain.trec",
+      "snapshot": "runs/bm25_plain.trec",
+      "sha256": "3beb1a7c1bf9a0fb63a1ed3a54212b0d018a3a64abd916eefd715bdb911f487d",
+      "bytes": 977458
+    },
+    {
+      "source": "paper/data/runs/dense_e5.trec",
+      "snapshot": "runs/dense_e5.trec",
+      "sha256": "fe33ad5169b50f3e24e54d9c0a3eac6438d734ae62af76f2e41208a85a404c74",
+      "bytes": 1242746
+    },
+    {
+      "source": "paper/data/runs/dense_eg2.trec",
+      "snapshot": "runs/dense_eg2.trec",
+      "sha256": "3c3f01a4d63891d29589c9dd58d521b206e3f5e1c57cc61fc0236b795510d703",
+      "bytes": 1223631
+    },
+    {
+      "source": "paper/data/runs/dense_eg2_256.trec",
+      "snapshot": "runs/dense_eg2_256.trec",
+      "sha256": "28c8089f1b227a6c7d6b11ea531f12d1330d23033919a6f9355d6ceb489394a1",
+      "bytes": 1308390
+    },
+    {
+      "source": "paper/data/runs/rrf.trec",
+      "snapshot": "runs/rrf.trec",
+      "sha256": "12b08bf9a7ff8fdabc6239099f14a61d6cf565caec3c439c6271d27a92092358",
+      "bytes": 1103387
+    }
+  ],
+  "purpose": "Frozen initial grades before retrieval ranking calculation; no original grades overwritten."
+}

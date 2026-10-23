@@ -1,0 +1,116 @@
+{
+  "source_sha256": {
+    "manifest.jsonl": "5e4a68ddd755e668ba1e97522795983fdacfd5ec2ba9625121280a83f2a62073",
+    "queries.tsv": "59174aa13e1c1c7c694908979cfcfa59e59a32f9ec42ce2226c6f5cc125eda40",
+    "indexes/e5.sqlite3": "b8617a275f2a703f1bd976af4f5e57d60cce0ef428513c655fc1702ca3f66e4a",
+    "indexes/full.sqlite3": "b1669e7b7240ddb881ead98afa72282b257dc1ab09131b64280ec99d4df54d93",
+    "indexes/noshort.sqlite3": "80b8973cc9428b77072037d3026b6cdafe20e21c4a8c4f862714322644240788",
+    "indexes/plain.sqlite3": "ec911f6002c96f7ad511323f4fc11bfb9d7ea57678cddb5701d14be4bd93056c"
+  },
+  "manifest_files": 7070,
+  "manifest_by_part": {
+    "notes": 2945,
+    "documents": 400,
+    "tables": 150,
+    "code": 1775,
+    "images": 1000,
+    "speech": 800
+  },
+  "queries": 200,
+  "queries_by_category": {
+    "known_item": 40,
+    "topical": 60,
+    "technical": 40,
+    "cross_lingual": 30,
+    "no_answer": 30
+  },
+  "queries_by_language": {
+    "ru": 74,
+    "uk": 126
+  },
+  "target_parts": {
+    "notes": 170
+  },
+  "indexes": {
+    "e5": {
+      "documents": 4137,
+      "chunks": 94970,
+      "vectors": 84767,
+      "text_collection_vectors": 84767,
+      "text_vectors": 84767,
+      "text_collection_image_vectors": 0,
+      "by_manifest_part": {
+        "documents": 400,
+        "notes": 2945,
+        "code": 642,
+        "tables": 150
+      },
+      "vector_dimensions": {
+        "1024": 84767
+      }
+    },
+    "full": {
+      "documents": 6054,
+      "chunks": 96908,
+      "vectors": 86726,
+      "text_collection_vectors": 84788,
+      "text_vectors": 86705,
+      "text_collection_image_vectors": 21,
+      "by_manifest_part": {
+        "documents": 400,
+        "notes": 2945,
+        "code": 759,
+        "tables": 150,
+        "images": 1000,
+        "speech": 800
+      },
+      "vector_dimensions": {
+        "768": 86726
+      }
+    },
+    "noshort": {
+      "documents": 6054,
+      "chunks": 97652,
+      "vectors": 87441,
+      "text_collection_vectors": 85503,
+      "text_vectors": 87420,
+      "text_collection_image_vectors": 21,
+      "by_manifest_part": {
+        "documents": 400,
+        "notes": 2945,
+        "code": 759,
+        "tables": 150,
+        "images": 1000,
+        "speech": 800
+      },
+      "vector_dimensions": {
+        "768": 87441
+      }
+    },
+    "plain": {
+      "documents": 6054,
+      "chunks": 96908,
+      "vectors": 86726,
+      "text_collection_vectors": 84788,
+      "text_vectors": 86705,
+      "text_collection_image_vectors": 21,
+      "by_manifest_part": {
+        "documents": 400,
+        "notes": 2945,
+        "code": 759,
+        "tables": 150,
+        "images": 1000,
+        "speech": 800
+      },
+      "vector_dimensions": {
+        "768": 86726
+      }
+    }
+  },
+  "caveats": [
+    "The manifest describes collected files, not all of them are indexable by archive-index.",
+    "The E5 baseline uses text-only input; its document universe differs from the multimodal EG2 indexes.",
+    "All 170 authored answerable query targets are notes; findings do not establish retrieval quality for targets in every archive format.",
+    "Raw chunks include lexical-only rows. Text-collection vector counts restrict collections to wiki, docs, tables and code; they include image-rendered PDF pages. Text-vector counts exclude image/audio input hashes."
+  ]
+}

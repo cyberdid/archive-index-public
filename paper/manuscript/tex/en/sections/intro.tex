@@ -1,0 +1,29 @@
+% Editorial revision; all numerical evidence remains in frozen result files.
+\section{Introduction}\label{sec:intro}
+
+\subsection{Motivation}
+A remembered research item may be a note about an antenna, a paragraph in a report, a table, a source file, or a sentence in a recording. Its wording may differ from the query, and the query and document may be in different languages. An archive can also contain unpublished material and agent conversations that its owner prefers to process locally. These requirements bring lexical matching, semantic similarity, source provenance and resource cost into the same retrieval problem.
+
+We study archives in which Ukrainian and Russian occur together. Inflection creates a practical lexical choice: matching surface forms preserves the written expression, while lemma expansion can connect different forms of a word. Dense embeddings offer another connection between queries and documents, including across languages and modalities. Combining these signals introduces a further choice: whether to fuse ranked lists or select a retrieval regime from the lexical evidence. None of these choices determines its own effectiveness on a particular archive.
+
+archive-index implements these alternatives through a common local indexing and search pipeline. It combines SQLite FTS5/BM25, Ukrainian and Russian morphological analysis, EmbeddingGemma~2 representations and configurable hybrid ranking (Section~\ref{sec:system}). Our question is: \emph{what retrieval and resource trade-offs do these implemented configurations exhibit on a constructed multilingual archive, and how much does the answer depend on model-generated relevance judgements?}
+
+\subsection{Contributions}
+The study contributes four inspectable artifacts and comparisons:
+\begin{enumerate}[label=(\alph*)]
+\item \emph{An implemented system.} Incremental indexing of twelve source collections, chunk locators, lexical expansion and shared text/image/speech representations, with explicit switches for the compared configurations.
+\item \emph{A constructed benchmark.} \uapar{} contains 7\,070 public-source files, 200 model-written queries and 5\,572 pooled query--document pairs assessed by four model judges. A separate 50-record extension adds document, table and repository-file targets; it contains 49 distinct query wordings. Query definitions, runs and every original assessment are preserved.
+\item \emph{A comparison with assessment sensitivity.} Ten configurations and ablations are compared using query-level uncertainty estimates, paired tests and multiple label variants. Candidate-universe and coverage-correction controls distinguish encoder differences from changes in the retrieval pipeline.
+\item \emph{A scoped account of cost and deployment.} Single-laptop CPU/GPU measurements, GGUF retrieval comparisons, synthetic exact/Faiss/HNSW scaling and aggregate checks on the author's private archive expose different implementation and evaluation limits.
+\end{enumerate}
+The system combines established retrieval components. The empirical contribution is their reproducible comparison in this archive setting, including results that do not support the original adaptive-fusion hypothesis. Appendix~\ref{sec:intro-history} records implementation corrections and protocol changes, distinguishing those made before the frozen runs from the later coverage control.
+
+\subsection{Evidence and scope}
+We distinguish four evidence levels:
+(L1)~unit and integration checks of implementation behaviour;
+(L2)~model-assessed text retrieval on \uapar{} (Sections~\ref{sec:uapar}--\ref{sec:results});
+(L3)~operational checks on the author's archive, exported only as aggregates (Section~\ref{sec:field}); and
+(L4)~measurements of latency, memory and CPU/GPU use on one laptop.
+Separate image and speech tasks use caption--image and sentence--recording pairings from Crossmodal-3600 and FLEURS. These tasks do not provide human relevance judgements for the text benchmark.
+
+No human relevance audit is included in this edition. Text-retrieval estimates are conditional on the model labels and the constructed queries; all 170 original answerable targets are notes. The separate extension broadens target formats but does not make either cohort representative of personal information needs. The study trains no model, evaluates no additional languages beyond Ukrainian, Russian and the English present in code, and uses synthetic vectors for scaling beyond the public collection. Its implementation tests and privacy checks do not certify every aspect of correctness or confidentiality.

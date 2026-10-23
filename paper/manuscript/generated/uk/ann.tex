@@ -1,0 +1,30 @@
+% Generated from primary=gemini_reviewed; see ../manifest.json for source SHA-256.
+% p50 ms per single query; HNSW cells: p50 ms / strict-ID recall@10 against exact; source ann_scaling.json
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{5}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Векторів & NumPy top-k & Faiss flat & Побудова HNSW, с & HNSW ef64 & HNSW ef256 \\
+\midrule
+100\,000 & 6.16 & 10.65 & 9 & 0.19 / 0.914 & 0.57 / 0.984 \\
+300\,000 & 17.85 & 26.52 & 33 & 0.27 / 0.940 & 0.69 / 0.990 \\
+1\,000\,000 & 51.78 & 75.83 & 187 & 0.29 / 0.904 & 0.97 / 0.991 \\
+2\,000\,000 & 106.63 & 139.95 & 676 & 0.39 / 0.893 & 1.28 / 0.983 \\
+\bottomrule
+\end{tabularx}\endgroup
+
+\par\medskip
+% Actual semantic_scored path with candidate gather, full sort, pool400; no database polling; flat exact agreement / fraction at reference kth score within1e-6; source ann_reference_audit.json
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{3}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Векторів & Пошук архіву p50, мс & Збіг ID flat & Поріг оцінки flat \\
+\midrule
+100\,000 & 60.84 & 1.000 & 1.000 \\
+300\,000 & 166.80 & 1.000 & 1.000 \\
+1\,000\,000 & 497.64 & 1.000 & 1.000 \\
+2\,000\,000 & 2441.83 & 1.000 & 1.000 \\
+\bottomrule
+\end{tabularx}\endgroup
+
+\par\smallskip
+На 2\,000\,000 векторах спостережена p50 становить 106.6 мс для оптимізованого NumPy top-k і 2441.8 мс для векторного пошуку архіву. HNSW ef256 має 1.28 мс за повноти@10 за ідентифікаторами 0.9825. Це послідовні вимірювання різних алгоритмів і розмірів видачі (10 проти 400) у робочому сеансі, а не парне прискорення обладнання чи наскрізна затримка інтерфейсу.

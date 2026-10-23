@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "selected_at": "2026-10-23",
+  "author_instruction": "License as in previous articles.",
+  "article_license": "CC-BY-4.0",
+  "original_experimental_records_license": "CC-BY-4.0",
+  "executable_source_license": "Apache-2.0",
+  "article_references": {
+    "23537103": {
+      "url": "https://zenodo.org/records/23537103",
+      "article_license": "CC-BY-4.0",
+      "retrieved_metadata_sha256": "6b04f27688cd6df6d92f242cd66945f6ab4efc57fd45a3813aeb3683adf42349"
+    },
+    "23375871": {
+      "url": "https://zenodo.org/records/23375871",
+      "article_license": "CC-BY-4.0",
+      "retrieved_metadata_sha256": "071e6bdfaf75588e10a3874bb220777cc8e199d9c74d121b27b533de710d8cba"
+    }
+  },
+  "explicit_split_reference": {
+    "publication": "https://zenodo.org/records/23537103",
+    "source_path": "antigravity-codex-orchestrator/docs/paper/tex/en/main.tex",
+    "source_sha256": "5cbed566726f42baf69c8ac8150e1b36a1be564a2cc7c226608d4bb17704b463",
+    "locator": "License paragraph; article/figures/records CC BY 4.0, executable source Apache-2.0."
+  },
+  "license_file_sha256": {
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSING.md": "dc0ae7725badc4b7d88e4c02418863741639ba2fa9f5acf161faa8ffbc4b11f4",
+    "paper/manuscript/LICENSE": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94",
+    "paper/results/LICENSE": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94"
+  },
+  "packaging": {
+    "wheel_path": "paper/data/editorial-2026-10-23/wheels/archive_index-0.1.0-py3-none-any.whl",
+    "wheel_license_expression": "Apache-2.0",
+    "wheel_license_files": [
+      "LICENSE",
+      "NOTICE",
+      "LICENSING.md"
+    ],
+    "build_passed": true,
+    "pyproject_sha256": "b6352cdfdcd074951674278405ebe5eae10a9976f3f3b66564b4ec7b8c1a6892",
+    "changes": "Only SPDX expression/license files and minimum setuptools supporting PEP 639; normalized remaining TOML exactly equals prior config."
+  },
+  "prior_315_test_evidence": {
+    "record": "paper/results/implementation_checks.json",
+    "unchanged_source_test_config_hashes": 102,
+    "intentional_metadata_change": "pyproject.toml licensing metadata; tests/research/test_compliance.py now uses independent PDF fixtures. All executable production sources unchanged.",
+    "new_full_suite_run": false
+  },
+  "third_party_terms_preserved": true,
+  "private_field_inputs_excluded_from_publication_grant": true,
+  "github_release_repository": "https://github.com/cyberdid/archive-index-public",
+  "zenodo_publication_approved": false,
+  "current_full_suite": "paper/results/public_release_tests.json"
+}

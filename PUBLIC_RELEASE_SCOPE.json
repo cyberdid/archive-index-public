@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "edition": "paper-author-review-2026-10-23",
+  "repository": "https://github.com/cyberdid/archive-index-public",
+  "manuscripts": {
+    "en": 36,
+    "uk": 38
+  },
+  "software_license": "Apache-2.0",
+  "article_original_figures_and_experimental_records_license": "CC-BY-4.0",
+  "third_party_terms_unchanged": true,
+  "saved_result_rendering_supported": true,
+  "full_frozen_input_replay_inputs_included": false,
+  "excluded": [
+    "raw corpus",
+    "private field documents and queries",
+    "private Git history and backup metadata",
+    "index databases and vector caches",
+    "model weights"
+  ],
+  "text_relevance_assessment": "model-generated; no human audit in this edition",
+  "doi_assigned": false,
+  "final_author_scientific_approval": false,
+  "scope": "GitHub author-review release; not a Zenodo deposition or peer-reviewed publication."
+}

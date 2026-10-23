@@ -1,0 +1,55 @@
+% Shared preamble for paper/manuscript/tex/{en,uk}/main.tex (XeLaTeX via Tectonic).
+% Layout copied from the author's FFT preprint (Zenodo 23375871) so both papers share one house style.
+% The including file sets \mainlang{english} or \mainlang{ukrainian} before \input{../preamble}.
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{cmunrm.otf}[BoldFont=cmunbx.otf,ItalicFont=cmunti.otf,BoldItalicFont=cmunbi.otf]
+\setsansfont{cmunss.otf}[BoldFont=cmunsx.otf,ItalicFont=cmunsi.otf]
+\setmonofont{cmuntt.otf}[BoldFont=cmuntb.otf,ItalicFont=cmunit.otf]
+\usepackage[ukrainian,english]{babel}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,tabularx,array,multirow}
+\usepackage{graphicx}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage[numbers,sort&compress]{natbib}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+\usepackage{url}
+\usepackage{etoolbox}
+\AtBeginEnvironment{thebibliography}{\raggedright}
+
+\graphicspath{{../../figures/}{../../generated/figures/}}
+% primitive input: LaTeX's \input is not expandable and breaks inside tabular after \midrule
+\makeatletter\newcommand{\gentable}[1]{\@@input ../tables/\tablelang/T#1.tex }\makeatother
+
+% notation (archive-index paper)
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\sys}[1]{\textsf{#1}}          % system names in tables and text: \sys{adaptive}
+\newcommand{\metric}[1]{\mathrm{#1}}       % nDCG@10 etc. in math
+\newcommand{\uapar}{UA-PAR}
+% \pending{...}: text not written yet. Visible in the PDF; paper/release/compliance.py rejects any PDF that has one.
+\newcommand{\pending}[1]{\textcolor{red}{[PENDING: #1]}}
+
+% theorem names: the including file may define these before \input{../preamble}
+\providecommand{\lemmaname}{Lemma}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\definitionname}{Definition}
+\providecommand{\remarkname}{Remark}
+\providecommand{\corollaryname}{Corollary}
+\providecommand{\theoremname}{Theorem}
+\theoremstyle{plain}
+\newtheorem{lemma}{\lemmaname}
+\newtheorem{proposition}{\propositionname}
+\theoremstyle{definition}
+\newtheorem{definition}{\definitionname}
+\theoremstyle{remark}
+\newtheorem{remark}{\remarkname}
+
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\sloppy

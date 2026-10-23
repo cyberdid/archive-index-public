@@ -1,0 +1,72 @@
+# UA-PAR corpus sources. Every licence below was checked against its primary source on 2026-10-19
+# (see paper/corpus/LICENSES.md). API sources have no sha256: their items are pinned in the corpus manifest.
+- name: wiki_uk
+  part: notes
+  url: https://uk.wikipedia.org/w/api.php
+  licence: CC-BY-SA-4.0
+  redistributable: true
+- name: wiki_ru
+  part: notes
+  url: https://ru.wikipedia.org/w/api.php
+  licence: CC-BY-SA-4.0
+  redistributable: true
+- name: docs_from_wiki
+  part: documents
+  url: https://uk.wikipedia.org/w/api.php
+  licence: CC-BY-SA-4.0
+  redistributable: true
+  note: separate uk/ru articles rendered to PDF, DOCX and PPTX to give the archive its document formats
+- name: datagovua
+  part: tables
+  url: https://data.gov.ua/api/3/action/package_search
+  licence: per dataset; only cc-by, cc-zero, odc-by, odc-pddl, cc-by-sa are taken
+  redistributable: true
+- name: github_ukrainian
+  part: code
+  url: https://api.github.com/search/repositories?q=topic:ukrainian
+  licence: per repository; only MIT and Apache-2.0 are taken, LICENSE file kept
+  redistributable: true
+- name: xm3600_captions
+  part: images
+  url: https://google.github.io/crossmodal-3600/web-data/captions.zip
+  licence: CC-BY-4.0
+  redistributable: true
+  sha256: 7964f969d39319a96769499b199042015754f8d5607b6aad2d1c2c2e55f5e562
+- name: xm3600_attributions
+  part: images
+  url: https://google.github.io/crossmodal-3600/web-data/image_attributions.csv
+  licence: CC-BY-4.0
+  redistributable: true
+  sha256: 288de413d25e9c70dadfd42ee59256aa1082673e615d0eda02c3875fe2b36ecd
+- name: xm3600_images
+  part: images
+  url: https://open-images-dataset.s3.amazonaws.com/crossmodal-3600/images.tgz
+  licence: CC-BY-2.0 (every image; authors in image_attributions.csv)
+  redistributable: true
+  sha256: ba57c58d7f7a35d95315157b609ca280d55ba10a107026f67d2e98371e221188
+
+- name: fleurs_uk_audio
+  part: speech
+  url: https://huggingface.co/datasets/google/fleurs/resolve/main/data/uk_ua/audio/test.tar.gz
+  licence: CC-BY-4.0
+  redistributable: true
+  sha256: 1c2a1bc5afafc576a68902f8dcc5f2c2313e454742674cfedc3a053be7418114
+- name: fleurs_uk_text
+  part: speech
+  url: https://huggingface.co/datasets/google/fleurs/resolve/main/data/uk_ua/test.tsv
+  licence: CC-BY-4.0
+  redistributable: true
+  sha256: afabf1e7e138632dd65781a768257b9d86c591175ae08e8ca201d00081815d49
+
+- name: fleurs_ru_audio
+  part: speech
+  url: https://huggingface.co/datasets/google/fleurs/resolve/main/data/ru_ru/audio/test.tar.gz
+  licence: CC-BY-4.0
+  redistributable: true
+  sha256: 8a0d6a0d23c3421f50c575bcf65d875cd19dadae2f7cabb415024f81b65178b1
+- name: fleurs_ru_text
+  part: speech
+  url: https://huggingface.co/datasets/google/fleurs/resolve/main/data/ru_ru/test.tsv
+  licence: CC-BY-4.0
+  redistributable: true
+  sha256: cd54f261220f49afbb4c128633a737eca4a22f6c0a8233d3cc891478d06676e6

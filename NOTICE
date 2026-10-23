@@ -1,0 +1,29 @@
+archive-index / UA-PAR research candidate
+
+Status: versioned author-review research edition. No software/data DOI,
+preprint DOI, final scientific approval or venue submission is asserted.
+
+Copyright 2026 Oleksandr Pylypenko.
+
+Original executable source is licensed under Apache License 2.0 (LICENSE).
+Article text, original figures and experimental records are licensed under
+Creative Commons Attribution 4.0 International (paper/manuscript/LICENSE and
+paper/results/LICENSE), to the extent the author holds the relevant rights.
+LICENSING.md defines scope and third-party exceptions.
+
+Third-party data keep their own licenses and attribution. The corpus manifest
+identifies each collected file by source URL, license and SHA-256; the source
+policy and attribution requirements are in paper/corpus/LICENSES.md. Repository
+license files and dataset attribution files must accompany a corpus export.
+No blanket project license replaces those per-source terms.
+
+Model weights are not included in a release candidate. Model identifiers,
+revisions and licenses must be checked at their original distribution pages.
+
+The private field study contributes aggregate counts and operational rates only.
+Its documents, queries, paths, snippets and database are excluded from export.
+Claude's incomplete blind-judging sheet is excluded from the reported analyses.
+
+AI involvement is described in the manuscript. No AI system is listed as an
+author. Human source verification, final declarations and public publication remain
+author decisions. No human relevance audit is included in this edition.

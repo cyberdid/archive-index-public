@@ -10,9 +10,18 @@ MODEL_ID = "google/embeddinggemma-2"
 class Embedder:
     """Loads the model lazily so that imports and tests stay cheap."""
 
-    def __init__(self, model_id: str = MODEL_ID) -> None:
+    def __init__(self, model_id: str = MODEL_ID, truncate_dim: int | None = None) -> None:
         self.model_id = model_id
+        self.truncate_dim = truncate_dim  # Matryoshka truncation (e.g. 256), renormalized to unit length
         self._model = None
+
+    def _fit(self, vectors: np.ndarray) -> np.ndarray:
+        vectors = np.asarray(vectors, dtype=np.float32)
+        if self.truncate_dim:
+            vectors = vectors[..., : self.truncate_dim]
+            norms = np.linalg.norm(vectors, axis=-1, keepdims=True)
+            vectors = vectors / np.maximum(norms, 1e-12)
+        return vectors
 
     def _load(self):
         if self._model is None:
@@ -39,27 +48,69 @@ class Embedder:
         vectors = self._load().encode(
             prefixed, batch_size=16, normalize_embeddings=True, convert_to_numpy=True
         )
-        return np.asarray(vectors, dtype=np.float32)
+        return self._fit(vectors)
 
     def query(self, text: str, prompt: str = "SearchQuery") -> np.ndarray:
         """prompt: 'SearchQuery' for documents, 'CodeRetrieval' for the code collection (model prompt names)."""
         vector = self._load().encode(
             text, prompt_name=prompt, normalize_embeddings=True, convert_to_numpy=True
         )
-        return np.asarray(vector, dtype=np.float32)
+        return self._fit(vector)
 
     def image(self, path: str) -> np.ndarray:
         vector = self._load().encode(
             {"image": str(path)}, normalize_embeddings=True, convert_to_numpy=True
         )
-        return np.asarray(vector, dtype=np.float32).reshape(-1)
+        return self._fit(np.asarray(vector, dtype=np.float32).reshape(-1))
 
     def audio(self, samples: np.ndarray, sample_rate: int = 16_000) -> np.ndarray:
         vector = self._load().encode(
             {"audio": {"array": samples, "sampling_rate": sample_rate}},
             normalize_embeddings=True, convert_to_numpy=True,
         )
-        return np.asarray(vector, dtype=np.float32).reshape(-1)
+        return self._fit(np.asarray(vector, dtype=np.float32).reshape(-1))
+
+
+class E5Embedder:
+    """Second dense baseline for the paper: multilingual-e5-large, text only, with its own prefixes."""
+
+    def __init__(self, model_id: str = "intfloat/multilingual-e5-large") -> None:
+        self.model_id = model_id
+        self._model = None
+
+    def _load(self):
+        if self._model is None:
+            import torch
+            from sentence_transformers import SentenceTransformer
+
+            device = "cuda" if torch.cuda.is_available() else "cpu"
+            self._model = SentenceTransformer(self.model_id, device=device)
+        return self._model
+
+    @staticmethod
+    def query_text(text: str) -> str:
+        return f"query: {text}"
+
+    @staticmethod
+    def passage_text(text: str) -> str:
+        return f"passage: {text}"
+
+    def documents(self, texts: list[str], titles: list[str] | None = None) -> np.ndarray:
+        if not texts:
+            return np.zeros((0, 0), dtype=np.float32)
+        vectors = self._load().encode([self.passage_text(t) for t in texts], batch_size=16,
+                                      normalize_embeddings=True, convert_to_numpy=True)
+        return np.asarray(vectors, dtype=np.float32)
+
+    def query(self, text: str, prompt: str = "SearchQuery") -> np.ndarray:
+        vector = self._load().encode(self.query_text(text), normalize_embeddings=True, convert_to_numpy=True)
+        return np.asarray(vector, dtype=np.float32)
+
+    def image(self, path: str) -> np.ndarray:
+        raise NotImplementedError("multilingual-e5 is a text model")
+
+    def audio(self, samples, sample_rate: int = 16_000) -> np.ndarray:
+        raise NotImplementedError("multilingual-e5 is a text model")
 
 
 
@@ -115,9 +166,14 @@ class LlamaServerEmbedder:
 
 
 def make_embedder():
-    """Full model by default; ARCHIVE_EMBED_BACKEND=llama-server selects the GGUF server."""
+    """Full model by default. ARCHIVE_EMBED_BACKEND=llama-server selects the GGUF server, =e5 the second dense
+    baseline; ARCHIVE_EMBED_DIM=256 truncates EmbeddingGemma 2 vectors."""
     import os
 
-    if os.environ.get("ARCHIVE_EMBED_BACKEND") == "llama-server":
+    backend = os.environ.get("ARCHIVE_EMBED_BACKEND")
+    if backend == "llama-server":
         return LlamaServerEmbedder(os.environ.get("ARCHIVE_LLAMA_URL", "http://127.0.0.1:8080"))
-    return Embedder()
+    if backend == "e5":
+        return E5Embedder()
+    dim = os.environ.get("ARCHIVE_EMBED_DIM")
+    return Embedder(truncate_dim=int(dim) if dim else None)

@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import numpy as np
 
 from archive_index.indexer import run_index
@@ -60,6 +62,30 @@ def test_repository_readme_and_docs_join_the_code_collection(tmp_path):
     assert query_prompt(["code"]) == "CodeRetrieval"
     assert query_prompt(["docs", "wiki"]) == "SearchQuery"
     assert query_prompt(None) == "SearchQuery"
+
+
+def test_named_repository_docs_are_not_also_indexed_as_wiki(tmp_path):
+    root = tmp_path / "Projects"
+    repo = root / "code-tool"
+    (repo / "docs").mkdir(parents=True)
+    (root / "notes").mkdir(parents=True)
+    (repo / "README.md").write_text("# repo readme\n\nrepository documentation", encoding="utf-8")
+    (repo / "docs" / "guide.md").write_text("# guide\n\nrepository guide", encoding="utf-8")
+    (root / "notes" / "note.md").write_text("# personal note\n\nprivate note", encoding="utf-8")
+    store = Store(tmp_path / "overlap.sqlite3")
+    try:
+        report = run_index(store, FakeEmbedder(), projects_root=root, home=tmp_path / "h",
+                           collections=("wiki", "code"), code_projects={"code-tool"})
+        assert report.errors == []
+        rows = {Path(path).relative_to(root).as_posix(): collection for path, collection
+                in store.conn.execute("SELECT path, collection FROM documents")}
+        assert rows == {
+            "code-tool/README.md": "code",
+            "code-tool/docs/guide.md": "code",
+            "notes/note.md": "wiki",
+        }
+    finally:
+        store.close()
 
 
 def test_mcp_server_accepts_opt_in_collections():

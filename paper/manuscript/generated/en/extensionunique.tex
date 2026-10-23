@@ -1,0 +1,16 @@
+% Generated from primary=gemini_reviewed; see ../manifest.json for source SHA-256.
+Unique-wording sensitivity: 49 queries.
+\par\smallskip
+% keep lowest qid per normalized wording; source extension.json
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{2}{>{\centering\arraybackslash}X}@{}}
+\toprule
+System & Gemini initial & Gemma 12B initial \\
+\midrule
+bm25\_plain & \shortstack{0.503 \\ {\footnotesize[0.407, 0.597]}} & \shortstack{0.513 \\ {\footnotesize[0.414, 0.611]}} \\
+bm25\_lemma & \shortstack{0.530 \\ {\footnotesize[0.439, 0.624]}} & \shortstack{0.546 \\ {\footnotesize[0.448, 0.646]}} \\
+dense\_e5 & \shortstack{0.717 \\ {\footnotesize[0.649, 0.782]}} & \shortstack{0.724 \\ {\footnotesize[0.659, 0.786]}} \\
+dense\_eg2 & \shortstack{0.757 \\ {\footnotesize[0.695, 0.813]}} & \shortstack{0.765 \\ {\footnotesize[0.698, 0.826]}} \\
+adaptive & \shortstack{0.754 \\ {\footnotesize[0.692, 0.810]}} & \shortstack{0.760 \\ {\footnotesize[0.694, 0.821]}} \\
+\bottomrule
+\end{tabularx}\endgroup

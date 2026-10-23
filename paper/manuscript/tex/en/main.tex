@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+\newcommand{\tablelang}{en}
+\input{../preamble}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\crefname{appendix}{Appendix}{Appendices}
+\setlength{\emergencystretch}{2em}
+\hypersetup{pdftitle={archive-index: lexical, dense and hybrid search in a multilingual research archive},pdfauthor={Oleksandr Pylypenko}}
+
+\begin{document}
+\selectlanguage{english}
+
+\title{archive-index: lexical, dense and hybrid search in a multilingual research archive}
+\author{Oleksandr Pylypenko\\[2pt]\small Independent Researcher in Artificial Intelligence and Machine Learning\\ \small PhD Student, State University of Trade and Economics, Kyiv, Ukraine\\[2pt]
+\small ORCID: \href{https://orcid.org/0009-0004-9610-9242}{0009-0004-9610-9242}\\ \small\href{mailto:O.Pylypenko@knute.edu.ua}{\texttt{O.Pylypenko@knute.edu.ua}}}
+\date{2026-10-23}
+\maketitle
+
+\begin{abstract}
+\noindent
+Research archives mix languages, file formats and retrieval cues, making the choice between lexical, dense and hybrid search an empirical question. We study these trade-offs in archive-index, a local system combining SQLite BM25, Ukrainian/Russian lemma expansion and multimodal embeddings. The constructed UA-PAR collection contains 7\,070 public-source files, 200 model-written queries and 5\,572 pooled query--document pairs assessed by language models. On its 170 answerable queries, mean nDCG@10 under reviewed Gemini labels is 0.674 for multilingual-E5, 0.633 for EmbeddingGemma~2, 0.629 for adaptive fusion, 0.482 for lemmatized BM25 and 0.450 for plain BM25. Adaptive fusion exceeds BM25 after Holm correction but has no demonstrated advantage over dense EG2 or reciprocal-rank fusion; evidence for the lemma gain depends on the relevance judge. Restricting EG2 to the same text candidates as E5 changes its score by less than 0.002. In a separate 50-record extension with initial Gemini labels, EG2 and adaptive fusion obtain 0.759 and 0.756, versus 0.721 for E5; the cohort contains 49 distinct wordings. Further experiments distinguish ordinary from condensed GGUF evaluation, optimized vector selection from the actual archive-ranking path, and source-dataset image/speech matching from model-judged text retrieval. Costs come from one laptop in an ordinary desktop session; the private-archive study reports operational aggregates. The original answerable targets are all notes, and no human relevance audit is included. The results characterize implemented retrieval trade-offs under these conditions rather than establish a generally superior fusion rule.
+\end{abstract}
+
+\noindent\textbf{Keywords:} information retrieval; hybrid search; BM25; dense retrieval; morphology; Ukrainian; Russian; multimodal retrieval; personal information management; benchmark; LLM relevance judgements.
+
+\medskip
+\noindent\textbf{Evidence scope.} Text-relevance judgements are model-generated; image and speech experiments use source-dataset pairings. Implementation tests, retrieval estimates, deployment checks and hardware measurements answer different questions and are reported separately.
+
+\input{sections/intro}
+\input{sections/related}
+\input{sections/system}
+\input{sections/uapar}
+\input{sections/method}
+\input{sections/results}
+% Keep public-result floats ahead of the separate private-archive study.
+\clearpage
+\input{sections/field}
+% Flush result floats before interpretation and references.
+\clearpage
+\input{sections/discussion}
+\input{sections/limitations}
+\input{sections/availability}
+\input{sections/conclusion}
+
+\bibliographystyle{plainnat}
+\bibliography{../refs}
+
+\appendix
+\input{sections/measured_appendix}
+\clearpage
+\input{sections/history}
+\end{document}

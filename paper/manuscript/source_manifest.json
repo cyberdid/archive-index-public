@@ -1,0 +1,1139 @@
+{
+  "schema": 1,
+  "checked_date": "2026-10-23",
+  "scope": "Machine metadata and scoped original-content checks for all 27 sources; BM25 original PDF obtained on 2026-10-23. Not human verification or submission approval.",
+  "bibliography_sha256": "bdf0a292f24e625a834269e638ba5dc247b2be2f257bf18d765caa8ef4b94bfa",
+  "human_verified": false,
+  "submission_ready": false,
+  "sources": [
+    {
+      "key": "robertson2009bm25",
+      "local_title": "The Probabilistic Relevance Framework: {BM25} and Beyond",
+      "doi": "10.1561/1500000019",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1561/1500000019",
+      "source_sha256": "fa78c7b3e703443ffa37a1a855d7678e6d5d137dccb38d232b65e6d0a8b1ec27",
+      "metadata": {
+        "title": "The Probabilistic Relevance Framework: BM25 and Beyond",
+        "authors": [
+          "Robertson, Stephen",
+          "Zaragoza, Hugo"
+        ],
+        "year": [
+          [
+            2009,
+            9,
+            17
+          ]
+        ],
+        "venue": [
+          "Foundations and Trends® in Information Retrieval"
+        ],
+        "volume": "4",
+        "issue": "1-2",
+        "pages": "1-174",
+        "url": "https://doi.org/10.1561/1500000019"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "original source correction recorded",
+      "claim_support": {
+        "url": "https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf",
+        "locator": "Original author-hosted PDF: PDF pages 1 and 3 (title/abstract), page 4 (introduction); section 3.4 and equations 3.14–3.15 on PDF page 30.",
+        "supports": "Probabilistic relevance framework and BM25; original volume3 issue4 pages333–389",
+        "status": "original full PDF retrieved; title page, abstract, introduction and BM25 formulation inspected",
+        "conflict": "Crossref volume4 issue1–2 pages1–174 differs from original article title page",
+        "original_pdf_sha256": "11a9ef825dfd3fe50c8621273d02ea26b6f502b60379db9519d6c5c10de4fd25",
+        "original_pdf_bytes": 423997,
+        "checked_date": "2026-10-23",
+        "previous_retrieval_limit": "Earlier direct attempts failed; the author-hosted original was successfully retrieved on 2026-10-23. Publisher endpoint remains HTTP 403."
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:5",
+        "paper/manuscript/tex/uk/sections/related.tex:5"
+      ]
+    },
+    {
+      "key": "cormack2009rrf",
+      "local_title": "Reciprocal Rank Fusion Outperforms {Condorcet} and Individual Rank Learning Methods",
+      "doi": "10.1145/1571941.1572114",
+      "status": "canonical publisher/author metadata inspected; API rate-limited",
+      "error": "HTTP Error 429: Too Many Requests",
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf",
+        "locator": "Abstract and start of section1 in indexed author-hosted original; publisher/Google Research metadata",
+        "supports": "Training-free ranked-list fusion; SIGIR2009 pages758–759",
+        "status": "relevant original excerpt and canonical metadata inspected",
+        "metadata_url": "https://research.google/pubs/reciprocal-rank-fusion-outperforms-condorcet-and-individual-rank-learning-methods/"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:5",
+        "paper/manuscript/tex/uk/sections/related.tex:5"
+      ]
+    },
+    {
+      "key": "karpukhin2020dpr",
+      "local_title": "Dense Passage Retrieval for Open-Domain Question Answering",
+      "doi": "10.18653/v1/2020.emnlp-main.550",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.18653/v1/2020.emnlp-main.550",
+      "source_sha256": "9a82810f813ff8b5c2787eeb19e442ac1edf468efedbb12255a8ea28b207f7ad",
+      "metadata": {
+        "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+        "authors": [
+          "Karpukhin, Vladimir",
+          "Oguz, Barlas",
+          "Min, Sewon",
+          "Lewis, Patrick",
+          "Wu, Ledell",
+          "Edunov, Sergey",
+          "Chen, Danqi",
+          "Yih, Wen-tau"
+        ],
+        "year": [
+          [
+            2020
+          ]
+        ],
+        "venue": [
+          "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)"
+        ],
+        "volume": null,
+        "issue": null,
+        "pages": "6769-6781",
+        "url": "https://doi.org/10.18653/v1/2020.emnlp-main.550"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://aclanthology.org/2020.emnlp-main.550/",
+        "locator": "Publisher abstract",
+        "supports": "Dense representations of queries/passages for retrieval",
+        "status": "relevant original abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:5",
+        "paper/manuscript/tex/uk/sections/related.tex:5"
+      ]
+    },
+    {
+      "key": "reimers2019sbert",
+      "local_title": "Sentence-{BERT}: Sentence Embeddings using {Siamese} {BERT}-Networks",
+      "doi": "10.18653/v1/D19-1410",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.18653/v1/D19-1410",
+      "source_sha256": "8d0c9378c90c01ba236a4e5c98ba34f3d05051777a7b01f91ec3225c04cf6da1",
+      "metadata": {
+        "title": "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks",
+        "authors": [
+          "Reimers, Nils",
+          "Gurevych, Iryna"
+        ],
+        "year": [
+          [
+            2019
+          ]
+        ],
+        "venue": [
+          "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)"
+        ],
+        "volume": null,
+        "issue": null,
+        "pages": "3980-3990",
+        "url": "https://doi.org/10.18653/v1/d19-1410"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "original source correction recorded",
+      "claim_support": {
+        "url": "https://aclanthology.org/D19-1410.pdf",
+        "locator": "First-page proceedings header and abstract; section3",
+        "supports": "Sentence embeddings compared by cosine similarity; publisher pagination3982–3992",
+        "status": "relevant original text inspected",
+        "conflict": "Crossref pages3980–3990 differ from publisher PDF"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:5",
+        "paper/manuscript/tex/uk/sections/related.tex:5"
+      ]
+    },
+    {
+      "key": "wang2024me5",
+      "local_title": "Multilingual {E5} Text Embeddings: A Technical Report",
+      "doi": "10.48550/arXiv.2402.05672",
+      "status": "metadata_fetched",
+      "provider": "datacite",
+      "source_url": "https://api.datacite.org/dois/10.48550/arXiv.2402.05672",
+      "source_sha256": "f10e44ea3d40b29e52505ebc96d03373683e753c52a8e984e9ee0fdfe66a5fae",
+      "metadata": {
+        "title": "Multilingual E5 Text Embeddings: A Technical Report",
+        "authors": [
+          "Wang, Liang",
+          "Yang, Nan",
+          "Huang, Xiaolong",
+          "Yang, Linjun",
+          "Majumder, Rangan",
+          "Wei, Furu"
+        ],
+        "year": 2024,
+        "publisher": "arXiv",
+        "url": "https://arxiv.org/abs/2402.05672"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/2402.05672",
+        "locator": "Abstract, training description",
+        "supports": "Open multilingual text embedding family;1billion contrastive pairs followed by labelled fine-tuning",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:8",
+        "paper/manuscript/tex/uk/sections/related.tex:8"
+      ]
+    },
+    {
+      "key": "vera2025embeddinggemma",
+      "local_title": "{EmbeddingGemma}: Powerful and Lightweight Text Representations",
+      "doi": "10.48550/arXiv.2509.20354",
+      "status": "metadata_fetched",
+      "provider": "datacite",
+      "source_url": "https://api.datacite.org/dois/10.48550/arXiv.2509.20354",
+      "source_sha256": "e2412d3fbbb36bef82bca6c5d5eec123c6c2a5591f103b778aa42a138f6677c8",
+      "metadata": {
+        "title": "EmbeddingGemma: Powerful and Lightweight Text Representations",
+        "authors": [
+          "Vera, Henrique Schechter",
+          "Dua, Sahil",
+          "Zhang, Biao",
+          "Salz, Daniel",
+          "Mullins, Ryan",
+          "Panyam, Sindhu Raghuram",
+          "Smoot, Sara",
+          "Naim, Iftekhar",
+          "Zou, Joe",
+          "Chen, Feiyang",
+          "Cer, Daniel",
+          "Lisak, Alice",
+          "Choi, Min",
+          "Gonzalez, Lucas",
+          "Sanseviero, Omar",
+          "Cameron, Glenn",
+          "Ballantyne, Ian",
+          "Black, Kat",
+          "Chen, Kaifeng",
+          "Wang, Weiyi",
+          "Li, Zhe",
+          "Martins, Gus",
+          "Lee, Jinhyuk",
+          "Sherwood, Mark",
+          "Ji, Juyeong",
+          "Wu, Renjie",
+          "Zheng, Jingxiao",
+          "Singh, Jyotinder",
+          "Sharma, Abheesht",
+          "Sreepathihalli, Divyashree",
+          "Jain, Aashi",
+          "Elarabawy, Adham",
+          "Co, AJ",
+          "Doumanoglou, Andreas",
+          "Samari, Babak",
+          "Hora, Ben",
+          "Potetz, Brian",
+          "Kim, Dahun",
+          "Alfonseca, Enrique",
+          "Moiseev, Fedor",
+          "Han, Feng",
+          "Gomez, Frank Palma",
+          "Ábrego, Gustavo Hernández",
+          "Zhang, Hesen",
+          "Hui, Hui",
+          "Han, Jay",
+          "Gill, Karan",
+          "Chen, Ke",
+          "Chen, Koert",
+          "Shanbhogue, Madhuri",
+          "Boratko, Michael",
+          "Suganthan, Paul",
+          "Duddu, Sai Meher Karthik",
+          "Mariserla, Sandeep",
+          "Ariafar, Setareh",
+          "Zhang, Shanfeng",
+          "Zhang, Shijie",
+          "Baumgartner, Simon",
+          "Goenka, Sonam",
+          "Qiu, Steve",
+          "Dabral, Tanmaya",
+          "Walker, Trevor",
+          "Rao, Vikram",
+          "Khawaja, Waleed",
+          "Zhou, Wenlei",
+          "Ren, Xiaoqi",
+          "Xia, Ye",
+          "Chen, Yichang",
+          "Chen, Yi-Ting",
+          "Dong, Zhe",
+          "Ding, Zhongli",
+          "Visin, Francesco",
+          "Liu, Gaël",
+          "Zhang, Jiageng",
+          "Kenealy, Kathleen",
+          "Casbon, Michelle",
+          "Kumar, Ravin",
+          "Mesnard, Thomas",
+          "Gleicher, Zach",
+          "Brick, Cormac",
+          "Lacombe, Olivier",
+          "Roberts, Adam",
+          "Yin, Qin",
+          "Sung, Yunhsuan",
+          "Hoffmann, Raphael",
+          "Warkentin, Tris",
+          "Joulin, Armand",
+          "Duerig, Tom",
+          "Seyedhosseini, Mojtaba"
+        ],
+        "year": 2025,
+        "publisher": "arXiv",
+        "url": "https://arxiv.org/abs/2509.20354"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/2509.20354",
+        "locator": "Original abstract",
+        "supports": "EmbeddingGemma300M text model based on Gemma3; MTEB evaluation",
+        "status": "relevant original abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:8",
+        "paper/manuscript/tex/uk/sections/related.tex:8"
+      ]
+    },
+    {
+      "key": "google2026embeddinggemma2card",
+      "local_title": "{EmbeddingGemma 2} model card",
+      "doi": null,
+      "status": "stable_url_or_local_model_card",
+      "entry": {
+        "key": "google2026embeddinggemma2card",
+        "author": "{Google DeepMind}",
+        "title": "{EmbeddingGemma 2} model card",
+        "howpublished": "Hugging Face, \\url{https://huggingface.co/google/embeddinggemma-2}, revision 914f7f89142e33e77833254d9c9b90c3cef7303b",
+        "year": "2026",
+        "note": "Apache-2.0; prompts, float16 warning and Matryoshka dimensions as stated in the card"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://huggingface.co/google/embeddinggemma-2/blob/914f7f89142e33e77833254d9c9b90c3cef7303b/README.md",
+        "locator": "Model overview; MRL; task prefix table; section4 Numerical Precision",
+        "supports": "Shared768d multimodal space,256d truncation, retrieval prefixes, bf16/fp32 guidance",
+        "status": "relevant pinned local model card text inspected",
+        "source_sha256": "b677a0ee2818c36f091b65fd3d9b4baea9f04d53b02b49cae916c74bf9682037"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:8",
+        "paper/manuscript/tex/uk/sections/related.tex:8"
+      ]
+    },
+    {
+      "key": "kusupati2022matryoshka",
+      "local_title": "Matryoshka Representation Learning",
+      "doi": "10.48550/arXiv.2205.13147",
+      "status": "metadata_fetched",
+      "provider": "datacite",
+      "source_url": "https://api.datacite.org/dois/10.48550/arXiv.2205.13147",
+      "source_sha256": "8973590c03612149c6de4eab83c2af0bb38bcd1a02a8960a827561ba3da982fc",
+      "metadata": {
+        "title": "Matryoshka Representation Learning",
+        "authors": [
+          "Kusupati, Aditya",
+          "Bhatt, Gantavya",
+          "Rege, Aniket",
+          "Wallingford, Matthew",
+          "Sinha, Aditya",
+          "Ramanujan, Vivek",
+          "Howard-Snyder, William",
+          "Chen, Kaifeng",
+          "Kakade, Sham",
+          "Jain, Prateek",
+          "Farhadi, Ali"
+        ],
+        "year": 2022,
+        "publisher": "arXiv",
+        "url": "https://arxiv.org/abs/2205.13147"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/2205.13147",
+        "locator": "Abstract, representation flexibility and coarse-to-fine granularity",
+        "supports": "Flexible lower-dimensional representations; EG2 prefix dimensions are documented separately in its pinned model card",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:8",
+        "paper/manuscript/tex/uk/sections/related.tex:8"
+      ]
+    },
+    {
+      "key": "korobov2015pymorphy",
+      "local_title": "Morphological Analyzer and Generator for {Russian} and {Ukrainian} Languages",
+      "doi": "10.1007/978-3-319-26123-2_31",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1007/978-3-319-26123-2_31",
+      "source_sha256": "0b0a37936003511699338793a88d305ebee46666b330afd80ce670838944b7db",
+      "metadata": {
+        "title": "Morphological Analyzer and Generator for Russian and Ukrainian Languages",
+        "authors": [
+          "Korobov, Mikhail"
+        ],
+        "year": [
+          [
+            2015
+          ]
+        ],
+        "venue": [
+          "Communications in Computer and Information Science",
+          "Analysis of Images, Social Networks and Texts"
+        ],
+        "volume": null,
+        "issue": null,
+        "pages": "320-332",
+        "url": "https://doi.org/10.1007/978-3-319-26123-2_31"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/1503.07283",
+        "locator": "Original abstract",
+        "supports": "Dictionary-based Russian/Ukrainian morphological analysis and generation, including OOV rules",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:11",
+        "paper/manuscript/tex/uk/sections/related.tex:11"
+      ]
+    },
+    {
+      "key": "pymorphy3",
+      "local_title": "pymorphy3, version 2.0.6, with pymorphy3-dicts-uk 2.4.1.1.1663094765 and pymorphy3-dicts-ru 2.4.417150.4580142",
+      "doi": null,
+      "status": "stable_url_or_local_model_card",
+      "entry": {
+        "key": "pymorphy3",
+        "title": "pymorphy3, version 2.0.6, with pymorphy3-dicts-uk 2.4.1.1.1663094765 and pymorphy3-dicts-ru 2.4.417150.4580142",
+        "howpublished": "\\url{https://github.com/no-plagiarism/pymorphy3}",
+        "note": "Maintained fork of pymorphy2"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://github.com/no-plagiarism/pymorphy3",
+        "locator": "Repository README, introduction; fork metadata",
+        "supports": "Continuation of pymorphy2 for Russian/Ukrainian morphology",
+        "status": "relevant official README inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:11",
+        "paper/manuscript/tex/uk/sections/related.tex:11"
+      ]
+    },
+    {
+      "key": "sqlitefts5",
+      "local_title": "{SQLite} {FTS5} Extension",
+      "doi": null,
+      "status": "stable_url_or_local_model_card",
+      "entry": {
+        "key": "sqlitefts5",
+        "title": "{SQLite} {FTS5} Extension",
+        "howpublished": "\\url{https://www.sqlite.org/fts5.html}",
+        "note": "SQLite 3.53.1 as linked into the Python used for the measurements"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://www.sqlite.org/fts5.html#the_bm25_function",
+        "locator": "Section5.1.1",
+        "supports": "FTS5 has a built-in BM25 function, ascending better-match scores",
+        "status": "relevant official documentation inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:5",
+        "paper/manuscript/tex/uk/sections/related.tex:5"
+      ]
+    },
+    {
+      "key": "jarvelin2002ndcg",
+      "local_title": "Cumulated Gain-Based Evaluation of {IR} Techniques",
+      "doi": "10.1145/582415.582418",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1145/582415.582418",
+      "source_sha256": "e016b603ca800ae12786fec8a51b909633add9f49fc501037e81073feb6956f2",
+      "metadata": {
+        "title": "Cumulated gain-based evaluation of IR techniques",
+        "authors": [
+          "Järvelin, Kalervo",
+          "Kekäläinen, Jaana"
+        ],
+        "year": [
+          [
+            2002,
+            10
+          ]
+        ],
+        "venue": [
+          "ACM Transactions on Information Systems"
+        ],
+        "volume": "20",
+        "issue": "4",
+        "pages": "422-446",
+        "url": "https://doi.org/10.1145/582415.582418"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://trepo.tuni.fi/bitstream/handle/10024/65718/cumulated_gain_based_indicators_2002.pdf?sequence=1",
+        "locator": "Author-institution manuscript section2; original publisher abstract supplied via DOI registry",
+        "supports": "Graded cumulative gain, rank discounting and ideal-relative normalization",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:17",
+        "paper/manuscript/tex/uk/sections/related.tex:17"
+      ]
+    },
+    {
+      "key": "sakai2007bpref",
+      "local_title": "Alternatives to Bpref",
+      "doi": "10.1145/1277741.1277756",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1145/1277741.1277756",
+      "source_sha256": "4538f5473f7249435071f1e6d6f68680c74bdde3c7f9d4c9b87f97aceda9dbd5",
+      "metadata": {
+        "title": "Alternatives to Bpref",
+        "authors": [
+          "Sakai, Tetsuya"
+        ],
+        "year": [
+          [
+            2007,
+            7,
+            23
+          ]
+        ],
+        "venue": [
+          "Proceedings of the 30th annual international ACM SIGIR conference on Research and development in information retrieval"
+        ],
+        "volume": null,
+        "issue": null,
+        "pages": "71-78",
+        "url": "https://doi.org/10.1145/1277741.1277756"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://w-rdb.waseda.jp/html/100001248_en.html",
+        "locator": "Author institutional record, Alternatives to Bpref abstract",
+        "supports": "Condensed lists remove all unjudged documents before applying nDCG/AP/Q; this is a sensitivity analysis, not new relevance evidence",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:17",
+        "paper/manuscript/tex/uk/sections/related.tex:17"
+      ]
+    },
+    {
+      "key": "smucker2007significance",
+      "local_title": "A Comparison of Statistical Significance Tests for Information Retrieval Evaluation",
+      "doi": "10.1145/1321440.1321528",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1145/1321440.1321528",
+      "source_sha256": "0785af5022fa365ef4419c476521d53c53bcda3de682eba3256ce7da02916bd7",
+      "metadata": {
+        "title": "A comparison of statistical significance tests for information retrieval evaluation",
+        "authors": [
+          "Smucker, Mark D.",
+          "Allan, James",
+          "Carterette, Ben"
+        ],
+        "year": [
+          [
+            2007,
+            11,
+            6
+          ]
+        ],
+        "venue": [
+          "Proceedings of the sixteenth ACM conference on Conference on information and knowledge management"
+        ],
+        "volume": null,
+        "issue": null,
+        "pages": "623-632",
+        "url": "https://doi.org/10.1145/1321440.1321528"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://ciir-publications.cs.umass.edu/getpdf.php?id=744",
+        "locator": "Original paper abstract in author-institution repository",
+        "supports": "Comparison of bootstrap, randomization and other significance tests for paired IR system differences",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:17",
+        "paper/manuscript/tex/uk/sections/related.tex:17"
+      ]
+    },
+    {
+      "key": "cohen1968kappa",
+      "local_title": "Weighted Kappa: Nominal Scale Agreement with Provision for Scaled Disagreement or Partial Credit",
+      "doi": "10.1037/h0026256",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1037/h0026256",
+      "source_sha256": "60a038c6e71c65ce3bbdda1759c2a2d71faa6ac2da56203ace5c79383a9bed12",
+      "metadata": {
+        "title": "Weighted kappa: Nominal scale agreement provision for scaled disagreement or partial credit.",
+        "authors": [
+          "Cohen, Jacob"
+        ],
+        "year": [
+          [
+            1968
+          ]
+        ],
+        "venue": [
+          "Psychological Bulletin"
+        ],
+        "volume": "70",
+        "issue": "4",
+        "pages": "213-220",
+        "url": "https://doi.org/10.1037/h0026256"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "original source correction recorded",
+      "claim_support": {
+        "url": "https://www.scribd.com/document/309730601/Weighted-Kappa-Original-Article",
+        "locator": "Public transcription of original title page, abstract and Development of Weighted Kappa (pp213–216); APA DOI metadata and NLM record for identity",
+        "supports": "Chance-corrected agreement with unequal disagreement/partial-credit weights; exact linear weighting is our reported operational choice",
+        "status": "public original-paper transcription inspected; publisher access blocked",
+        "conflict": "DOI registry title omits with; original article title and NLM record include with"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:17",
+        "paper/manuscript/tex/uk/sections/related.tex:17"
+      ]
+    },
+    {
+      "key": "macavaney2022irmeasures",
+      "local_title": "Streamlining Evaluation with ir-measures",
+      "doi": "10.1007/978-3-030-99739-7_38",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1007/978-3-030-99739-7_38",
+      "source_sha256": "1e3905debbd6e2b09dca2dba0b20c6757b743c8e9ec1e3a129c165b780dad7d2",
+      "metadata": {
+        "title": "Streamlining Evaluation with ir-measures",
+        "authors": [
+          "MacAvaney, Sean",
+          "Macdonald, Craig",
+          "Ounis, Iadh"
+        ],
+        "year": [
+          [
+            2022
+          ]
+        ],
+        "venue": [
+          "Lecture Notes in Computer Science",
+          "Advances in Information Retrieval"
+        ],
+        "volume": null,
+        "issue": null,
+        "pages": "305-310",
+        "url": "https://doi.org/10.1007/978-3-030-99739-7_38"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/2111.13466",
+        "locator": "Original abstract; official ir-measur.es documentation quick start and citation",
+        "supports": "Common interface to IR evaluation tools, including graded nDCG parameterization",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:17",
+        "paper/manuscript/tex/uk/sections/related.tex:17"
+      ]
+    },
+    {
+      "key": "thomas2024llmjudge",
+      "local_title": "Large Language Models can Accurately Predict Searcher Preferences",
+      "doi": "10.1145/3626772.3657707",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1145/3626772.3657707",
+      "source_sha256": "ca02d0087420605c8d0460db177a70e88f289aabcc564599c2fd45c5ad89b681",
+      "metadata": {
+        "title": "Large Language Models can Accurately Predict Searcher Preferences",
+        "authors": [
+          "Thomas, Paul",
+          "Spielman, Seth",
+          "Craswell, Nick",
+          "Mitra, Bhaskar"
+        ],
+        "year": [
+          [
+            2024,
+            7,
+            10
+          ]
+        ],
+        "venue": [
+          "Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval"
+        ],
+        "volume": null,
+        "issue": null,
+        "pages": "1930-1940",
+        "url": "https://doi.org/10.1145/3626772.3657707"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://www.microsoft.com/en-us/research/publication/large-language-models-can-accurately-predict-searcher-preferences/",
+        "locator": "Author institution publication abstract",
+        "supports": "LLM relevance assessment calibrated against real searchers; unpredictable prompt-paraphrase effects and need for gold labels",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:17",
+        "paper/manuscript/tex/uk/sections/related.tex:17"
+      ]
+    },
+    {
+      "key": "faggioli2023perspectives",
+      "local_title": "Perspectives on Large Language Models for Relevance Judgment",
+      "doi": "10.1145/3578337.3605136",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1145/3578337.3605136",
+      "source_sha256": "020efe8d13beb2679b388f33e4f36060d3c4f994f7f3e91fd5991fc238bbaf6b",
+      "metadata": {
+        "title": "Perspectives on Large Language Models for Relevance Judgment",
+        "authors": [
+          "Faggioli, Guglielmo",
+          "Dietz, Laura",
+          "Clarke, Charles L. A.",
+          "Demartini, Gianluca",
+          "Hagen, Matthias",
+          "Hauff, Claudia",
+          "Kando, Noriko",
+          "Kanoulas, Evangelos",
+          "Potthast, Martin",
+          "Stein, Benno",
+          "Wachsmuth, Henning"
+        ],
+        "year": [
+          [
+            2023,
+            8,
+            9
+          ]
+        ],
+        "venue": [
+          "Proceedings of the 2023 ACM SIGIR International Conference on Theory of Information Retrieval"
+        ],
+        "volume": null,
+        "issue": null,
+        "pages": "39-50",
+        "url": "https://doi.org/10.1145/3578337.3605136"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/2304.09161",
+        "locator": "Original abstract",
+        "supports": "Possible roles and risks of LLM relevance judgements; human–machine collaboration spectrum",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:17",
+        "paper/manuscript/tex/uk/sections/related.tex:17"
+      ]
+    },
+    {
+      "key": "thakur2021beir",
+      "local_title": "{BEIR}: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models",
+      "doi": "10.48550/arXiv.2104.08663",
+      "status": "metadata_fetched",
+      "provider": "datacite",
+      "source_url": "https://api.datacite.org/dois/10.48550/arXiv.2104.08663",
+      "source_sha256": "868b41485308c08c67b26bfc3a6f926c8098ad272886de4cdfb19760c7f9b55c",
+      "metadata": {
+        "title": "BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models",
+        "authors": [
+          "Thakur, Nandan",
+          "Reimers, Nils",
+          "Rücklé, Andreas",
+          "Srivastava, Abhishek",
+          "Gurevych, Iryna"
+        ],
+        "year": 2021,
+        "publisher": "arXiv",
+        "url": "https://arxiv.org/abs/2104.08663"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/2104.08663",
+        "locator": "Abstract, comparison over18datasets and10architectures",
+        "supports": "BM25 robust baseline; dense/sparse approaches often underperform alternatives out of distribution",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:5",
+        "paper/manuscript/tex/uk/sections/related.tex:5"
+      ]
+    },
+    {
+      "key": "zhang2023miracl",
+      "local_title": "{MIRACL}: A Multilingual Retrieval Dataset Covering 18 Diverse Languages",
+      "doi": "10.1162/tacl_a_00595",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1162/tacl_a_00595",
+      "source_sha256": "cf7c48e43e0c3cc36a9c958b6748b61cc1f92b1d70f7d448b3348ba02152a747",
+      "metadata": {
+        "title": "<b>MIRACL</b>\n                    : A Multilingual Retrieval Dataset Covering 18 Diverse Languages",
+        "authors": [
+          "Zhang, Xinyu",
+          "Thakur, Nandan",
+          "Ogundepo, Odunayo",
+          "Kamalloo, Ehsan",
+          "Alfonso-Hermelo, David",
+          "Li, Xiaoguang",
+          "Liu, Qun",
+          "Rezagholizadeh, Mehdi",
+          "Lin, Jimmy"
+        ],
+        "year": [
+          [
+            2023
+          ]
+        ],
+        "venue": [
+          "Transactions of the Association for Computational Linguistics"
+        ],
+        "volume": "11",
+        "issue": null,
+        "pages": "1114-1131",
+        "url": "https://doi.org/10.1162/tacl_a_00595"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://aclanthology.org/2023.tacl-1.63/",
+        "locator": "Publisher abstract and metadata",
+        "supports": "Human-judged multilingual retrieval dataset covering18languages",
+        "status": "relevant original abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:11",
+        "paper/manuscript/tex/uk/sections/related.tex:11"
+      ]
+    },
+    {
+      "key": "radford2021clip",
+      "local_title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "doi": "10.48550/arXiv.2103.00020",
+      "status": "metadata_fetched",
+      "provider": "datacite",
+      "source_url": "https://api.datacite.org/dois/10.48550/arXiv.2103.00020",
+      "source_sha256": "9fc923f447eb54e1515be2adf92983d346d30a2a66ec52b9ecd2ab61e35970f2",
+      "metadata": {
+        "title": "Learning Transferable Visual Models From Natural Language Supervision",
+        "authors": [
+          "Radford, Alec",
+          "Kim, Jong Wook",
+          "Hallacy, Chris",
+          "Ramesh, Aditya",
+          "Goh, Gabriel",
+          "Agarwal, Sandhini",
+          "Sastry, Girish",
+          "Askell, Amanda",
+          "Mishkin, Pamela",
+          "Clark, Jack",
+          "Krueger, Gretchen",
+          "Sutskever, Ilya"
+        ],
+        "year": 2021,
+        "publisher": "arXiv",
+        "url": "https://arxiv.org/abs/2103.00020"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/2103.00020",
+        "locator": "Abstract, caption/image pretraining and natural-language transfer",
+        "supports": "Learning visual representations from paired image/text data; no claim about EG2 performance",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:8",
+        "paper/manuscript/tex/uk/sections/related.tex:8"
+      ]
+    },
+    {
+      "key": "thapliyal2022xm3600",
+      "local_title": "{Crossmodal-3600}: A Massively Multilingual Multimodal Evaluation Dataset",
+      "doi": "10.48550/arXiv.2205.12522",
+      "status": "metadata_fetched",
+      "provider": "datacite",
+      "source_url": "https://api.datacite.org/dois/10.48550/arXiv.2205.12522",
+      "source_sha256": "ecaf7828c415c29be512489a6dc73542fd834ede1002bf0e5288cde7fe7f4d16",
+      "metadata": {
+        "title": "Crossmodal-3600: A Massively Multilingual Multimodal Evaluation Dataset",
+        "authors": [
+          "Thapliyal, Ashish V.",
+          "Pont-Tuset, Jordi",
+          "Chen, Xi",
+          "Soricut, Radu"
+        ],
+        "year": 2022,
+        "publisher": "arXiv",
+        "url": "https://arxiv.org/abs/2205.12522"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/2205.12522",
+        "locator": "Abstract, dataset construction",
+        "supports": "3600images,36languages,human captions avoiding direct translation artifacts",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:14",
+        "paper/manuscript/tex/uk/sections/related.tex:14"
+      ]
+    },
+    {
+      "key": "conneau2023fleurs",
+      "local_title": "{FLEURS}: Few-Shot Learning Evaluation of Universal Representations of Speech",
+      "doi": "10.1109/SLT54892.2023.10023141",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1109/SLT54892.2023.10023141",
+      "source_sha256": "778f1f2f87ec64d25a59c62da6bfcc1ea59151a12f68f765ede83ce75f732690",
+      "metadata": {
+        "title": "FLEURS: FEW-Shot Learning Evaluation of Universal Representations of Speech",
+        "authors": [
+          "Conneau, Alexis",
+          "Ma, Min",
+          "Khanuja, Simran",
+          "Zhang, Yu",
+          "Axelrod, Vera",
+          "Dalmia, Siddharth",
+          "Riesa, Jason",
+          "Rivera, Clara",
+          "Bapna, Ankur"
+        ],
+        "year": [
+          [
+            2023,
+            1,
+            9
+          ]
+        ],
+        "venue": [
+          "2022 IEEE Spoken Language Technology Workshop (SLT)"
+        ],
+        "volume": null,
+        "issue": null,
+        "pages": "798-805",
+        "url": "https://doi.org/10.1109/slt54892.2023.10023141"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://research.google/pubs/fleurs-few-shot-learning-evaluation-of-universal-representations-of-speech/",
+        "locator": "Author institution publication abstract; original arXiv2205.12446 abstract",
+        "supports": "102-language n-way parallel speech on FLoRes-101, with retrieval among supported tasks;2022event/2023IEEEproceedings dates distinguished",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:14",
+        "paper/manuscript/tex/uk/sections/related.tex:14"
+      ]
+    },
+    {
+      "key": "dumais2003sis",
+      "local_title": "Stuff {I've} Seen: A System for Personal Information Retrieval and Re-Use",
+      "doi": "10.1145/860435.860451",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1145/860435.860451",
+      "source_sha256": "e256823c9c5b538cf55d7aed762a045816b07869cfd836eaa3e8660d30cbc399",
+      "metadata": {
+        "title": "Stuff I've seen",
+        "authors": [
+          "Dumais, Susan",
+          "Cutrell, Edward",
+          "Cadiz, JJ",
+          "Jancke, Gavin",
+          "Sarin, Raman",
+          "Robbins, Daniel C."
+        ],
+        "year": [
+          [
+            2003,
+            7,
+            28
+          ]
+        ],
+        "venue": [
+          "Proceedings of the 26th annual international ACM SIGIR conference on Research and development in informaion retrieval"
+        ],
+        "volume": null,
+        "issue": null,
+        "pages": "72-79",
+        "url": "https://doi.org/10.1145/860435.860451"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://www.microsoft.com/en-us/research/publication/stuff-ive-seen-a-system-for-personal-information-retrieval-and-re-use/",
+        "locator": "Author institution publication abstract",
+        "supports": "Unified personal index of previously seen email, web pages and documents, with contextual retrieval cues",
+        "status": "relevant original abstract/text or author-institution abstract inspected",
+        "metadata_note": "DOI registry abbreviates the title; author-institution record supports the full subtitle used in BibTeX"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:20",
+        "paper/manuscript/tex/uk/sections/related.tex:20"
+      ]
+    },
+    {
+      "key": "malkov2020hnsw",
+      "local_title": "Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs",
+      "doi": "10.1109/TPAMI.2018.2889473",
+      "status": "metadata_fetched",
+      "provider": "crossref",
+      "source_url": "https://api.crossref.org/works/10.1109/TPAMI.2018.2889473",
+      "source_sha256": "f550219f9636c19a6a2693eb0f1cf7c4a0065bcda95877b443f939b4e3312f07",
+      "metadata": {
+        "title": "Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs",
+        "authors": [
+          "Malkov, Yu A.",
+          "Yashunin, D. A."
+        ],
+        "year": [
+          [
+            2020,
+            4,
+            1
+          ]
+        ],
+        "venue": [
+          "IEEE Transactions on Pattern Analysis and Machine Intelligence"
+        ],
+        "volume": "42",
+        "issue": "4",
+        "pages": "824-836",
+        "url": "https://doi.org/10.1109/tpami.2018.2889473"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/1603.09320",
+        "locator": "Original abstract",
+        "supports": "Hierarchical navigable small-world graph approach to approximate nearest-neighbour search;2020journal citation distinct from2016preprint",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:20",
+        "paper/manuscript/tex/uk/sections/related.tex:20"
+      ]
+    },
+    {
+      "key": "douze2024faiss",
+      "local_title": "The {Faiss} library",
+      "doi": "10.48550/arXiv.2401.08281",
+      "status": "metadata_fetched",
+      "provider": "datacite",
+      "source_url": "https://api.datacite.org/dois/10.48550/arXiv.2401.08281",
+      "source_sha256": "f1c216047b73dbdad9541701d908ecea7df41722c7c38ccd3a6e145d05081f7b",
+      "metadata": {
+        "title": "The Faiss library",
+        "authors": [
+          "Douze, Matthijs",
+          "Guzhva, Alexandr",
+          "Deng, Chengqi",
+          "Johnson, Jeff",
+          "Szilvasy, Gergely",
+          "Mazaré, Pierre-Emmanuel",
+          "Lomeli, Maria",
+          "Hosseini, Lucas",
+          "Jégou, Hervé"
+        ],
+        "year": 2024,
+        "publisher": "arXiv",
+        "url": "https://arxiv.org/abs/2401.08281"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/2401.08281",
+        "locator": "Abstract, library scope and tradeoffs",
+        "supports": "Vector similarity search toolkit, indexing/clustering/compression; no blanket sublinear guarantee",
+        "status": "relevant original abstract/text or author-institution abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/related.tex:20",
+        "paper/manuscript/tex/uk/sections/related.tex:20"
+      ]
+    },
+    {
+      "key": "kassis2026skills",
+      "local_title": "Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents",
+      "doi": "10.48550/arXiv.2609.00065",
+      "status": "metadata_fetched",
+      "provider": "datacite",
+      "source_url": "https://api.datacite.org/dois/10.48550/arXiv.2609.00065",
+      "source_sha256": "9bee5537d9308acf115bf0cd168cd60922c724dfdd36749f94f51d3ec41cf21a",
+      "metadata": {
+        "title": "Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents",
+        "authors": [
+          "Kassis, Timothy",
+          "Agarwal, Vinayak",
+          "He, Yuhuan",
+          "Patel, Darshil",
+          "Brueckner, Aubrey M."
+        ],
+        "year": 2026,
+        "publisher": "arXiv",
+        "url": "https://arxiv.org/abs/2609.00065"
+      },
+      "human_verified": false,
+      "bibliography_alignment": "title/identity and available numeric bibliographic fields compared; no substantive mismatch found",
+      "claim_support": {
+        "url": "https://arxiv.org/abs/2609.00065",
+        "locator": "Original abstract",
+        "supports": "Library of procedural research-agent skills; not evidence that these procedures improve task outcomes",
+        "status": "relevant original abstract inspected"
+      },
+      "cited_at": [
+        "paper/manuscript/tex/en/sections/availability.tex:13",
+        "paper/manuscript/tex/uk/sections/availability.tex:13"
+      ]
+    }
+  ]
+}

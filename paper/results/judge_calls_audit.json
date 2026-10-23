@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-10-22T08:00:39.893424+00:00",
+  "input_lock_sha256": "ed166d3a7511bf40e76af9c84c7538103b69401659082e05ef93ded3dede21a9",
+  "sheets": {
+    "gemini_initial": {
+      "calls": 112,
+      "all_successful": true,
+      "graded_pairs": 5572,
+      "exact_sheet_match": true,
+      "duplicate_pair_assignments": 0,
+      "sheet_sha256": "6f46eb11846215090900ab13a6dcde5f1e76a1bcca0225a7683e12d25923cbad",
+      "log_sha256": "71e4ef623c67c89178c598786a22d87451479da0494a1c29cc71819091fd4be3"
+    },
+    "gpt_comparison": {
+      "calls": 112,
+      "all_successful": true,
+      "graded_pairs": 5572,
+      "exact_sheet_match": true,
+      "duplicate_pair_assignments": 0,
+      "sheet_sha256": "4caa9604f4759dade8c69ec16f5a681f1ec845fcbb277717b0b0c4ab6b1bb48c",
+      "log_sha256": "64bf15e1a76545cec4fc217a07afc6227fba2e813b8043ad53c5ad1497002885"
+    },
+    "gemini_review": {
+      "calls": 22,
+      "all_successful": true,
+      "graded_pairs": 1091,
+      "exact_sheet_match": true,
+      "duplicate_pair_assignments": 0,
+      "sheet_sha256": "1ce888acc9db041a0cc706555b6c4424b3d1c7989c8d50c1e870ded8199b911b",
+      "log_sha256": "8616395e4b745cac59a14048a567caf900e488f63c52d589542d6fcf0d967854"
+    }
+  },
+  "review_effect": {
+    "reviewed_pairs": 1091,
+    "same_as_initial_gemini": 757,
+    "same_as_initial_gemma12": 333,
+    "different_from_both": 1,
+    "initial_agreed_pairs_preserved": 4481
+  }
+}

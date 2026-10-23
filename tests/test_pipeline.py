@@ -43,10 +43,10 @@ def world(tmp_path, monkeypatch):
         "# Ключі\n\nAPI_KEY=supersecretvalue123 лежить тут.\n",
         encoding="utf-8",
     )
-    (projects / "projalpha").mkdir(parents=True)
-    (projects / "projalpha" / "README.md").write_text("# projalpha\n\nПасивний моніторинг радіо.\n", encoding="utf-8")
+    (projects / "demo-radio").mkdir(parents=True)
+    (projects / "demo-radio" / "README.md").write_text("# demo-radio\n\nПасивний моніторинг радіо.\n", encoding="utf-8")
 
-    repo = projects / "projalpha"
+    repo = projects / "demo-radio"
     subprocess.run(["git", "-C", str(repo), "init", "-q"], check=True)
     subprocess.run(["git", "-C", str(repo), "-c", "user.email=a@b", "-c", "user.name=t",
                     "commit", "-q", "--allow-empty", "-m", "Fix Wi-Fi scanner dwell time"], check=True)
@@ -77,7 +77,7 @@ def world(tmp_path, monkeypatch):
     codex_dir = home / ".codex" / "sessions" / "2026" / "01" / "01"
     codex_dir.mkdir(parents=True)
     codex_lines = [
-        {"type": "session_meta", "payload": {"id": "cdx-0001", "cwd": str(projects / "projalpha")}},
+        {"type": "session_meta", "payload": {"id": "cdx-0001", "cwd": str(projects / "demo-radio")}},
         {"type": "response_item", "timestamp": "2026-01-01T09:00:00Z", "payload": {
             "type": "message", "role": "user", "content": [
                 {"type": "input_text", "text": "<environment_context>служебне</environment_context>"}]}},
@@ -86,7 +86,7 @@ def world(tmp_path, monkeypatch):
                 {"type": "input_text", "text": "знайди сесію про реверс bladeRF"}]}},
         {"type": "response_item", "payload": {
             "type": "message", "role": "assistant", "content": [
-                {"type": "output_text", "text": "Реверс bladeRF описано в projalpha/research."}]}},
+                {"type": "output_text", "text": "Реверс bladeRF описано в demo-radio/research."}]}},
     ]
     (codex_dir / "rollout-cdx-0001.jsonl").write_text(
         "\n".join(json.dumps(r, ensure_ascii=False) for r in codex_lines) + "\n", encoding="utf-8")
@@ -142,7 +142,7 @@ def test_session_turns_carry_project_and_locator(world):
     store, _ = _index(world)
     cache = VectorCache(store)
     hits = hybrid(store, cache, "реверс bladeRF", None, collections=["sessions"], mode="lexical", k=3)
-    assert hits and hits[0].project == "projalpha"
+    assert hits and hits[0].project == "demo-radio"
     assert hits[0].locator.startswith("line ")
     store.close()
 
@@ -150,8 +150,8 @@ def test_session_turns_carry_project_and_locator(world):
 def test_project_filter_restricts_results(world):
     store, _ = _index(world)
     cache = VectorCache(store)
-    hits = hybrid(store, cache, "точку доступу", None, project="projalpha", mode="lexical", k=5)
-    assert all(h.project == "projalpha" for h in hits)
+    hits = hybrid(store, cache, "точку доступу", None, project="demo-radio", mode="lexical", k=5)
+    assert all(h.project == "demo-radio" for h in hits)
     store.close()
 
 
@@ -175,10 +175,10 @@ def test_second_run_skips_unchanged_files(world):
 def test_deleted_source_is_removed_from_index(world):
     projects, _, _ = world
     store, _ = _index(world)
-    (projects / "projalpha" / "README.md").unlink()
+    (projects / "demo-radio" / "README.md").unlink()
     store2, _ = _index(world)
     paths = [r[0] for r in store2.conn.execute("SELECT path FROM documents WHERE collection='wiki'")]
-    assert not any(p.endswith("projalpha/README.md") for p in paths)
+    assert not any(p.endswith("demo-radio/README.md") for p in paths)
     store.close()
     store2.close()
 
@@ -252,6 +252,42 @@ class MediaFakeEmbedder(FakeEmbedder):
         return self._vec("audio " + str(len(samples)))
 
 
+def test_rebuild_terms_reproduces_the_terms_of_indexing(tmp_path):
+    import wave
+
+    from PIL import Image
+
+    from archive_index.lexical import index_terms
+
+    projects = tmp_path / "Projects"
+    (projects / "p" / "photo_set").mkdir(parents=True)
+    Image.new("RGB", (8, 8), (200, 10, 10)).save(projects / "p" / "photo_set" / "антена_на_даху.png")
+    (projects / "p" / "notes.md").write_text("# Антени\n\nНалаштування точки доступу на даху.", encoding="utf-8")
+    rec = projects / "p" / "processed_recordings"
+    rec.mkdir(parents=True)
+    with wave.open(str(rec / "seg-001_enhanced.wav"), "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(16000)
+        w.writeframes(np.zeros(16000 * 25, dtype=np.int16).tobytes())
+    (rec / "seg-001_transcript.txt").write_text(
+        "[00:00:02.000 --> 00:00:08.000] Speaker 1: перевірка зв'язку на частоті\n", encoding="utf-8")
+
+    store = Store(tmp_path / "t.sqlite3")
+    try:
+        report = run_index(store, MediaFakeEmbedder(), projects_root=projects, home=tmp_path / "h",
+                           collections=("wiki", "images", "audio"))
+        assert report.errors == []
+        read = "SELECT c.collection, f.terms FROM chunks c JOIN chunks_fts f ON f.rowid = c.id ORDER BY c.id"
+        indexed = store.conn.execute(read).fetchall()
+        assert {collection for collection, _ in indexed} == {"wiki", "images", "audio"}
+        store.conn.execute("UPDATE chunks_fts SET terms = ''")
+        store.rebuild_terms(index_terms)
+        assert store.conn.execute(read).fetchall() == indexed
+    finally:
+        store.close()
+
+
 def test_images_and_audio_are_indexed_with_locators(tmp_path):
     import wave
 
@@ -261,7 +297,7 @@ def test_images_and_audio_are_indexed_with_locators(tmp_path):
     projects = tmp_path / "Projects"
     (projects / "3d").mkdir(parents=True)
     Image.new("RGB", (8, 8), (200, 10, 10)).save(projects / "3d" / "bottom_profile.png")
-    rec = projects / "projgamma" / "recordings"
+    rec = projects / "demo-audio" / "recordings"
     rec.mkdir(parents=True)
     with wave.open(str(rec / "seg-001.wav"), "wb") as w:
         w.setnchannels(1)

@@ -55,7 +55,7 @@ def build_server(db_path: Path = DEFAULT_DB, embedder=None):
         """Search local project files, wiki, docs, tables, git, sessions, run_logs, images, audio, video, code, config, logs.
 
         collections: any of wiki, docs, tables, git, sessions, run_logs, images, audio, video, code, config, logs (default: all active).
-        project: project folder prefix under ~/Projects, e.g. "llm" or "projalpha".
+        project: project folder prefix under ~/Projects, e.g. "llm" or "demo-radio".
         mode: hybrid (default), lexical (exact words) or semantic (meaning).
         """
         return service.search(query, collections, project, limit, mode)

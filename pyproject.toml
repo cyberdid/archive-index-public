@@ -1,11 +1,12 @@
 [build-system]
-requires = ["setuptools>=69"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-license = "Apache-2.0"
 name = "archive-index"
 version = "0.1.0"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "LICENSING.md"]
 description = "Local search over ~/Projects: wiki, docs, git history, Claude and Codex sessions (FTS5 + EmbeddingGemma 2)."
 requires-python = ">=3.12"
 dependencies = [
@@ -29,6 +30,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+research = [
+    "ir-measures==0.4.3",
+    "matplotlib==3.10.9",
+]
 dev = [
     "pyte>=0.8",
     "pytest>=8.0",

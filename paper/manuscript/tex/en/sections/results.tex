@@ -1,0 +1,180 @@
+% Source-backed tables/figures; final comparison interpretation is inserted after review.
+\section{Results}\label{sec:results}
+\input{../../generated/en/measurement_status.tex}
+
+\subsection{Retrieval and judge sensitivity}
+Table~\ref{tab:retrieval} reports all ten systems on the same answerable-query population. Confidence intervals describe query-level variation under the reported labels; they do not capture uncertainty in the labels themselves. Table~\ref{tab:judge-sensitivity} and Figure~\ref{fig:judge-sensitivity} preserve the initial and reviewed variants. Gemini review is within-model, and Gemini and Gemma share a provider.
+
+E5 has the highest mean nDCG@10 under all three principal relevance variants. Its lead over adaptive does not reach the 0.05 threshold after Holm correction in any variant; this does not establish equivalence. Adaptive outperforms both BM25 baselines on the primary endpoint after correction, but shows no statistically detectable advantage over EG2 alone or RRF. Removing phrase reranking leaves the evaluated scores unchanged; the other adaptive ablation differences in nDCG@10 are small and not statistically detectable on this query set. These findings do not support a general claim that adaptive fusion improves over dense retrieval.
+
+Lemmatization improves mean BM25 nDCG@10 under all three variants. The separately reported paired morphology contrast supports the difference under initial and reviewed Gemini labels, while its interval crosses zero under Gemma~4 12B labels. Thus the strength of the morphology finding depends on relevance assessment. The within-model review changes 334 of the 5\,572 initial Gemini labels; all 4\,481 initially agreed pairs remain unchanged.
+
+\begin{table}[p]
+\centering
+\caption{Document retrieval on 170 answerable queries. Means and 95\% query-bootstrap intervals use Gemini labels after the within-model disagreement review. The two panels preserve all five metrics. A dagger marks a paired difference from adaptive at Holm-adjusted $p<0.05$, not necessarily an improvement. R@100 is pool-relative. E5 uses a smaller text-only candidate universe.}
+\label{tab:retrieval}
+\input{../../generated/en/main.tex}
+\end{table}
+
+\begin{table}[p]
+\centering
+\caption{Sensitivity of nDCG@10 to relevance assessment. Initial Gemini and Gemma~4 12B grades are retained; the reviewed variant changes only their disagreements. The same frozen runs and 170 queries are used throughout. GPT grades do not enter this comparison.}
+\label{tab:judge-sensitivity}
+\input{../../generated/en/judge_sensitivity.tex}
+\end{table}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\linewidth]{judge_sensitivity.pdf}
+\caption{System scores and 95\% query-bootstrap intervals across relevance variants. Differences between separate intervals do not replace paired statistical comparisons.}
+\label{fig:judge-sensitivity}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\linewidth]{category_ndcg.pdf}
+\caption{nDCG@10 by query category for four principal systems under the primary relevance variant. Each category uses its own query-bootstrap interval. No-answer queries are excluded.}
+\label{fig:categories}
+\end{figure}
+
+\subsection{Controls}
+\paragraph{Candidate universe.} E5 searches 4\,137 text documents; the full EG2 index holds 6\,054 documents, including media. Restricting EG2 to the same 4\,137 text documents (\sys{dense\_eg2\_text}) changes its nDCG@10 by $-0.0015$ under reviewed Gemini labels (0.633 to 0.631); 0.29\% of its top-10 documents were not in the judged pool. The paired difference EG2$_{\mathrm{text}}-{}$E5 is $-0.042$ nDCG@10 (95\% CI $-0.078$ to $-0.006$, unadjusted $p=0.018$) with reviewed Gemini labels and $-0.019$ ($-0.052$ to $0.014$, $p=0.26$) with Gemma~4 12B labels (Table~\ref{tab:encoder-control}). Thus the candidate restriction has a small point effect in this control, while statistical support for the encoder difference depends on the labels. These exploratory comparisons use unadjusted p-values and an incomplete judgement pool.
+
+\begin{table}[p]
+\centering
+\caption{E5 against EG2 on the same 4\,137 text documents. $\Delta$ is the paired difference from E5 with a 95\% query-bootstrap interval and an unadjusted sign-flip $p$; unjudged documents count as non-relevant, and their share is shown.}
+\label{tab:encoder-control}
+\input{../../generated/en/encoder_control.tex}
+\end{table}
+
+\paragraph{Whole-word coverage.} The adaptive rule's exact-phrase test counted substrings (Appendix~\ref{sec:intro-history}). With the corrected rule, the top~10 changes for one query of 200 in each adaptive variant, and adaptive nDCG@10 moves from 0.629 to 0.627 (reviewed Gemini), 0.639 to 0.637 (initial Gemini) and stays at 0.675 (Gemma~4 12B). The frozen primary results are retained; the corrected point score does not create an adaptive advantage over dense EG2.
+
+\subsection{Judges}
+Table~\ref{tab:judge-checks} reports grades over the whole pool and on two construction-based diagnostic subsets: pooled authored targets and designated no-answer pairs. These expectations are not independent human labels. Table~\ref{tab:judge-agreement} reports pairwise agreement. Gemini, the two Gemma models and GPT-6-Luna agree with linear-weighted $\kappa$ between 0.535 and 0.652. Gemini gives the target document of a known-item or other answerable query grade~2 in 85.8\% of the 134 pooled targets, Gemma~4 12B in 67.2\%: the larger Gemma model agrees best with Gemini overall but rarely gives full marks. On the 708 pooled pairs of no-answer queries, Gemini, Gemma~4 12B and Gemma~4 E4B give grade~0 in 90.4\%, 91.2\% and 93.5\% of pairs.
+
+GPT-6-Luna, which wrote the queries, is the most lenient judge: its mean grade is 0.633 against 0.421--0.447 for the other judges, and it gives a positive grade to 24.3\% of the no-answer pairs, against 6.5--9.6\% for the others. Its grades are higher than every other judge's on average by 0.19--0.21. This is consistent with self-preference by the query author, but general leniency would produce the same pattern. The present comparison cannot distinguish those explanations. GPT grades are not used in any relevance label.
+
+\begin{table}[p]
+\centering
+\caption{Judges on the 5\,572 pooled pairs: mean grade, grade counts, and construction-based checks (share of pooled answerable-query targets graded 2; share of pooled no-answer pairs graded 0).}
+\label{tab:judge-checks}
+\input{../../generated/en/judge_checks.tex}
+\end{table}
+
+\begin{table}[p]
+\centering
+\caption{Pairwise agreement between judges on the same 5\,572 pairs: linear-weighted Cohen's $\kappa$ with a 95\% interval from 2\,000 query-level bootstrap resamples, exact agreement, and the mean grade difference.}
+\label{tab:judge-agreement}
+\input{../../generated/en/judge_agreement.tex}
+\end{table}
+
+\subsection{Images and speech}
+Table~\ref{tab:multimodal} reports separate image-caption and speech-transcript retrieval tasks. These point estimates have no computed confidence intervals. The monolingual text-only speech condition uses the same transcript as query and indexed text, so it is a ceiling condition rather than a realistic paraphrased-query evaluation. Cross-language queries are parallel source transcripts and also do not represent arbitrary conversational audio search.
+
+\begin{table}[p]
+\centering
+\caption{Separate source-labelled multimodal tasks: query and candidate counts, followed by point estimates. No confidence intervals are fabricated. Speech text mode indexes the transcript; both mode combines transcript and audio.}
+\label{tab:multimodal}
+\input{../../generated/en/multimodal.tex}
+\end{table}
+
+\subsection{Latency and indexing cost}
+\ifpaperlatency
+Table~\ref{tab:latency} reports warm per-query latency on the same 200 queries. These are evaluation-harness timings on one laptop, not interactive response-time guarantees. The models remain loaded between systems: the device-wide GPU-memory increase from each baseline is not an isolated footprint for that system.
+\begin{table}[p]
+\centering
+\caption{Warm query latency in milliseconds: p50 and p95 on GPU and CPU. VRAM is the device-wide increase above the stage baseline; previously loaded models remain resident.}
+\label{tab:latency}
+\input{../../generated/en/latency.tex}
+\end{table}
+\begin{figure}[p]
+\centering
+\includegraphics[width=\linewidth]{query_latency.pdf}
+\caption{Query latency after a full warm-up. Markers show p50 and open endpoints p95, not confidence limits; the horizontal axis is logarithmic. Both passes include all 200 queries.}
+\label{fig:query-latency}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\linewidth]{latency_quality.pdf}
+\caption{Frozen original-run quality against current warm GPU query cost. Quality intervals use 170 answerable queries and reviewed Gemini labels; latency uses all 200 queries after the whole-word coverage correction. The two axes describe different code revisions, as disclosed in the control analysis, and do not form a paired hardware experiment. Document collapse is excluded from the timer.}
+\label{fig:latency-quality}
+\end{figure}
+\else
+\pending{Complete CPU/GPU query latency}
+\fi
+\ifpaperindexing
+Table~\ref{tab:indexing} reports the GPU sample of 475 files and CPU sample of 95 files. Their compositions differ; chunks per second are descriptive throughput figures, and the ratio of wall times is not a paired hardware speedup.
+\begin{table}[p]
+\centering
+\caption{Indexing into an empty database on two differently sized fixed samples. Counts refer to the files selected and chunks produced; RSS is the child-process peak. Sample disk includes database sidecars; full-index sizes count the main database files.}
+\label{tab:indexing}
+\input{../../generated/en/indexing.tex}
+\end{table}
+\else
+\pending{Complete CPU/GPU indexing measurements}
+\fi
+
+\subsection{Quantized retrieval}
+\ifpapergguf
+\begin{table}[p]
+\centering
+\caption{GGUF EG2 builds on the same text candidates as the bfloat16 reference. Query latency follows a full 200-query warm-up. Differences use reviewed Gemini labels and exploratory unadjusted paired tests; unjudged results are counted as non-relevant. File sizes are MiB.}
+\label{tab:gguf}
+\input{../../generated/en/gguf.tex}
+\end{table}
+\begin{figure}[p]
+\centering
+\includegraphics[width=\linewidth]{quantization_quality.pdf}
+\caption{Paired nDCG@10 differences from bf16 EG2 versus GGUF file size on identical text candidates. The upper panel treats unjudged documents as non-relevant; the lower panel removes them. Error bars are 95\% query-bootstrap intervals. The dependence on judgement coverage prevents interpreting the upper Q4 difference as an isolated quantization effect.}
+\label{fig:quantization-quality}
+\end{figure}
+Table~\ref{tab:gguf} reports retrieval quality, embedding throughput and local-server query latency. The separate cosine-reference experiment in the appendix does not substitute for these retrieval comparisons. The f16 and Q8 point differences from the bf16 reference are small, but intervals containing zero do not establish equivalence. For Q4, treating unjudged results as non-relevant gives a difference of $-0.018$ (95\% CI $[-0.030,-0.006]$); 9.9\% of its top-ten results are unjudged, compared with 0.3\% for the reference. On condensed runs the Q4 difference is $+0.004$ with an interval spanning zero. Removing unjudged results changes the evaluated ranking; it does not establish their relevance. Thus the frozen pool does not identify an intrinsic Q4 quality loss. These comparisons also change backend and numerical precision, not only quantization.
+\else
+\pending{GGUF retrieval-quality experiment incomplete; reference cosine measurements are in the appendix}
+\fi
+
+\subsection{Synthetic scaling}
+\ifpaperann
+\begin{table}[p]
+\centering
+\caption{Exact and approximate search on synthetic collections derived from the real vectors. Latencies are p50 milliseconds for a single query. HNSW cells show latency / recall@10 against exact search; construction time is seconds. This experiment measures chunk-vector search only.}
+\label{tab:ann}
+\input{../../generated/en/ann.tex}
+\end{table}
+\begin{figure}[p]
+\centering
+\includegraphics[width=\linewidth]{ann_scaling.pdf}
+\caption{Vector-search latency and HNSW recall on synthetic enlarged collections. The latency axis is logarithmic, and no uncertainty intervals are estimated.}
+\label{fig:ann-scaling}
+\end{figure}
+Table~\ref{tab:ann} separates exact vector-search cost from HNSW approximation. It excludes query embedding, lexical search and document collapse, and does not measure retrieval relevance on a real million-document archive.
+\else
+\pending{Complete exact/Faiss/HNSW scaling experiment}
+\fi
+
+\subsection{Additional target types}\label{sec:results-extension}
+\ifpaperextension
+The separate extension uses 50 Qwen-written queries targeting 20 documents, 15 tables and 15 repository files, evaluated with the corrected coverage rule. Initial Gemini labels and initial Gemma~4 12B labels are reported separately in Table~\ref{tab:extension}. The 50 records contain 49 distinct query wordings; one wording targets two files. They are not mixed into the original 200 or its primary relevance labels. GPT is comparison-only. Differences between the two query populations cannot identify self-preference because authorship, target type and difficulty also differ.
+\begin{table}[p]
+\centering
+\caption{nDCG@10 and 95\% query-bootstrap intervals on the separate 50-query extension. Both label variants are initial assessments; neither is the original benchmark's reviewed primary variant.}
+\label{tab:extension}
+\input{../../generated/en/extension.tex}
+\end{table}
+
+With initial Gemini labels, EG2 scores 0.759, adaptive fusion 0.756 and E5 0.721, compared with 0.523 for lemmatized BM25. With initial Gemma~4 12B labels the corresponding scores are 0.769, 0.765, 0.730 and 0.540. Adaptive exceeds both lexical baselines after Holm correction in both label variants; neither EG2 nor E5 is separated from adaptive by those tests. The changed point order of the dense encoders is cohort-specific evidence, not a comparison of overall difficulty with the original benchmark. GPT remains the most lenient judge on Qwen-written queries as well (mean grade 0.550 versus 0.379 for Gemini and 0.437 for Gemma), reinforcing that the initial GPT pattern does not identify query-author self-preference.
+
+\ifpaperextensionunique
+Keeping the lowest query ID per normalized wording removes q249, without selecting by retrieval score. Table~\ref{tab:extension-unique} reports this exploratory sensitivity. The 50-record intervals treat records as resampling units despite their shared wording; the separate sensitivity avoids that duplicate but does not make the sample representative.
+\begin{table}[p]
+\centering
+\caption{Five principal systems on the unique-wording subset of the extension. Initial labels and query-bootstrap intervals; remaining systems and paired statistics are preserved in the result JSON.}
+\label{tab:extension-unique}
+\input{../../generated/en/extensionunique.tex}
+\end{table}
+\fi
+
+\else
+\pending{Separate 50-query document/table/code extension and its relevance assessments}
+\fi

@@ -1,0 +1,27 @@
+id,scope,source_file,json_pointer,value,unit,display,human_verified
+primary-dense_e5,170 answerable original queries; reviewed Gemini,ua_par_gemini_reviewed.json,/systems/dense_e5/all/nDCG@10/mean,0.6737870864475342,score,0.674,False
+primary-dense_eg2,170 answerable original queries; reviewed Gemini,ua_par_gemini_reviewed.json,/systems/dense_eg2/all/nDCG@10/mean,0.6329152293977139,score,0.633,False
+primary-adaptive,170 answerable original queries; reviewed Gemini,ua_par_gemini_reviewed.json,/systems/adaptive/all/nDCG@10/mean,0.6285629452072389,score,0.629,False
+primary-bm25_lemma,170 answerable original queries; reviewed Gemini,ua_par_gemini_reviewed.json,/systems/bm25_lemma/all/nDCG@10/mean,0.4817469719070124,score,0.482,False
+primary-bm25_plain,170 answerable original queries; reviewed Gemini,ua_par_gemini_reviewed.json,/systems/bm25_plain/all/nDCG@10/mean,0.4503726047376494,score,0.450,False
+extension-dense_eg2,50-record extension; initial Gemini,extension.json,/variants/gemini_initial/systems/dense_eg2/all/nDCG@10/mean,0.7593063457072755,score,0.759,False
+extension-adaptive,50-record extension; initial Gemini,extension.json,/variants/gemini_initial/systems/adaptive/all/nDCG@10/mean,0.7563231470466737,score,0.756,False
+extension-dense_e5,50-record extension; initial Gemini,extension.json,/variants/gemini_initial/systems/dense_e5/all/nDCG@10/mean,0.7208205324152063,score,0.721,False
+corpus-manifest_files,collected corpus / original query population,corpus_summary.json,/manifest_files,7070,count,7070,False
+corpus-queries,collected corpus / original query population,corpus_summary.json,/queries,200,count,200,False
+full-index-documents,full public index,corpus_summary.json,/indexes/full/documents,6054,count,6054,False
+full-index-chunks,full public index,corpus_summary.json,/indexes/full/chunks,96908,count,96908,False
+full-index-vectors,full public index,corpus_summary.json,/indexes/full/vectors,86726,count,86726,False
+full-index-text_collection_vectors,full public index,corpus_summary.json,/indexes/full/text_collection_vectors,84788,count,84788,False
+full-index-text_vectors,full public index,corpus_summary.json,/indexes/full/text_vectors,86705,count,86705,False
+full-index-text_collection_image_vectors,full public index,corpus_summary.json,/indexes/full/text_collection_image_vectors,21,count,21,False
+pool-pairs,initial original-query pool,judges.json,/judges/gemini/graded,5572,count,5572,False
+extension-unique,deterministic distinct-wording sensitivity,extension.json,/unique_wording_sensitivity/queries,49,count,49,False
+private-aggregate-documents,private archive aggregate only,field_aggregate.json,/archive/documents,11394,count,11394,False
+private-aggregate-chunks,private archive aggregate only,field_aggregate.json,/archive/chunks,902739,count,902739,False
+q4-ordinary-delta,GGUF coverage or synthetic vector component measurement,efficiency.json,/quantization/retrieval/quality/gemini_reviewed/comparisons/gguf_Q4_K_M/nDCG@10/mean,-0.01821199174931914,nDCG difference,-0.01821199174931914,False
+q4-condensed-delta,GGUF coverage or synthetic vector component measurement,efficiency.json,/quantization/retrieval/quality/gemini_reviewed/comparisons/gguf_Q4_K_M/nDCG@10_condensed/mean,0.004166026452758255,nDCG difference,0.004166026452758255,False
+q4-unjudged,GGUF coverage or synthetic vector component measurement,efficiency.json,/quantization/retrieval/quality/gemini_reviewed/systems/gguf_Q4_K_M/unjudged@10,0.0988235294117647,fraction,0.0988235294117647,False
+ann-2m-optimized-ms,GGUF coverage or synthetic vector component measurement,ann_scaling.json,/sizes/2000000/numpy_exact_ms/p50,106.63124500024423,ms,106.63124500024423,False
+ann-2m-archive-ms,GGUF coverage or synthetic vector component measurement,ann_reference_audit.json,/sizes/2000000/archive_numpy_exact_ms/p50,2441.8296735002514,ms,2441.8296735002514,False
+ann-2m-hnsw-recall,GGUF coverage or synthetic vector component measurement,ann_scaling.json,/sizes/2000000/hnsw_ef256/recall@10,0.9825,fraction,0.9825,False

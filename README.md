@@ -38,7 +38,7 @@
 ## Швидкий старт
 
 ```bash
-VENV=$HOME/.local/share/embeddinggemma2/venv
+VENV="$HOME/.local/share/embeddinggemma2/venv"
 uv pip install --python $VENV/bin/python -e ~/Projects/llm/archive-index
 
 # команди в PATH (~/.local/bin є в PATH за замовчуванням)
@@ -205,8 +205,8 @@ PYTHONPATH=src python tools/visualize_search.py "твій запит" -k 60 --ou
 
 ```bash
 archive search "точку доступу" --mode lexical
-archive search "як я налаштовував сервер" -c sessions -k 5
-archive search "реверс" --project projalpha --json
+archive search "як ми налаштовували Jetson" -c sessions -k 5
+archive search "реверс" --project demo-radio --json
 archive search "36.101" --per-document 0          # без групування по документу
 archive stats                                     # документи і фрагменти по колекціях
 archive index                                     # повний інкрементальний прогін
@@ -276,7 +276,7 @@ archive rebuild-terms                             # перерахувати с�
 вікном, додається до цього вікна, і його можна знайти словами. Суфікси варіантів запису (`_enhanced`,
 `_conservative`) враховуються. Для сирих записів у `recordings/` розшифровки шукаються в `processed_recordings/`.
 
-Перевірка на записах `projgamma` (29 записів, 56 реплік, окрема тека `audio-eval`):
+Попередня локальна перевірка на записах (29 записів, 56 реплік, окрема тека `audio-eval`):
 - текст→аудіо за векторами: правильний запис першим у 50 % реплік (випадковий вибір дає 3,4 %);
 - пошук словами (три випадкові слова з репліки) знаходить правильний запис у 100 %. Це верхня межа: слова взято з
   того самого тексту, тож на реальних запитах результат буде нижчим через помилки розпізнавача.
@@ -414,8 +414,19 @@ docs/             план покращень
 - `mpv` або `gst-play-1.0` — відкриття аудіо і відео з секунди;
 - `evince`, `code`, `xdg-open` — відкриття PDF, коду і файлів.
 
----
+## License
 
-## Ліцензія
+Original executable code: [Apache-2.0](LICENSE). Article text, original figures
+and experimental records: [CC BY 4.0](paper/manuscript/LICENSE). See
+[licensing scope and third-party exceptions](LICENSING.md). Corpus assets and
+dependencies retain their own terms.
 
-Код поширюється за ліцензією [Apache License 2.0](LICENSE). Copyright 2026 Cyberdid.
+## Стаття та відтворення
+
+[Реліз статті UA-PAR](https://github.com/cyberdid/archive-index-public/releases/tag/paper-author-review-2026-10-23)
+містить англійську й українську версії, код, підсумкові результати JSON,
+таблиці й рисунки. [Інструкція відтворення](paper/README_REPRODUCE.md) розрізняє
+перебудову таблиць/PDF зі збережених результатів і повне відтворення з
+заморожених входів. Сирий корпус і повні входи до цього компактного релізу
+не входять. Оцінки текстової релевантності модельні; людського аудиту в цій
+редакції немає.

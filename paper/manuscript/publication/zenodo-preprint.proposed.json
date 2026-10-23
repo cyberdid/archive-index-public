@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "upload_type": "publication",
+    "publication_type": "preprint",
+    "title": "archive-index: lexical, dense and hybrid search in a multilingual research archive",
+    "creators": [
+      {
+        "name": "Pylypenko, Oleksandr",
+        "orcid": "0009-0004-9610-9242",
+        "affiliation": "State University of Trade and Economics, Kyiv, Ukraine"
+      }
+    ],
+    "description": "<p>A system-and-resource study of lexical, dense and hybrid retrieval in a constructed multilingual research archive. UA-PAR contains 7,070 public-source files, 200 model-written queries and 5,572 pooled query–document assessments. The study compares ten retrieval configurations, examines sensitivity to the relevance judge, and reports separate target-format, multimodal, GGUF, resource-cost, synthetic vector-scaling and private-archive operational checks.</p><p>Text relevance is assessed by language models. No human relevance audit is included. Results are conditional on the constructed queries, model labels and stated measurement boundaries; no general superiority of the adaptive fusion rule is established.</p><p>Proposed deposit: an English manuscript and its Ukrainian edition. Author review, publication date and final public software/data identifiers are pending. This metadata file has not been submitted.</p>",
+    "keywords": [
+      "information retrieval",
+      "hybrid search",
+      "BM25",
+      "dense retrieval",
+      "Ukrainian",
+      "Russian",
+      "multimodal retrieval",
+      "reproducibility",
+      "LLM relevance assessment"
+    ],
+    "language": "eng",
+    "version": "author-review-2026-10-23",
+    "license": "cc-by-4.0"
+  }
+}

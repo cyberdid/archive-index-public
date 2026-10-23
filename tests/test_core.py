@@ -1,3 +1,4 @@
+import pytest
 from archive_index.chunking import chunk_markdown, pack_paragraphs
 from archive_index.lexical import index_terms, query_expression, tokenize
 from archive_index.redact import redact
@@ -77,6 +78,24 @@ def test_lemmas_match_inflected_ukrainian_forms():
     assert '"точка"' in query
 
 
+def test_lemmas_ignore_guesses_of_the_other_language():
+    from archive_index.lexical import lemmas
+
+    # The Russian analyzer does not know these Ukrainian words and invents verbs for them.
+    assert lemmas("навчанню") == {"навчання"}
+    assert lemmas("етапи") == {"етап"}
+    # The Ukrainian analyzer invents a verb for a Russian word.
+    assert lemmas("какую") == {"какой"}
+    # Homonyms that a dictionary knows stay: recall over precision for real words.
+    assert {"коли", "кола", "колоть"} <= lemmas("коли")
+
+
+def test_lemmas_keep_guesses_when_no_dictionary_knows_the_word():
+    from archive_index.lexical import lemmas
+
+    assert lemmas("лорофікації")  # unknown to both dictionaries: the predictor's forms are kept
+
+
 def test_query_expression_empty_for_no_tokens():
     assert query_expression("! ?") == ""
 
@@ -94,3 +113,34 @@ def test_phrase_close_prefers_sequence_over_scattered_numbers():
     assert _phrase_close("192 168 169 tcp", "192.168.8.169 | tcp | 53")  # one extra token allowed
     assert not _phrase_close("192 168 169 tcp", "192.168.1.5 | udp | 53 | 169 tcp far away " + "x " * 9 + "192")
     assert not _phrase_close("одне", "одне")  # a single word is not a phrase
+
+
+def test_ukrainian_apostrophe_variants_give_one_token():
+    for word in ("м’ята", "мʼята", "м'ята", "м‘ята"):
+        assert tokenize(word) == ["м'ята"]
+    assert tokenize("п’ять") == ["п'ять"]
+
+
+def test_query_and_index_agree_on_apostrophes():
+    assert "м'ята" in index_terms("м’ята в саду").split()
+    assert '"м\'ята"' in query_expression("мʼята")
+
+
+def test_coverage_counts_whole_words_not_substrings(tmp_path):
+    """The adaptive switch to exact-match mode must not fire on fragments: '36' is not in '1366', 'ip' not in 'script'."""
+    from archive_index.search import _covers
+    from archive_index.store import ChunkRecord, Store
+
+    store = Store(tmp_path / "t.sqlite3")
+    try:
+        store.replace_document(collection="wiki", path="/p/a.md", size=1, mtime_ns=1, sha256="x", title="a",
+                               project="p", chunks=[ChunkRecord(ord=0, heading="", locator="", occurred_at="",
+                               body="Роздільна здатність 1366 точок, javascript у браузері", terms="", vector=None,
+                               body_sha="b")])
+        cid = store.conn.execute("SELECT id FROM chunks").fetchone()[0]
+        assert _covers(store, "36 ip", cid) == 0.0
+        assert _covers(store, "1366 javascript", cid) == 1.0
+        assert _covers(store, "Роздільна здатність ip", cid) == pytest.approx(2 / 3)
+        assert _covers(store, "м’ята", cid) == 0.0
+    finally:
+        store.close()

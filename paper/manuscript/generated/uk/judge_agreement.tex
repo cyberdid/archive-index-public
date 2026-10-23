@@ -1,0 +1,15 @@
+% Generated from primary=gemini_reviewed; see ../manifest.json for source SHA-256.
+% linear-weighted kappa, CI by resampling queries; source judges.json
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{4}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Судді & Пари & Зважена $\kappa$ [95\% ДІ] & Точний збіг & Середня A$-$B \\
+\midrule
+Gemini 3.8 Flash – Gemma 4 12B & 5\,572 & 0.652 [0.625, 0.677] & 0.804 & -0.026 \\
+Gemini 3.8 Flash – Gemma 4 E4B & 5\,572 & 0.591 [0.559, 0.622] & 0.768 & -0.017 \\
+Gemini 3.8 Flash – GPT-6-Luna & 5\,572 & 0.621 [0.595, 0.644] & 0.759 & -0.212 \\
+Gemma 4 12B – Gemma 4 E4B & 5\,572 & 0.650 [0.625, 0.674] & 0.799 & +0.008 \\
+Gemma 4 12B – GPT-6-Luna & 5\,572 & 0.586 [0.559, 0.612] & 0.741 & -0.186 \\
+Gemma 4 E4B – GPT-6-Luna & 5\,572 & 0.535 [0.506, 0.564] & 0.700 & -0.195 \\
+\bottomrule
+\end{tabularx}\endgroup

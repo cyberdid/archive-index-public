@@ -21,6 +21,7 @@ from .sources import (
     discover_git_repos, discover_markdown, discover_run_logs, parse_claude_session,
     parse_codex_session, parse_docx, parse_git_history, parse_markdown, parse_pdf,
     parse_pptx, parse_run_log,
+    _is_repo_doc, project_of,
 )
 from .store import ChunkRecord, Store
 
@@ -29,6 +30,21 @@ OPT_IN = ("config", "logs", "code")  # searched only when named explicitly with 
 ALL_COLLECTIONS = COLLECTIONS + OPT_IN
 AUDIO_WINDOW_S = 20.0
 AUDIO_STEP_S = 15.0
+
+
+def chunk_term_source(collection: str, path: str, title: str, heading: str, body: str) -> str:
+    """The text a chunk's FTS terms are made from; Store.rebuild_terms uses it to reproduce indexing.
+
+    Pictures are found by the words of their path, sound windows by the file name and the transcript
+    lines of the window, everything else by title, heading and body.
+    """
+    if collection == "images" and body.startswith("image: "):
+        return body[len("image: "):].replace("/", " ").replace("_", " ")
+    if collection == "audio":
+        stem_words = Path(path).stem.replace("_", " ")
+        transcript = body.partition("\n")[2]
+        return f"{stem_words} {transcript}" if transcript else stem_words
+    return f"{title} {heading} {body}"
 
 
 @dataclass
@@ -40,8 +56,13 @@ class IndexReport:
     numeric_only: int = 0
     image_chunks: int = 0
     audio_chunks: int = 0
+    unsupported_image_chunks: int = 0
+    unsupported_audio_chunks: int = 0
     redactions: dict[str, int] = field(default_factory=dict)
     errors: list[str] = field(default_factory=list)
+    # options of the run (they ride on the report, which every indexing function already receives)
+    lemmatize: bool = True
+    min_letters: int = 20
 
     def add_indexed(self, collection: str, chunks: int) -> None:
         self.indexed[collection] = self.indexed.get(collection, 0) + 1
@@ -68,7 +89,7 @@ def letter_count(text: str) -> int:
     return sum(1 for ch in text if ch.isalpha())
 
 
-def drop_short_fragments(collection: str, pieces: list[tuple]) -> list[tuple]:
+def drop_short_fragments(collection: str, pieces: list[tuple], min_letters: int = MIN_LETTERS) -> list[tuple]:
     """Remove text fragments with fewer than MIN_LETTERS letters, unless every text fragment is short.
 
     Images and sound are never dropped here. A document that is only short text keeps it, so short notes
@@ -77,9 +98,9 @@ def drop_short_fragments(collection: str, pieces: list[tuple]) -> list[tuple]:
     if collection not in SHORT_FRAGMENT_COLLECTIONS:
         return pieces
     text = [p for p in pieces if not p[4] and p[5] is None]
-    if not text or all(letter_count(p[3]) < MIN_LETTERS for p in text):
+    if min_letters <= 0 or not text or all(letter_count(p[3]) < min_letters for p in text):
         return pieces
-    return [p for p in pieces if p[4] or p[5] is not None or letter_count(p[3]) >= MIN_LETTERS]
+    return [p for p in pieces if p[4] or p[5] is not None or letter_count(p[3]) >= min_letters]
 
 
 def _make_chunks(doc: Document, max_chars: int, report: IndexReport) -> list[tuple]:
@@ -97,7 +118,7 @@ def _make_chunks(doc: Document, max_chars: int, report: IndexReport) -> list[tup
             report.redactions[kind] = report.redactions.get(kind, 0) + n
         for piece in pack_paragraphs(clean, max_chars):
             out.append((unit.heading, unit.locator, unit.occurred_at, piece, "", None))
-    return drop_short_fragments(doc.collection, out)
+    return drop_short_fragments(doc.collection, out, report.min_letters)
 
 
 NUMERIC_SHARE = 0.6  # above this share of digits and symbols the text is numbers, not meaning
@@ -149,11 +170,20 @@ def _records_for(embedder, cache: dict[str, bytes], doc: Document, pieces, repor
             vectors[i] = np.frombuffer(blob, dtype=np.float32).copy()
             report.reused_vectors += 1
         elif image:
-            vectors[i] = embedder.image(image)
-            report.image_chunks += 1
+            try:
+                vectors[i] = embedder.image(image)
+                report.image_chunks += 1
+            except NotImplementedError:
+                # Text-only baselines still index the document and its lexical caption/locator.
+                vectors[i] = np.zeros(0, dtype=np.float32)
+                report.unsupported_image_chunks += 1
         elif audio is not None:
-            vectors[i] = embedder.audio(audio)
-            report.audio_chunks += 1
+            try:
+                vectors[i] = embedder.audio(audio)
+                report.audio_chunks += 1
+            except NotImplementedError:
+                vectors[i] = np.zeros(0, dtype=np.float32)
+                report.unsupported_audio_chunks += 1
         else:
             missing.append(i)
     if missing:
@@ -165,7 +195,7 @@ def _records_for(embedder, cache: dict[str, bytes], doc: Document, pieces, repor
             zip(pieces, vectors, keys)):
         records.append(ChunkRecord(
             ord=ord_base + ord_, heading=heading, locator=locator, body=body,
-            terms=index_terms(f"{doc.title} {heading} {body}"),
+            terms=index_terms(f"{doc.title} {heading} {body}", lemmatize=report.lemmatize),
             occurred_at=at, vector=vector, body_sha=key,
         ))
     return records
@@ -359,7 +389,8 @@ def _index_image(store: Store, embedder, path: Path, projects_root: Path,
     vector = embedder.image(key)
     record = ChunkRecord(
         ord=0, heading="", locator="image", body=f"image: {rel}",
-        terms=index_terms(rel.replace("/", " ").replace("_", " ")),
+        terms=index_terms(chunk_term_source("images", key, path.name, "", f"image: {rel}"),
+                          lemmatize=report.lemmatize),
         occurred_at="", vector=vector, body_sha=sha,
     )
     store.replace_document(
@@ -400,7 +431,6 @@ def _index_audio(store: Store, embedder, path: Path, projects_root: Path,
     samples = read_audio(path)
     duration_s = len(samples) / 16_000
     records: list[ChunkRecord] = []
-    stem_words = path.stem.replace("_", " ")
     for ord_, (start_s, end_s) in enumerate(window_ranges(duration_s, AUDIO_WINDOW_S, AUDIO_STEP_S)):
         chunk_sha = hashlib.sha256(f"{audio_sha}:{ord_}".encode()).hexdigest()
         if chunk_sha in cache:
@@ -419,11 +449,11 @@ def _index_audio(store: Store, embedder, path: Path, projects_root: Path,
             transcript_text = ""
         header = f"audio: {path.name} at {start_s:.0f}-{end_s:.0f}s"
         body = f"{header}\n{transcript_text}" if transcript_text else header
-        term_source = f"{stem_words} {transcript_text}" if transcript_text else stem_words
+        term_source = chunk_term_source("audio", key, path.name, "", body)
         records.append(ChunkRecord(
             ord=ord_, heading="", locator=f"{start_s:.0f}-{end_s:.0f}s",
             body=body,
-            terms=index_terms(term_source),
+            terms=index_terms(term_source, lemmatize=report.lemmatize),
             occurred_at="", vector=vector,
             body_sha=chunk_sha,
         ))
@@ -447,8 +477,11 @@ def run_index(
     progress: Callable[[str], None] | None = None,
     code_projects: set[str] | None = None,
     skip_screenshots: bool = False,
+    lemmatize: bool = True,
+    min_letters: int = MIN_LETTERS,
 ) -> IndexReport:
-    report = IndexReport()
+    """lemmatize=False and min_letters=0 build the paper's ablation indexes (plain BM25, no short-fragment filter)."""
+    report = IndexReport(lemmatize=lemmatize, min_letters=min_letters)
     say = progress or (lambda _msg: None)
     errors = report.errors
 
@@ -461,6 +494,9 @@ def run_index(
     if "wiki" in collections:
         present: set[str] = set()
         for path in discover_markdown(projects_root):
+            if "code" in collections and code_projects \
+                    and project_of(path, projects_root) in code_projects and _is_repo_doc(path):
+                continue  # a selected repository's README/docs belong to code, not wiki
             present.add(str(path))
             guarded(str(path), lambda p=path: _index_file(
                 store, embedder, p, lambda q: parse_markdown(q, projects_root),

@@ -125,7 +125,7 @@ def test_codex_session_grows_incrementally(tmp_path):
     folder = tmp_path / "home" / ".codex" / "sessions" / "2026" / "01" / "01"
     folder.mkdir(parents=True)
     path = folder / "rollout-cdx.jsonl"
-    meta = {"type": "session_meta", "payload": {"id": "cdx-9", "cwd": str(tmp_path / "Projects" / "projalpha")}}
+    meta = {"type": "session_meta", "payload": {"id": "cdx-9", "cwd": str(tmp_path / "Projects" / "demo-radio")}}
     msg = lambda role, text: {"type": "response_item", "payload": {  # noqa: E731
         "type": "message", "role": role, "content": [{"type": "input_text", "text": text}]}}
     path.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in [meta, msg("user", "реверс пристрою")])
@@ -137,7 +137,7 @@ def test_codex_session_grows_incrementally(tmp_path):
     store, _ = _run(tmp_path, FakeEmbedder())
     cache = VectorCache(store)
     hits = hybrid(store, cache, "каталозі research", None, mode="lexical", k=3)
-    assert hits and hits[0].project == "projalpha"
+    assert hits and hits[0].project == "demo-radio"
     assert "реверс пристрою" in "\n".join(_bodies(store))
     store.close()
 

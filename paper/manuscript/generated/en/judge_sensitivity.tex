@@ -1,0 +1,19 @@
+% Generated from primary=gemini_reviewed; see ../manifest.json for source SHA-256.
+% nDCG@10 with 95% bootstrap CI. Gemini reviewed is a within-model review. Gemini/Gemma12 share a provider family. No GPT or E4B in this principal comparison.
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{3}{>{\centering\arraybackslash}X}@{}}
+\toprule
+System & Gemini initial & Gemma12 initial & Gemini reviewed \\
+\midrule
+bm25\_plain & \shortstack{0.453 \\ {\footnotesize[0.416, 0.491]}} & \shortstack{0.500 \\ {\footnotesize[0.462, 0.536]}} & \shortstack{0.450 \\ {\footnotesize[0.413, 0.487]}} \\
+bm25\_lemma & \shortstack{0.489 \\ {\footnotesize[0.453, 0.526]}} & \shortstack{0.519 \\ {\footnotesize[0.482, 0.554]}} & \shortstack{0.482 \\ {\footnotesize[0.446, 0.518]}} \\
+dense\_eg2 & \shortstack{0.644 \\ {\footnotesize[0.613, 0.674]}} & \shortstack{0.681 \\ {\footnotesize[0.652, 0.709]}} & \shortstack{0.633 \\ {\footnotesize[0.601, 0.664]}} \\
+dense\_e5 & \shortstack{0.685 \\ {\footnotesize[0.657, 0.711]}} & \shortstack{0.698 \\ {\footnotesize[0.671, 0.725]}} & \shortstack{0.674 \\ {\footnotesize[0.647, 0.700]}} \\
+rrf & \shortstack{0.641 \\ {\footnotesize[0.612, 0.669]}} & \shortstack{0.665 \\ {\footnotesize[0.636, 0.694]}} & \shortstack{0.630 \\ {\footnotesize[0.601, 0.660]}} \\
+adaptive & \shortstack{0.639 \\ {\footnotesize[0.608, 0.669]}} & \shortstack{0.675 \\ {\footnotesize[0.647, 0.703]}} & \shortstack{0.629 \\ {\footnotesize[0.596, 0.660]}} \\
+adaptive-phrase & \shortstack{0.639 \\ {\footnotesize[0.608, 0.669]}} & \shortstack{0.675 \\ {\footnotesize[0.647, 0.703]}} & \shortstack{0.629 \\ {\footnotesize[0.596, 0.660]}} \\
+adaptive-ident & \shortstack{0.639 \\ {\footnotesize[0.608, 0.669]}} & \shortstack{0.676 \\ {\footnotesize[0.648, 0.704]}} & \shortstack{0.629 \\ {\footnotesize[0.597, 0.661]}} \\
+adaptive-short & \shortstack{0.639 \\ {\footnotesize[0.608, 0.669]}} & \shortstack{0.675 \\ {\footnotesize[0.647, 0.703]}} & \shortstack{0.629 \\ {\footnotesize[0.597, 0.660]}} \\
+dense\_eg2\_256 & \shortstack{0.622 \\ {\footnotesize[0.589, 0.654]}} & \shortstack{0.665 \\ {\footnotesize[0.633, 0.696]}} & \shortstack{0.611 \\ {\footnotesize[0.577, 0.643]}} \\
+\bottomrule
+\end{tabularx}\endgroup

@@ -6,3 +6,11 @@ __pycache__/
 *.sqlite3
 *.lock
 viz/
+paper/data/
+paper/manuscript/tex/*/main.pdf
+paper/manuscript/tex/*/main.log
+paper/manuscript/tex/*/main.blg
+paper/manuscript/tex/*/main.aux
+paper/manuscript/tex/*/main.bbl
+paper/manuscript/tex/*/main.out
+paper/manuscript/tex/*/main.toc

@@ -41,9 +41,9 @@ def corpus(tmp_path):
     (projects / "llm" / "wiki" / "notes.md").write_text(
         "# Notes\n\nQuokkaphrase lives only in this wiki page.\n\nAPI_KEY=supersecretvalue123 stays local.\n",
         encoding="utf-8")
-    (projects / "projalpha").mkdir(parents=True)
-    (projects / "projalpha" / "README.md").write_text(
-        "# projalpha\n\nZebraterm appears only in the projalpha project.\n", encoding="utf-8")
+    (projects / "demo-radio").mkdir(parents=True)
+    (projects / "demo-radio" / "README.md").write_text(
+        "# demo-radio\n\nZebraterm appears only in the demo-radio project.\n", encoding="utf-8")
 
     claude = home / ".claude" / "projects" / "-x-llm"
     claude.mkdir(parents=True)
@@ -156,7 +156,7 @@ def test_oversized_text_file_is_absent_by_design(corpus, tmp_path):
 def test_project_filter_excludes_other_projects(corpus):
     store, _ = _index(corpus)
     assert _lexical(store, "Zebraterm", project="llm") == []
-    assert _lexical(store, "Zebraterm", project="projalpha")
+    assert _lexical(store, "Zebraterm", project="demo-radio")
     store.close()
 
 

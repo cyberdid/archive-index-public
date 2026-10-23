@@ -1,0 +1,12 @@
+% Preserved provenance, moved from the introduction.
+\section{Implementation corrections and protocol changes}\label{sec:intro-history}
+Implementation corrections and assessment-protocol changes were identified during development. The record below distinguishes corrections applied before the frozen runs from the later coverage control.
+\begin{enumerate}
+\item \emph{Lemmas invented by the other language's analyzer.} Words without Ukrainian-only letters went through both analyzers, and the one that did not know the word invented a lemma (\emph{навчанню}$\to$\emph{навчаннить}). In the first target-document diagnostic, lemmatized BM25 found the target in the top 10 for 45.3\% of the answerable queries against 49.4\% without lemmas; after the fix it found 50.0\%. All reported runs use the fixed analyzer.
+\item \emph{Rebuilt terms differed from indexed terms} for pictures and sound, so an ablation index made by rebuilding terms was not identical to one built from scratch. Fixed before the runs used here.
+\item \emph{A relative corpus path} stored documents twice in an ablation index. Caught and fixed before any run was evaluated.
+\item \emph{Heading-only judge snippets.} In the first judging sheet, 393 of 5\,572 pairs showed the judge under 200 characters, mostly a title and a source line. The snippet was changed to the beginning of the document before any judging was used.
+\item \emph{Query authorship.} The first query file named Claude as the author of queries that GPT-6-Luna wrote; it was corrected before judging, and GPT grades were then kept out of the labels.
+\item \emph{Substring coverage in the adaptive rule.} The test for an exact phrase counted substrings (\code{36} inside \code{1366}). It was found after the runs were frozen; the frozen runs are reported and the corrected rule is reported beside them (it changes the top~10 for one query of 200).
+\item \emph{Change of relevance protocol.} The plan named Claude as the primary judge. After the judge diagnostics and before the reported aggregate retrieval comparison was computed, the author chose Gemini as the primary judge. A later partial Claude pass is deferred at the author's request and is excluded from all reported analyses. This is a post hoc decision and is reported as one.
+\end{enumerate}

@@ -83,15 +83,18 @@ COVERAGE_MIN = 0.9
 
 
 def _covers(store: Store, query: str, chunk_id: int) -> float:
-    """Share of query words that occur in the top lexical chunk (1.0 = the phrase is there)."""
+    """Share of query words that occur as whole words in the top lexical chunk (1.0 = the phrase is there).
+
+    Whole words, not substrings: '36' is not covered by '1366', nor 'ip' by 'javascript'.
+    """
     from .lexical import tokenize
 
     tokens = tokenize(query)
     row = store.chunk_rows([chunk_id]).get(chunk_id)
     if not tokens or row is None:
         return 0.0
-    body = row.body.lower()
-    return sum(t in body for t in tokens) / len(tokens)
+    words = set(tokenize(row.body))
+    return sum(t in words for t in tokens) / len(tokens)
 
 
 _WORD = re.compile(r"[^\W_]+")
@@ -145,6 +148,9 @@ def hybrid(
     lexical_weight: float = 1.0,
     per_document: int = 3,
     suffixes: tuple[str, ...] | None = None,
+    lemmatize: bool = True,
+    identifiers: bool = True,
+    phrase_rerank: bool = True,
 ) -> list[Hit]:
     """strategy='lexical_first' (default): exact-word matches first, semantic results fill the rest.
     strategy='rrf': reciprocal rank fusion with weight lexical_weight (kept for comparison)."""
@@ -152,7 +158,7 @@ def hybrid(
         raise ValueError(f"unknown mode {mode!r}")
     lexical_ids: list[int] = []
     if mode in ("hybrid", "lexical"):
-        match = query_expression(query)
+        match = query_expression(query, lemmatize=lemmatize, identifiers=identifiers)
         lexical_ids = [
             cid for cid, _ in store.lexical(
                 match, collections=collections, project=project, limit=pool, suffixes=suffixes
@@ -180,7 +186,7 @@ def hybrid(
         )
         if exact:
             # Exact phrase found: show only word matches, phrase-close matches first (BM25 order kept inside).
-            rows_for_phrase = store.chunk_rows(lexical_ids)
+            rows_for_phrase = store.chunk_rows(lexical_ids) if phrase_rerank else {}
             close = {cid for cid in lexical_ids
                      if cid in rows_for_phrase and _phrase_close(query, rows_for_phrase[cid].body)}
             order = [cid for cid in lexical_ids if cid in close] + [cid for cid in lexical_ids if cid not in close]

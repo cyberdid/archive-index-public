@@ -1,0 +1,28 @@
+........................................................................ [ 22%]
+........................................................................ [ 45%]
+........................................................................ [ 68%]
+........................................................................ [ 91%]
+............................                                             [100%]
+=============================== warnings summary ===============================
+tests/research/test_build.py::test_non_tabular_csv_resource_is_skipped_and_quota_is_filled
+  <source>/paper/corpus/build.py:138: RuntimeWarning: Skipping non-tabular CSV resource: 000-link.csv
+    warnings.warn(f"Skipping non-tabular CSV resource: {csv_path.name}", RuntimeWarning)
+
+tests/research/test_controls.py: 13 warnings
+tests/research/test_eval.py: 14 warnings
+tests/research/test_judge_sensitivity.py: 100 warnings
+  <environment>/embeddinggemma2/venv/lib/python3.13/site-packages/ir_measures/util.py:317: DeprecationWarning: ast.Num is deprecated and will be removed in Python 3.14; use ast.Constant instead
+    if isinstance(node, ast.Num):
+
+tests/research/test_controls.py: 12 warnings
+tests/research/test_eval.py: 14 warnings
+tests/research/test_judge_sensitivity.py: 100 warnings
+  <environment>/embeddinggemma2/venv/lib/python3.13/site-packages/ir_measures/util.py:318: DeprecationWarning: Attribute n is deprecated and will be removed in Python 3.14; use value instead
+    return node.n
+
+tests/test_media_retrieval.py: 20 warnings
+  <environment>/embeddinggemma2/venv/lib/python3.13/site-packages/torchvision/io/image.py:33: DeprecationWarning: The image decoding and encoding capabilities of TorchVision are deprecated since torchvision 0.29 and will be removed in a future release. They are superseded by the more complete decoders and encoders of TorchCodec (from torchcodec 0.16). Please see https://meta-pytorch.org/torchcodec/0.16/generated_examples/migration/torchvision_migration.html on how to migrate your code.
+    warnings.warn(_DEPRECATION_MSG, DeprecationWarning)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+316 passed, 274 warnings in 40.58s

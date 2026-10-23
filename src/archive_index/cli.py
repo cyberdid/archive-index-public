@@ -32,6 +32,9 @@ def _build_parser() -> argparse.ArgumentParser:
     idx.add_argument("--force", action="store_true", help="re-index unchanged files")
     idx.add_argument("--project", action="append", default=None,
                      help="project folder for the code collection (repeatable), e.g. --project llm")
+    idx.add_argument("--no-lemmas", action="store_true", help="index words only, without lemmas (ablation)")
+    idx.add_argument("--min-letters", type=int, default=20,
+                     help="drop document fragments with fewer letters; 0 keeps everything (ablation)")
     idx.add_argument("--skip-screenshots", action="store_true",
                      help="leave screenshots out of the image collection")
 
@@ -132,6 +135,7 @@ def _run(argv: list[str] | None = None, embedder=None) -> int:
                 collections=collections, session_limit=args.session_limit,
                 force=args.force, progress=lambda m: print(m, file=sys.stderr),
                 code_projects=set(args.project or []), skip_screenshots=args.skip_screenshots,
+                lemmatize=not args.no_lemmas, min_letters=args.min_letters,
             )
             _append_run_log(args.db, collections, report)
             print(json.dumps({

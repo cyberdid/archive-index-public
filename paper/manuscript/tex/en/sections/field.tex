@@ -1,0 +1,18 @@
+% Private study: aggregate-only operational checks.
+\section{Field study on the author's archive}\label{sec:field}
+
+The private study runs the implemented adaptive search on the author's existing archive with three query sets written during system development. Their names (main, holdout7 and holdout11) are development labels, not evidence of an independently sampled or prospectively held-out user study. The sets contain 80, 86 and 214 queries respectively. No documents, query texts, paths, snippets or per-query outcomes are exported.
+
+There are three operational checks. For an exact-item query, success means a returned chunk contains the expected phrase after whitespace and case normalization; ranks and reciprocal ranks are chunk-level. For a described-item query, success means the top five chunks include the expected project. For an absent-item query, success means lexical mode returns no result; this does not test abstention of dense search. The checks are weaker than independent document-relevance judgements. Each set and kind is summarized separately with query-bootstrap 95\% intervals; the sets are not pooled into a general performance estimate.
+
+\ifpaperfield
+\begin{table}[!htbp]
+\centering
+\caption{Operational checks on the private archive: counts, means and 95\% query-bootstrap intervals. Exact-item metrics use chunk ranks; described-item success checks the project; absent-item success checks lexical abstention. Only aggregates are exported.}
+\label{tab:field}
+\input{../../generated/en/field.tex}
+\end{table}
+Table~\ref{tab:field} describes this deployment and these development queries. All-success samples produce degenerate percentile-bootstrap intervals of [1,1]; these are not population guarantees. Its intervals describe resampling within a set; they do not account for tuning on the archive, query selection or variation between people.
+\else
+\pending{Private field study aggregates not yet available}
+\fi

@@ -1,0 +1,34 @@
+ARCHIVE-INDEX RESEARCH ENVIRONMENT
+Captured from actual measurements on 22 October 2026.
+
+{
+  "python": "3.13.14",
+  "os": "Linux 7.0.0-38-generic",
+  "cpu": "Intel(R) Core(TM) i9-14900HX",
+  "logical_cpus": 32,
+  "memory_gb": 31.0,
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 610.57.04, 8188 MiB",
+  "sqlite": "3.53.1",
+  "llama_cpp_commit": "8bb3cf0",
+  "packages": {
+    "numpy": "2.5.4",
+    "torch": "2.14.1",
+    "transformers": "5.19.0",
+    "sentence-transformers": "6.1.0",
+    "pymorphy3": "2.0.6",
+    "pymorphy3-dicts-uk": "2.4.1.1.1663094765",
+    "pymorphy3-dicts-ru": "2.4.417150.4580142",
+    "ir-measures": "0.4.3",
+    "pytrec-eval-terrier": "0.5.11"
+  }
+}
+
+ANN was run in a separate uv environment: Python 3.13, faiss-cpu 1.15.1, NumPy 2.5.4.
+The ANN result records actual thread count, input hashes and completed sizes.
+The main installed distribution versions are listed in requirements-measured.txt.
+Hash-locked solver outputs: requirements-research-lock.txt (109 packages,
+constrained to the observed main versions) and requirements-ann-lock.txt.
+The observed list and the hash-locked solver output are different artifacts.
+No fresh full CUDA-environment installation was executed for this packaging step.
+Private archive documents and queries are not part of this environment export.
+Neither compilation nor an observed environment implies human source/release approval.

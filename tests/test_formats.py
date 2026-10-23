@@ -147,7 +147,7 @@ def test_mirror_and_wine_runtime_files_are_skipped_for_text_and_images(tmp_path)
     root = tmp_path / "Projects"
     own = root / "notes"
     mirror = root / "Nvidia" / "crawl" / "files.ettus.com"
-    wine = root / "projdelta" / "wineprefix-webview2" / "drive_c"
+    wine = root / "BreezeRF" / "wineprefix-webview2" / "drive_c"
     for d in (own, mirror, wine):
         d.mkdir(parents=True)
     (own / "a.txt").write_text("мій конспект", encoding="utf-8")

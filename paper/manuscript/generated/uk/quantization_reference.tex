@@ -1,0 +1,12 @@
+% Generated from primary=gemini_reviewed; see ../manifest.json for source SHA-256.
+% External quantization reference: embedding cosine agreement, not retrieval quality. Point estimates; no CI available. Prompt counts: f16=20, Q8_0=20, Q4_K_M=20
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{4}{>{\centering\arraybackslash}X}@{}}
+\toprule
+GGUF & Середній косинус & Найменший косинус & МБ & CPU с/текст \\
+\midrule
+f16 & 0.99995 & 0.99994 & 532.1 & 0.061 \\
+Q8\_0 & 0.99972 & 0.99892 & 295.5 & 0.069 \\
+Q4\_K\_M & 0.99043 & 0.98503 & 173.3 & 0.053 \\
+\bottomrule
+\end{tabularx}\endgroup

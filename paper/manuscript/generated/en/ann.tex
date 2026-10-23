@@ -1,0 +1,30 @@
+% Generated from primary=gemini_reviewed; see ../manifest.json for source SHA-256.
+% p50 ms per single query; HNSW cells: p50 ms / strict-ID recall@10 against exact; source ann_scaling.json
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{5}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Vectors & NumPy top-k & Faiss flat & HNSW build s & HNSW ef64 & HNSW ef256 \\
+\midrule
+100\,000 & 6.16 & 10.65 & 9 & 0.19 / 0.914 & 0.57 / 0.984 \\
+300\,000 & 17.85 & 26.52 & 33 & 0.27 / 0.940 & 0.69 / 0.990 \\
+1\,000\,000 & 51.78 & 75.83 & 187 & 0.29 / 0.904 & 0.97 / 0.991 \\
+2\,000\,000 & 106.63 & 139.95 & 676 & 0.39 / 0.893 & 1.28 / 0.983 \\
+\bottomrule
+\end{tabularx}\endgroup
+
+\par\medskip
+% Actual semantic_scored path with candidate gather, full sort, pool400; no database polling; flat exact agreement / fraction at reference kth score within1e-6; source ann_reference_audit.json
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}l*{3}{>{\centering\arraybackslash}X}@{}}
+\toprule
+Vectors & Archive path p50 ms & Flat ID agreement & Flat score threshold \\
+\midrule
+100\,000 & 60.84 & 1.000 & 1.000 \\
+300\,000 & 166.80 & 1.000 & 1.000 \\
+1\,000\,000 & 497.64 & 1.000 & 1.000 \\
+2\,000\,000 & 2441.83 & 1.000 & 1.000 \\
+\bottomrule
+\end{tabularx}\endgroup
+
+\par\smallskip
+At 2\,000\,000 vectors, observed p50 is 106.6 ms for optimized NumPy top-k and 2441.8 ms for the archive vector path. HNSW ef256 is 1.28 ms at strict-ID recall@10 0.9825. These are sequential desktop-session measurements of different algorithms and output pools (10 versus 400), not paired hardware speedups or end-to-end interface latency.
