@@ -24,8 +24,8 @@
     "source_manifest.json": "6e861a1091159e1c4e92a4c4fce0273568bb464cd340cd496f3c30890e3b3a4d",
     "claims.csv": "8ef889ce9edb3196373b6a2eb4b1a14b48a181ad86f02f74e395496cbc603661",
     "generated/manifest.json": "365e1f0c8ad21a1a0663afc61836fcaa2e7036bf77aa3a73d36c1d1edc41a005",
-    "article-en.pdf": "1cbad8c1013b437494034e4501f0d8277af90e2f0d3ced6b4432adaa796a5748",
-    "article-uk.pdf": "7ea03d19c3b3851f2d9e7e7b025da11515025e59f7eecbba633e4b43faddd3ac"
+    "article-en.pdf": "8924f9721d9756288f7806c19629f03e6d38561a7a2516d621924c59e9dd92a5",
+    "article-uk.pdf": "8f1e015245ee8c816b65eab3dadd577b02f7a63dcae4c1918d4e7c25ef96b39b"
   },
   "pdf_compliance": {
     "en": [],

@@ -423,7 +423,7 @@ dependencies retain their own terms.
 
 ## Стаття та відтворення
 
-[Реліз статті UA-PAR](https://github.com/cyberdid/archive-index-public/releases/tag/paper-author-review-2026-10-23)
+[Beyond Search Scores — стаття UA-PAR](https://github.com/cyberdid/archive-index-public/releases/tag/paper-author-review-2026-10-23-r2)
 містить англійську й українську версії, код, підсумкові результати JSON,
 таблиці й рисунки. [Інструкція відтворення](paper/README_REPRODUCE.md) розрізняє
 перебудову таблиць/PDF зі збережених результатів і повне відтворення з

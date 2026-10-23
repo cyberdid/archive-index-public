@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "edition": "paper-author-review-2026-10-23",
+  "edition": "paper-author-review-2026-10-23-r2",
   "repository": "https://github.com/cyberdid/archive-index-public",
   "manuscripts": {
     "en": 36,
@@ -21,5 +21,10 @@
   "text_relevance_assessment": "model-generated; no human audit in this edition",
   "doi_assigned": false,
   "final_author_scientific_approval": false,
-  "scope": "GitHub author-review release; not a Zenodo deposition or peer-reviewed publication."
+  "scope": "GitHub author-review release; not a Zenodo deposition or peer-reviewed publication.",
+  "article_title": {
+    "en": "Beyond Search Scores: Retrieval Quality, Computational Cost, and LLM Judgment Sensitivity in a Multilingual Research Archive",
+    "uk": "За межами пошукових оцінок: якість пошуку, обчислювальні витрати та чутливість до оцінок LLM у багатомовному дослідницькому архіві"
+  },
+  "revision_scope": "Title, citation/deposit metadata and release references only; numerical results and executable/test sources unchanged."
 }

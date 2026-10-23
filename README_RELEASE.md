@@ -1,4 +1,4 @@
-# archive-index: bilingual author-review release
+# Beyond Search Scores: Retrieval Quality, Computational Cost, and LLM Judgment Sensitivity in a Multilingual Research Archive
 
 English: paper/manuscript/article-en.pdf (36 pages)
 Ukrainian: paper/manuscript/article-uk.pdf (38 pages)
@@ -22,3 +22,6 @@ manuscript availability section discloses this boundary.
 
 The text-relevance labels are model-generated. No human relevance audit,
 Zenodo DOI, final author scientific approval or peer review is claimed.
+
+Revision r2 changes the article title, citation/deposit metadata and release
+references. Numerical research results and executable/test sources are unchanged.

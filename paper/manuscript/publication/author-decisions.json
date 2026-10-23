@@ -14,7 +14,7 @@
   "human_relevance_audit_in_this_edition": false,
   "human_relevance_audit_scope": "Intentionally excluded; optional future validation.",
   "public_repository_url": "https://github.com/cyberdid/archive-index-public",
-  "public_release_tag": "paper-author-review-2026-10-23",
+  "public_release_tag": "paper-author-review-2026-10-23-r2",
   "software_data_doi": null,
   "preprint_doi": null,
   "publication_date": null,
@@ -22,5 +22,10 @@
   "license_selection_date": "2026-10-23",
   "license_selection_basis": "Explicit author instruction to match previous articles; both supplied Zenodo records use CC BY 4.0; the latest article explicitly licenses executable source under Apache-2.0.",
   "github_release_authorized": true,
-  "github_release_scope": "Versioned author-review release in existing public cyberdid/archive-index-public, using a separately scanned positive-whitelist export. Private working repository/history remain private."
+  "github_release_scope": "Versioned author-review release in existing public cyberdid/archive-index-public, using a separately scanned positive-whitelist export. Private working repository/history remain private.",
+  "title_selection": {
+    "english": "Beyond Search Scores: Retrieval Quality, Computational Cost, and LLM Judgment Sensitivity in a Multilingual Research Archive",
+    "ukrainian": "За межами пошукових оцінок: якість пошуку, обчислювальні витрати та чутливість до оцінок LLM у багатомовному дослідницькому архіві",
+    "basis": "Author preference for the first precise Beyond Search Scores title; implementation remains archive-index."
+  }
 }

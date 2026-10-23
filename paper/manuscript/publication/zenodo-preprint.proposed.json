@@ -2,7 +2,7 @@
   "metadata": {
     "upload_type": "publication",
     "publication_type": "preprint",
-    "title": "archive-index: lexical, dense and hybrid search in a multilingual research archive",
+    "title": "Beyond Search Scores: Retrieval Quality, Computational Cost, and LLM Judgment Sensitivity in a Multilingual Research Archive",
     "creators": [
       {
         "name": "Pylypenko, Oleksandr",
@@ -23,7 +23,7 @@
       "LLM relevance assessment"
     ],
     "language": "eng",
-    "version": "author-review-2026-10-23",
+    "version": "author-review-2026-10-23-r2",
     "license": "cc-by-4.0"
   }
 }

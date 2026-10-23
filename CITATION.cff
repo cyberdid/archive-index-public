@@ -8,10 +8,11 @@ authors:
   given-names: Oleksandr
   orcid: https://orcid.org/0009-0004-9610-9242
 repository-code: https://github.com/cyberdid/archive-index-public
-version: paper-author-review-2026-10-23
+version: paper-author-review-2026-10-23-r2
 preferred-citation:
   type: unpublished
-  title: 'archive-index: lexical, dense and hybrid search in a multilingual research archive'
+  title: 'Beyond Search Scores: Retrieval Quality, Computational Cost, and LLM Judgment Sensitivity
+    in a Multilingual Research Archive'
   authors:
   - family-names: Pylypenko
     given-names: Oleksandr
@@ -20,6 +21,6 @@ preferred-citation:
   notes: Author-review draft, 23 October 2026; model-generated text relevance; no human relevance
     audit in this edition; article and original experimental records licensed CC BY 4.0; author
     scientific approval and Zenodo publication pending.
-  url: https://github.com/cyberdid/archive-index-public/releases/tag/paper-author-review-2026-10-23
+  url: https://github.com/cyberdid/archive-index-public/releases/tag/paper-author-review-2026-10-23-r2
 license: Apache-2.0
-url: https://github.com/cyberdid/archive-index-public/releases/tag/paper-author-review-2026-10-23
+url: https://github.com/cyberdid/archive-index-public/releases/tag/paper-author-review-2026-10-23-r2
